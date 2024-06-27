@@ -4,27 +4,11 @@
     "fhir2": ">=1.2",
     "webservices.rest": "^2.24.0"
   },
-  "extensions": [
-    {
-      "name": "Red box",
-      "component": "redBox",
-      "slot": "Boxes"
-    },
-    {
-      "name": "Blue box",
-      "component": "blueBox",
-      "slot": "Boxes"
-    },
-        {
-      "name": "Brand box",
-      "component": "blueBox",
-      "slot": "Boxes"
-    }
-  ],
+  "extensions": [],
   "pages": [
     {
       "component": "root",
-      "route": "root"
+      "route": true
     }
   ]
 }

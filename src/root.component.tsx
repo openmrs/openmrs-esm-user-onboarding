@@ -8,32 +8,30 @@
  *   https://openmrs.github.io/openmrs-esm-core/#/main/config
  */
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Boxes } from './boxes/slot/boxes.component';
-import Greeter from './greeter/greeter.component';
-import PatientGetter from './patient-getter/patient-getter.component';
-import Resources from './resources/resources.component';
-import styles from './root.scss';
+import { useConfig } from '@openmrs/esm-framework';
+import { type Config } from './config-schema';
+import ReactJoyride from 'react-joyride';
 
 const Root: React.FC = () => {
   const { t } = useTranslation();
+  const config = useConfig() as Config;
 
-  return (
-    <div className={styles.container}>
-      <h3 className={styles.welcome}>{t('welcomeText', 'Welcome to the O3 Template app')}</h3>
-      <p className={styles.explainer}>
-        {t('explainer', 'The following examples demonstrate some key features of the O3 framework')}.
-      </p>
-      {/* Greeter: demonstrates the configuration system */}
-      <Greeter />
-      {/* Boxes: demonstrates the extension system */}
-      <Boxes />
-      {/* PatientGetter: demonstrates data fetching */}
-      <PatientGetter />
-      <Resources />
-    </div>
-  );
+  const [runJoyride, setRunJoyride] = useState<boolean>(config.showTutorial);
+  const steps = [
+    {
+      target: '[aria-label="OpenMRS"]',
+      content: t('welcome', 'Welcome to OpenMRS!'),
+      disableBeacon: true,
+    },
+  ];
+
+  useEffect(() => {
+    setRunJoyride(config.showTutorial);
+  }, [config.showTutorial]);
+
+  return <ReactJoyride steps={steps} run={runJoyride} />;
 };
 
 export default Root;

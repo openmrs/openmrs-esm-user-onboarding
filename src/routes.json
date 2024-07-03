@@ -4,7 +4,15 @@
     "fhir2": ">=1.2",
     "webservices.rest": "^2.24.0"
   },
-  "extensions": [],
+  "extensions": [
+    {
+      "name": "tutorials",
+      "slot": "help-menu-slot",
+      "component": "tutorial",
+      "online": true,
+      "offline": true
+    }
+  ],
   "pages": [
     {
       "component": "root",

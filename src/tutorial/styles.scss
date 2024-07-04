@@ -1,0 +1,27 @@
+@use '@carbon/styles/scss/spacing';
+@use '@carbon/styles/scss/type';
+@import '~@openmrs/esm-styleguide/src/vars';
+
+.description {
+  margin-bottom: 1rem;
+}
+
+.tutorialModal {
+  .tutorialItem {
+    margin-bottom: 2rem;
+    border-bottom: solid $ui-03;
+    padding-bottom: 1rem;
+  }
+
+  .tutorialTitle {
+      font-size: 0.75rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+  .walkthrough {
+      gap: spacing.$spacing-02;
+      color: $color-blue-60-2;
+      cursor: pointer;
+    }
+  }
+

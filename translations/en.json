@@ -1,4 +1,6 @@
 {
   "welcome": "Welcome to OpenMRS!",
-  "tutorial": "Tutorials"
+  "tutorial": "Tutorials",
+  "modalDescription":"Find walkthroughs and video tutorials on some of the core features of OpenMRS.",
+  "walkthrough":"Walkthrough"
 }

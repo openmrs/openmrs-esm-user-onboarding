@@ -4,14 +4,14 @@ import Tutorials from './modal.component';
 
 const Tutorial = () => {
   const { t } = useTranslation();
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
-    setModalOpen(true);
+    setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
-    setModalOpen(false);
+    setIsModalOpen(false);
   };
 
   return (

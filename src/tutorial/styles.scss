@@ -3,25 +3,34 @@
 @import '~@openmrs/esm-styleguide/src/vars';
 
 .description {
-  margin-bottom: 1rem;
+  margin-bottom: spacing.$spacing-04;
+  @include type.type-style('body-compact-01');
 }
 
 .tutorialModal {
+  display: flex;
+  flex-direction: column;
+  gap: spacing.$spacing-04;
+
   .tutorialItem {
-    margin-bottom: 2rem;
-    border-bottom: solid $ui-03;
-    padding-bottom: 1rem;
-  }
+    border-bottom: 1px solid $ui-03;
+    padding-bottom: spacing.$spacing-02;
 
-  .tutorialTitle {
-      font-size: 0.75rem;
-      font-weight: 400;
-      margin-bottom: 1rem;
+    .tutorialTitle {
+      margin-bottom: spacing.$spacing-04;
+      @include type.type-style('heading-02');
     }
-  .walkthrough {
-      gap: spacing.$spacing-02;
+
+    .tutorialDescription {
+      color: $color-gray-70;
+      @include type.type-style('body-compact-01');
+    }
+
+    .walkthrough {
+      margin-bottom: spacing.$spacing-03;
+      margin-top: spacing.$spacing-03;
       color: $color-blue-60-2;
-      cursor: pointer;
+      font-size: 1rem;
     }
   }
-
+}

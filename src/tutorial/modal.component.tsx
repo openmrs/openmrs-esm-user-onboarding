@@ -17,8 +17,8 @@ const TutorialModal = ({ open, onClose }) => {
       <div className={styles.tutorialModal}>
         {tutorialData.map((tutorial, index) => (
           <div className={styles.tutorialItem} key={index}>
-            <h3>{tutorial.title}</h3>
-            <p>{tutorial.description}</p>
+            <h3 className={styles.tutorialTitle}>{tutorial.title}</h3>
+            <p className={styles.tutorialDescription}>{tutorial.description}</p>
             <div className={styles.walkthrough}>{t('walkthrough', 'Walkthrough')}</div>
           </div>
         ))}

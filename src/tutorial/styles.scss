@@ -31,6 +31,7 @@
       margin-top: spacing.$spacing-03;
       color: $color-blue-60-2;
       font-size: 1rem;
+      @include type.type-style('body-compact-02');
     }
   }
 }

@@ -1,0 +1,36 @@
+@use '@carbon/styles/scss/spacing';
+@use '@carbon/styles/scss/type';
+@import '~@openmrs/esm-styleguide/src/vars';
+
+.description {
+  margin-bottom: spacing.$spacing-04;
+  @include type.type-style('body-compact-01');
+}
+
+.tutorialModal {
+  display: flex;
+  flex-direction: column;
+  gap: spacing.$spacing-04;
+
+  .tutorialItem {
+    border-bottom: 1px solid $ui-03;
+    padding-bottom: spacing.$spacing-02;
+
+    .tutorialTitle {
+      margin-bottom: spacing.$spacing-04;
+      @include type.type-style('heading-02');
+    }
+
+    .tutorialDescription {
+      color: $color-gray-70;
+      @include type.type-style('body-compact-01');
+    }
+
+    .walkthrough {
+      margin-bottom: spacing.$spacing-03;
+      margin-top: spacing.$spacing-03;
+      color: $color-blue-60-2;
+      @include type.type-style('body-compact-02');
+    }
+  }
+}

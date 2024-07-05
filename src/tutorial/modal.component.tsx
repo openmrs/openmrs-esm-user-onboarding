@@ -2,12 +2,26 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Modal } from '@carbon/react';
 import { useConfig } from '@openmrs/esm-framework';
+import { useOnboarding } from '../onboarding-context';
 import styles from './styles.scss';
 
 const TutorialModal = ({ open, onClose }) => {
   const { t } = useTranslation();
   const config = useConfig();
   const tutorialData = config.tutorialData;
+  const { startOnboarding } = useOnboarding();
+
+  const handleWalkthroughClick = (tutorial) => {
+    const steps = [
+      {
+        target: '[aria-label="OpenMRS"]',
+        content: 'This is the OpenMRS logo. Click here to go back to the home page.',
+        disableBeacon: true,
+      },
+    ];
+    startOnboarding(steps);
+    onClose();
+  };
 
   return (
     <Modal open={open} onRequestClose={onClose} passiveModal modalHeading={t('tutorial', 'Tutorials')}>
@@ -19,7 +33,9 @@ const TutorialModal = ({ open, onClose }) => {
           <div className={styles.tutorialItem} key={index}>
             <h3 className={styles.tutorialTitle}>{tutorial.title}</h3>
             <p className={styles.tutorialDescription}>{tutorial.description}</p>
-            <div className={styles.walkthrough}>{t('walkthrough', 'Walkthrough')}</div>
+            <div className={styles.walkthrough} onClick={() => handleWalkthroughClick(tutorial)}>
+              {t('walkthrough', 'Walkthrough')}
+            </div>
           </div>
         ))}
       </div>

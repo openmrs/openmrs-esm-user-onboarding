@@ -9,17 +9,14 @@ const TutorialModal = ({ open, onClose }) => {
   const { t } = useTranslation();
   const config = useConfig();
   const tutorialData = config.tutorialData;
+  const tutorialSteps = config.tutorialSteps;
   const { startOnboarding } = useOnboarding();
 
-  const handleWalkthroughClick = (tutorial) => {
-    const steps = [
-      {
-        target: '[aria-label="OpenMRS"]',
-        content: 'This is the OpenMRS logo. Click here to go back to the home page.',
-        disableBeacon: true,
-      },
-    ];
-    startOnboarding(steps);
+  const handleWalkthroughClick = (tutorialId) => {
+    const steps = tutorialSteps.find((tutorial) => tutorial.tutorialId === tutorialId)?.steps;
+    if (steps) {
+      startOnboarding(steps);
+    }
     onClose();
   };
 
@@ -29,11 +26,11 @@ const TutorialModal = ({ open, onClose }) => {
         {t('modalDescription', 'Find walkthroughs and video tutorials on some of the core features of OpenMRS.')}
       </p>
       <div className={styles.tutorialModal}>
-        {tutorialData.map((tutorial, index) => (
-          <div className={styles.tutorialItem} key={index}>
+        {tutorialData.map((tutorial) => (
+          <div className={styles.tutorialItem} key={tutorial.id}>
             <h3 className={styles.tutorialTitle}>{tutorial.title}</h3>
             <p className={styles.tutorialDescription}>{tutorial.description}</p>
-            <div className={styles.walkthrough} onClick={() => handleWalkthroughClick(tutorial)}>
+            <div className={styles.walkthrough} onClick={() => handleWalkthroughClick(tutorial.id)}>
               {t('walkthrough', 'Walkthrough')}
             </div>
           </div>

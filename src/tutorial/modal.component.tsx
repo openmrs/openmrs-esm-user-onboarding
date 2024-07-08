@@ -15,7 +15,7 @@ const TutorialModal = ({ open, onClose }) => {
     startOnboarding(steps);
     onClose();
   };
-
+  
   return (
     <Modal open={open} onRequestClose={onClose} passiveModal modalHeading={t('tutorial', 'Tutorials')}>
       <p className={styles.description}>

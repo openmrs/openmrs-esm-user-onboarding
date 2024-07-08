@@ -11,8 +11,7 @@ export const configSchema = {
     _default: [
       {
         title: 'Sample Demo',
-        description:
-          'This is a Sample Demo',
+        description:'This is a Sample Demo',
         steps: [
           {
             target: '[aria-label="OpenMRS"]',

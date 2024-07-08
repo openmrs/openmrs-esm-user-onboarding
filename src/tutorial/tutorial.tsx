@@ -4,6 +4,7 @@ import Tutorials from './modal.component';
 import { OnboardingProvider } from '../onboarding-context';
 import RootComponent from '../root.component';
 
+
 const Tutorial = () => {
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);

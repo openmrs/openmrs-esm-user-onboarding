@@ -9,14 +9,10 @@ const TutorialModal = ({ open, onClose }) => {
   const { t } = useTranslation();
   const config = useConfig();
   const tutorialData = config.tutorialData;
-  const tutorialSteps = config.tutorialSteps;
   const { startOnboarding } = useOnboarding();
 
-  const handleWalkthroughClick = (tutorialId) => {
-    const steps = tutorialSteps.find((tutorial) => tutorial.tutorialId === tutorialId)?.steps;
-    if (steps) {
-      startOnboarding(steps);
-    }
+  const handleWalkthroughClick = (steps) => {
+    startOnboarding(steps);
     onClose();
   };
 
@@ -26,11 +22,11 @@ const TutorialModal = ({ open, onClose }) => {
         {t('modalDescription', 'Find walkthroughs and video tutorials on some of the core features of OpenMRS.')}
       </p>
       <div className={styles.tutorialModal}>
-        {tutorialData.map((tutorial) => (
-          <div className={styles.tutorialItem} key={tutorial.id}>
+        {tutorialData.map((tutorial, index) => (
+          <div className={styles.tutorialItem} key={index}>
             <h3 className={styles.tutorialTitle}>{tutorial.title}</h3>
             <p className={styles.tutorialDescription}>{tutorial.description}</p>
-            <div className={styles.walkthrough} onClick={() => handleWalkthroughClick(tutorial.id)}>
+            <div className={styles.walkthrough} onClick={() => handleWalkthroughClick(tutorial.steps)}>
               {t('walkthrough', 'Walkthrough')}
             </div>
           </div>

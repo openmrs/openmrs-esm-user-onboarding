@@ -10,46 +10,21 @@ export const configSchema = {
     _type: Type.Array,
     _default: [
       {
-        id: 1,
         title: 'Sample Demo',
         description:
-          'OpenMRS is a patient-centered medical record system that is designed to be flexible and extensible. It is a platform that supports a wide range of applications for use in low-resource settings. OpenMRS is a multi-institution, non-profit collaborative led by Regenstrief Institute, a world-renowned leader in medical informatics research, and Partners In Health, a Boston-based philanthropic organization.',
-      },
-      {
-        id: 2,
-        title: 'Tasks',
-        description:
-          'Find and organize what needs to be done for patients with task lists. Tasks are created both automatically based on data in the patient’s chart as well as manually by you or your colleagues.',
-      },
-      {
-        id: 3,
-        title: 'Order basket',
-        description: 'A single place for referral, imaging, drug and lab test orders.',
-      },
-      {
-        id: 4,
-        title: 'Patient lists',
-        description:
-          'Service queues help you manage your clinic. Patients can be organized by priority level and you can track the wait time for each of your clinic’s key areas.',
-      },
-    ],
-    _description: 'List of tutorials to be displayed in the modal',
-  },
-  tutorialSteps: {
-    _type: Type.Array,
-    _default: [
-      {
-        tutorialId: 1,
+          'This is a Sample Demo',
         steps: [
           {
             target: '[aria-label="OpenMRS"]',
-            content: 'This is the Sample demo logo.',
+            content: 'This is the OpenMRS logo. Click here to go back to the home page.',
             disableBeacon: true,
           },
         ],
       },
       {
-        tutorialId: 2,
+        title: 'Tasks',
+        description:
+          'Find and organize what needs to be done for patients with task lists. Tasks are created both automatically based on data in the patient’s chart as well as manually by you or your colleagues.',
         steps: [
           {
             target: '[aria-label="OpenMRS"]',
@@ -59,7 +34,8 @@ export const configSchema = {
         ],
       },
       {
-        tutorialId: 3,
+        title: 'Order basket',
+        description: 'A single place for referral, imaging, drug and lab test orders.',
         steps: [
           {
             target: '[aria-label="OpenMRS"]',
@@ -69,7 +45,9 @@ export const configSchema = {
         ],
       },
       {
-        tutorialId: 4,
+        title: 'Patient lists',
+        description:
+          'Service queues help you manage your clinic. Patients can be organized by priority level and you can track the wait time for each of your clinic’s key areas.',
         steps: [
           {
             target: '[aria-label="OpenMRS"]',
@@ -79,19 +57,15 @@ export const configSchema = {
         ],
       },
     ],
-    _description: 'Steps for the onboarding tutorial',
+    _description: 'List of tutorials to be displayed in the modal',
   },
 };
 
 export type Config = {
   showTutorial: boolean;
   tutorialData: {
-    id: number;
     title: string;
     description: string;
-  }[];
-  tutorialSteps: {
-    tutorialId: number;
     steps: {
       target: string;
       content: string;

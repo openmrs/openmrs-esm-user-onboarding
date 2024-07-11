@@ -1,15 +1,21 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Modal } from '@carbon/react';
-import { useConfig } from '@openmrs/esm-framework';
+import { useConfig, useAppContext } from '@openmrs/esm-framework';
 import styles from './styles.scss';
+import {type TutorialContext} from "../types";
+import {Step} from "react-joyride";
 
 const TutorialModal = ({ open, onClose }) => {
   const { t } = useTranslation();
   const config = useConfig();
   const tutorials = config.tutorialData;
+  const tutorialContext = useAppContext<TutorialContext>('tutorial-context');
+  // console.log(tutorialContext);
 
-  const handleWalkthroughClick = (steps) => {
+  const handleWalkthroughClick = (index: number) => {
+    // setSteps(tutorials[index].steps);
+    // setShowTutorial(true);
     onClose();
   };
 
@@ -23,7 +29,7 @@ const TutorialModal = ({ open, onClose }) => {
           <div className={styles.tutorialItem} key={index}>
             <h3 className={styles.tutorialTitle}>{tutorial.title}</h3>
             <p className={styles.tutorialDescription}>{tutorial.description}</p>
-            <div className={styles.walkthrough} onClick={() => handleWalkthroughClick(tutorial.steps)}>
+            <div className={styles.walkthrough} onClick={() => handleWalkthroughClick(index)}>
               {t('walkthrough', 'Walkthrough')}
             </div>
           </div>

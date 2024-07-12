@@ -11,11 +11,10 @@ const TutorialModal = ({ open, onClose }) => {
   const config = useConfig();
   const tutorials = config.tutorialData;
   const tutorialContext = useAppContext<TutorialContext>('tutorial-context');
-  // console.log(tutorialContext);
 
   const handleWalkthroughClick = (index: number) => {
-    // setSteps(tutorials[index].steps);
-    // setShowTutorial(true);
+    tutorialContext.setSteps(tutorials[index].steps);
+    tutorialContext.setShowTutorial(true);
     onClose();
   };
 

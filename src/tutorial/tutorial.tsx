@@ -1,25 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import Tutorials from './modal.component';
-import RootComponent from '../root.component';
-
+import { showModal } from '@openmrs/esm-framework';
 
 const Tutorial = () => {
   const { t } = useTranslation();
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+    const dispose = showModal('tutorial-modal', {
+      onClose: () => dispose(),
+    });
   };
 
   return (
     <>
       <div onClick={handleOpenModal}>{t('tutorials', 'Tutorials')}</div>
-      <Tutorials open={isModalOpen} onClose={handleCloseModal} />
     </>
   );
 };

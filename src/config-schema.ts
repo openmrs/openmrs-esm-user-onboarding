@@ -1,4 +1,4 @@
-import { Type } from '@openmrs/esm-framework';
+import {Type} from '@openmrs/esm-framework';
 
 export const configSchema = {
   showTutorial: {
@@ -8,56 +8,51 @@ export const configSchema = {
   },
   tutorialData: {
     _type: Type.Array,
+    _description: 'List of tutorials to be displayed in the modal',
     _default: [
       {
-        title: 'Sample Demo',
-        description:'This is a Sample Demo',
-        steps: [
+        title: 'Basic Tutorial',
+        description: 'Learn how to efficiently search for patients, register new patients, access user settings, and view ongoing visits and appointments.',
+        steps: [{
+          target: '[aria-label="OpenMRS"]',
+          content: 'Welcome to OpenMRS! This is the main dashboard where you can navigate to various features of the system.'
+        },
           {
-            target: '[aria-label="OpenMRS"]',
-            content: 'This is the OpenMRS logo. Click here to go back to the home page.',
-            disableBeacon: true,
+            target: '[name="SearchPatientIcon"]',
+            content: 'This is the search icon. Use it to find patients in the system quickly.'
+          },
+          {
+            target: '[name="AddPatientIcon"]',
+            content: 'This is the add patient icon. Click here to register a new patient into the system.'
+          },
+          {
+            target: '[name="User"]',
+            content: 'The user icon. Click here to change your user preferences and settings.'
+          },
+          {
+            target: '[data-extension-id="active-visits-widget"]',
+            content: 'This table displays active visits. Here you can see all the ongoing patient visits.'
+          },
+          {
+            target: '[data-extension-id="home-appointments"]',
+            content: 'This table shows appointments. View and manage patient appointments from this section.'
           },
         ],
       },
       {
-        title: 'Tasks',
-        description:
-          'Find and organize what needs to be done for patients with task lists. Tasks are created both automatically based on data in the patient’s chart as well as manually by you or your colleagues.',
-        steps: [
+        title: 'Option Tutorial',
+        description: 'Optional Tutorial for debugging purposes',
+        steps: [{
+          target: '[aria-label="OpenMRS"]',
+          content: 'Welcome to OpenMRS! This is the main dashboard where you can navigate to various features of the system.'
+        },
           {
-            target: '[aria-label="OpenMRS"]',
-            content: 'This is the Tasks section. Here you can find and organize tasks for patients.',
-            disableBeacon: true,
-          },
-        ],
-      },
-      {
-        title: 'Order basket',
-        description: 'A single place for referral, imaging, drug and lab test orders.',
-        steps: [
-          {
-            target: '[aria-label="OpenMRS"]',
-            content: 'This is the Order Basket. A single place for referral, imaging, drug, and lab test orders.',
-            disableBeacon: true,
-          },
-        ],
-      },
-      {
-        title: 'Patient lists',
-        description:
-          'Service queues help you manage your clinic. Patients can be organized by priority level and you can track the wait time for each of your clinic’s key areas.',
-        steps: [
-          {
-            target: '[aria-label="OpenMRS"]',
-            content: 'This is the Patient Lists section. Here you can manage and organize patient queues.',
-            disableBeacon: true,
-          },
-        ],
-      },
-    ],
-    _description: 'List of tutorials to be displayed in the modal',
-  },
+            target: '[name="SearchPatientIcon"]',
+            content: 'This is the search icon. Use it to find patients in the system quickly.'
+          }]
+      }
+    ]
+  }
 };
 
 export type Config = {

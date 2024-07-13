@@ -18,3 +18,5 @@ export function startupApp() {
 export const root = getAsyncLifecycle(() => import('./root.component'), options);
 
 export const tutorial = getSyncLifecycle(Tutorial, options);
+
+export const tutorialModal = getAsyncLifecycle(() => import('./tutorial/modal.component'), options);

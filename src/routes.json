@@ -13,6 +13,12 @@
       "offline": true
     }
   ],
+  "modals": [
+	{
+	  "name": "tutorial-modal",
+	  "component": "tutorialModal"
+	}
+  ],
   "pages": [
     {
       "component": "root",

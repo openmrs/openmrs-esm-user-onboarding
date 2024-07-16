@@ -66,7 +66,12 @@ describe('TutorialModal', () => {
     await waitFor(() => expect(setShowTutorial).toHaveBeenCalledWith(true));
   });
 
-  test.todo('renders tutorials properly');
+  test('renders tutorials properly', async () => {
+    render(<TutorialModal open={true} onClose={jest.fn()} />);
 
+    expect(screen.getByText('Tutorial 1')).toBeInTheDocument();
+
+    expect(screen.getByText('Description 1')).toBeInTheDocument();
+  });
 });
 

@@ -1,9 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useConfig, useAppContext } from '@openmrs/esm-framework';
+import { useConfig, useAppContext, navigate } from '@openmrs/esm-framework';
 import styles from './styles.scss';
 import { type TutorialContext } from '../types';
-import { Step } from 'react-joyride';
 import { ModalHeader, ModalBody } from '@carbon/react';
 
 const TutorialModal = ({ open, onClose }) => {
@@ -13,8 +12,15 @@ const TutorialModal = ({ open, onClose }) => {
   const tutorialContext = useAppContext<TutorialContext>('tutorial-context');
 
   const handleWalkthroughClick = (index: number) => {
-    tutorialContext.setSteps(tutorials[index].steps);
+    const basePath = window.getOpenmrsSpaBase();
+    const tutorial = tutorials[index];
+    tutorialContext.setSteps(tutorial.steps);
     tutorialContext.setShowTutorial(true);
+    const nextPath = `${basePath}${tutorial.link}`;
+    const currentPath = window.location.pathname;
+    if (currentPath !== nextPath.replace(basePath, '')) {
+      navigate({ to: nextPath });
+    }
     onClose();
   };
 

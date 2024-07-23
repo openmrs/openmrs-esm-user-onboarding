@@ -171,7 +171,6 @@ export type Config = {
   tutorialData: {
     title: string;
     description: string;
-    link: string;
     steps: {
       target: string;
       title: string;

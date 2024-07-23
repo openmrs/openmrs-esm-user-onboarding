@@ -13,13 +13,26 @@ const TutorialModal = ({ open, onClose }) => {
 
   const handleWalkthroughClick = (index: number) => {
     const basePath = window.getOpenmrsSpaBase();
-    const tutorial = tutorials[index];
-    tutorialContext.setSteps(tutorial.steps);
-    tutorialContext.setShowTutorial(true);
-    const nextPath = `${basePath}${tutorial.link}`;
+    const homePath = `${basePath}home`;
     const currentPath = window.location.pathname;
-    if (currentPath !== nextPath.replace(basePath, '')) {
-      navigate({ to: nextPath });
+    const tutorial = tutorials[index];
+
+    const setTutorialSteps = () => {
+      tutorialContext.setSteps(tutorial.steps);
+      tutorialContext.setShowTutorial(true);
+    };
+
+    if (currentPath === homePath) {
+      setTutorialSteps();
+    } else {
+      navigate({ to: homePath });
+
+      const intervalId = setInterval(() => {
+        if (window.location.pathname === homePath) {
+          setTutorialSteps();
+          clearInterval(intervalId);
+        }
+      }, 100);
     }
     onClose();
   };
@@ -32,15 +45,15 @@ const TutorialModal = ({ open, onClose }) => {
         </p>
       </ModalHeader>
       <ModalBody className={styles.tutorialModal}>
-          {tutorials.map((tutorial, index) => (
-            <div className={styles.tutorialItem} key={index}>
-              <h3 className={styles.tutorialTitle}>{tutorial.title}</h3>
-              <p className={styles.tutorialDescription}>{tutorial.description}</p>
-              <div className={styles.walkthrough} onClick={() => handleWalkthroughClick(index)}>
-                {t('walkthrough', 'Walkthrough')}
-              </div>
+        {tutorials.map((tutorial, index) => (
+          <div className={styles.tutorialItem} key={index}>
+            <h3 className={styles.tutorialTitle}>{tutorial.title}</h3>
+            <p className={styles.tutorialDescription}>{tutorial.description}</p>
+            <div className={styles.walkthrough} onClick={() => handleWalkthroughClick(index)}>
+              {t('walkthrough', 'Walkthrough')}
             </div>
-          ))}
+          </div>
+        ))}
       </ModalBody>
     </React.Fragment>
   );

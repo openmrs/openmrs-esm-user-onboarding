@@ -101,6 +101,12 @@ export const configSchema = {
             title:
               'Great job! You found the allergies section! This is the end of the tutorial. Feel free to explore the system on your own or check out the other tutorials.',
           },
+          {
+            target: 'button[type="submit"]',
+            title: 'Register Patient',
+            content: "Click this button to register the patient's information into the system.",
+            disableBeacon: true,
+          },
         ],
       },
 

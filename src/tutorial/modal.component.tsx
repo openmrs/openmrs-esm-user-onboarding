@@ -1,9 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useConfig, useAppContext } from '@openmrs/esm-framework';
+import { useConfig, useAppContext, navigate } from '@openmrs/esm-framework';
 import styles from './styles.scss';
 import { type TutorialContext } from '../types';
-import { Step } from 'react-joyride';
 import { ModalHeader, ModalBody } from '@carbon/react';
 
 const TutorialModal = ({ open, onClose }) => {
@@ -13,8 +12,28 @@ const TutorialModal = ({ open, onClose }) => {
   const tutorialContext = useAppContext<TutorialContext>('tutorial-context');
 
   const handleWalkthroughClick = (index: number) => {
-    tutorialContext.setSteps(tutorials[index].steps);
-    tutorialContext.setShowTutorial(true);
+    const basePath = window.getOpenmrsSpaBase();
+    const homePath = `${basePath}home`;
+    const currentPath = window.location.pathname;
+    const tutorial = tutorials[index];
+
+    const setTutorialSteps = () => {
+      tutorialContext.setSteps(tutorial.steps);
+      tutorialContext.setShowTutorial(true);
+    };
+
+    if (currentPath === homePath) {
+      setTutorialSteps();
+    } else {
+      navigate({ to: homePath });
+
+      const intervalId = setInterval(() => {
+        if (window.location.pathname === homePath) {
+          setTutorialSteps();
+          clearInterval(intervalId);
+        }
+      }, 100);
+    }
     onClose();
   };
 
@@ -26,15 +45,15 @@ const TutorialModal = ({ open, onClose }) => {
         </p>
       </ModalHeader>
       <ModalBody className={styles.tutorialModal}>
-          {tutorials.map((tutorial, index) => (
-            <div className={styles.tutorialItem} key={index}>
-              <h3 className={styles.tutorialTitle}>{tutorial.title}</h3>
-              <p className={styles.tutorialDescription}>{tutorial.description}</p>
-              <div className={styles.walkthrough} onClick={() => handleWalkthroughClick(index)}>
-                {t('walkthrough', 'Walkthrough')}
-              </div>
+        {tutorials.map((tutorial, index) => (
+          <div className={styles.tutorialItem} key={index}>
+            <h3 className={styles.tutorialTitle}>{tutorial.title}</h3>
+            <p className={styles.tutorialDescription}>{tutorial.description}</p>
+            <div className={styles.walkthrough} onClick={() => handleWalkthroughClick(index)}>
+              {t('walkthrough', 'Walkthrough')}
             </div>
-          ))}
+          </div>
+        ))}
       </ModalBody>
     </React.Fragment>
   );

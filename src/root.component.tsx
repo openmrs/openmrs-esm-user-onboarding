@@ -50,7 +50,7 @@ const RootComponent: React.FC = () => {
   const overlayStyles = currentStep?.disableOverlay
     ? { backgroundColor: 'transparent' }
     : { height: document.body.scrollHeight };
-  console.log('overlayStyles', overlayStyles);
+
 
   const handleJoyrideCallback = (data: CallBackProps) => {
     const { action, index, origin, status, type } = data;

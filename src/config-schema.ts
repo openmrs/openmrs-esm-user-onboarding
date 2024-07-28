@@ -152,6 +152,79 @@ export const configSchema = {
           },
         ],
       },
+      {
+        title: 'Patient Search',
+        description: 'Learn how to search for a specic patient in the system and make them to active visit.',
+        steps: [
+          {
+            target: '[name="SearchPatientIcon"]',
+            title: 'Search Patient',
+            content: 'Click here to search for a patient in the system.',
+            disableBeacon: true,
+            disableOverlayClose: true,
+            spotlightClicks: true,
+            hideNextButton: true,
+            data: {
+              autoNextOn: '[data-testid="patientSearchBar"]',
+            },
+          },
+          {
+            target: '[data-testid="patientSearchBar"]',
+            title: 'Search Bar',
+            content:
+              'This is the search bar. You can search for a patient by entering their name, ID, or other identifiers here.',
+            placement: 'left',
+            disableBeacon: true,
+            disableOverlayClose: true,
+            hideBackButton: true,
+            spotlightClicks: true,
+            hideNextButton: true,
+            data: {
+              autoNextOn: '[data-testid="floatingSearchResultsContainer"]',
+            },
+          },
+          {
+            target: '[data-testid="floatingSearchResultsContainer"]',
+            title: 'Search Results',
+            content: 'Click on the patient that has not visited and you want to search',
+            // spotlightPadding: 40,
+            spotlightClicks: true,
+            placement: 'left',
+            disableBeacon: true,
+            hideBackButton: true,
+            hideNextButton: true,
+            disableOverlay: true,
+            data: {
+              autoNextOn:
+                '.-esm-patient-chart__visit-header__startVisitButton___sPV4T.cds--btn.cds--layout--size-lg.cds--btn--primary',
+            },
+          },
+          {
+            target:
+              '.-esm-patient-chart__visit-header__startVisitButton___sPV4T.cds--btn.cds--layout--size-lg.cds--btn--primary',
+            title: 'Start Visits',
+            content: 'Click here to start a visit for the selected patient.',
+            disableBeacon: true,
+            disableOverlayClose: true,
+            spotlightClicks: true,
+            hideNextButton: true,
+            hideBackButton: true,
+            data: {
+              autoNextOn: '[class="nQJTnA1oj2XG+5JSkZjEYw=="]',
+            },
+          },
+          {
+            target: '[class="nQJTnA1oj2XG+5JSkZjEYw=="]',
+            title: 'Fill Details',
+            content: 'Fill the details and click on the "Start Visit" button.',
+            placement: 'left',
+            spotlightClicks: true,
+            disableBeacon: true,
+            hideBackButton: true,
+            disableOverlayClose: true,
+          },
+        ],
+      },
     ],
   },
 };

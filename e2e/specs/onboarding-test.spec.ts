@@ -32,39 +32,39 @@ test('Basic Walkthrough', async ({ page }) => {
     await expect(
       page.locator('#react-joyride-step-0 div').filter({ hasText: 'Welcome to OpenMRS!' }).first(),
     ).toBeVisible();
-    await page.locator('[data-test-id="button-primary"]').click();
+    await page.getByLabel('Next', { exact: true }).click();
   });
 
   await test.step('And I should see the search icon  Joyride tooltip', async () => {
     await expect(
       page.locator('#react-joyride-step-1 div').filter({ hasText: 'This is the search icon' }).first(),
     ).toBeVisible();
-    await page.locator('[data-test-id="button-primary"]').click();
+    await page.getByLabel('Next', { exact: true }).click();
   });
 
   await test.step('Then I should see the add patient icon Joyride tooltip', async () => {
     await expect(
       page.locator('#react-joyride-step-2 div').filter({ hasText: 'This is the add patient icon' }).first(),
     ).toBeVisible();
-    await page.locator('[data-test-id="button-primary"]').click();
+    await page.getByLabel('Next', { exact: true }).click();
   });
 
   await test.step('And I should see the user icon Joyride tooltip', async () => {
     await expect(page.locator('#react-joyride-step-3 div').filter({ hasText: 'The user icon' }).first()).toBeVisible();
-    await page.locator('[data-test-id="button-primary"]').click();
+    await page.getByLabel('Next', { exact: true }).click();
   });
 
   await test.step('Then I should see the active visits Joyride tooltip', async () => {
     await expect(
       page.locator('#react-joyride-step-4 div').filter({ hasText: 'This table displays active visits' }).first(),
     ).toBeVisible();
-    await page.locator('[data-test-id="button-primary"]').click();
+    await page.getByLabel('Next', { exact: true }).click();
   });
 
   await test.step('And I should see the appointments table Joyride tooltip', async () => {
     await expect(
       page.locator('#react-joyride-step-5 div').filter({ hasText: 'This table shows appointments' }).first(),
     ).toBeVisible();
-    await page.locator('[data-test-id="button-primary"]').click();
+    await page.getByLabel('Last').click();
   });
 });

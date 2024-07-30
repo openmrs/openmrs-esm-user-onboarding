@@ -29,42 +29,32 @@ test('Basic Walkthrough', async ({ page }) => {
   });
 
   await test.step('Then I should see the first Joyride tooltip', async () => {
-    await expect(
-      page.locator('#react-joyride-step-0 div').filter({ hasText: 'Welcome to OpenMRS!' }).first(),
-    ).toBeVisible();
+    await expect(page.locator('div').filter({ hasText: 'Welcome to OpenMRS!' }).nth(1)).toBeVisible();
     await page.getByLabel('Next', { exact: true }).click();
   });
 
   await test.step('And I should see the search icon  Joyride tooltip', async () => {
-    await expect(
-      page.locator('#react-joyride-step-1 div').filter({ hasText: 'This is the search icon' }).first(),
-    ).toBeVisible();
+    await expect(page.locator('div').filter({ hasText: 'This is the search icon.' }).nth(1)).toBeVisible();
     await page.getByLabel('Next', { exact: true }).click();
   });
 
   await test.step('Then I should see the add patient icon Joyride tooltip', async () => {
-    await expect(
-      page.locator('#react-joyride-step-2 div').filter({ hasText: 'This is the add patient icon' }).first(),
-    ).toBeVisible();
+    await expect(page.locator('div').filter({ hasText: 'This is the add patient' }).nth(1)).toBeVisible();
     await page.getByLabel('Next', { exact: true }).click();
   });
 
   await test.step('And I should see the user icon Joyride tooltip', async () => {
-    await expect(page.locator('#react-joyride-step-3 div').filter({ hasText: 'The user icon' }).first()).toBeVisible();
+    await expect(page.locator('div').filter({ hasText: 'The user icon' }).nth(1)).toBeVisible();
     await page.getByLabel('Next', { exact: true }).click();
   });
 
   await test.step('Then I should see the active visits Joyride tooltip', async () => {
-    await expect(
-      page.locator('#react-joyride-step-4 div').filter({ hasText: 'This table displays active visits' }).first(),
-    ).toBeVisible();
+    await expect(page.locator('div').filter({ hasText: 'This table displays active visits' }).nth(1)).toBeVisible();
     await page.getByLabel('Next', { exact: true }).click();
   });
 
   await test.step('And I should see the appointments table Joyride tooltip', async () => {
-    await expect(
-      page.locator('#react-joyride-step-5 div').filter({ hasText: 'This table shows appointments' }).first(),
-    ).toBeVisible();
+    await expect(page.locator('div').filter({ hasText: 'This table shows appointments' }).nth(1)).toBeVisible();
     await page.getByLabel('Last').click();
   });
 });

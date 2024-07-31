@@ -20,7 +20,15 @@ echo "Creating dynamic spa-assemble-config.json..."
 jq -n \
   --arg app_name "$app_name" \
   --arg app_file "/app/$packed_app_name.tgz" \
-  '{"@openmrs/esm-primary-navigation-app": "next", "@openmrs/esm-home-app": "next", "@openmrs/esm-help-menu-app": "next", "@openmrs/esm-patient-search-app": "next"} + {
+'{
+    "@openmrs/esm-primary-navigation-app": "next",
+    "@openmrs/esm-home-app": "next",
+    "@openmrs/esm-help-menu-app": "next",
+    "@openmrs/esm-patient-search-app": "next",
+    "@openmrs/esm-patient-registration-app": "next",
+    "@openmrs/esm-active-visits-app": "next",
+    "@openmrs/esm-appointments-app": "next"
+  } + {
     ($app_name): $app_file
   }' | jq '{"frontendModules": .}' > "$working_dir/spa-assemble-config.json"
 echo "Created dynamic spa-assemble-config.json"

@@ -69,7 +69,7 @@ test('Basic Walkthrough', async ({ page }) => {
     await expect(page.getByText('This table shows appointments')).toBeVisible();
   });
 
-  await test.step('And I click the next button', async () => {
+  await test.step('And I click the finish button', async () => {
     await page.getByLabel('Last').click();
   });
 });

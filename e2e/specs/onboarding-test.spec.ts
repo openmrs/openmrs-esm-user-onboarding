@@ -29,32 +29,47 @@ test('Basic Walkthrough', async ({ page }) => {
   });
 
   await test.step('Then I should see the first Joyride tooltip', async () => {
-    await expect(page.locator('div').filter({ hasText: 'Welcome to OpenMRS!' }).nth(1)).toBeVisible();
+    await expect(page.getByText('Welcome to OpenMRS!')).toBeVisible();
+  });
+
+  await test.step('And I click the next button', async () => {
     await page.getByLabel('Next', { exact: true }).click();
   });
 
-  await test.step('And I should see the search icon  Joyride tooltip', async () => {
-    await expect(page.locator('div').filter({ hasText: 'This is the search icon.' }).nth(1)).toBeVisible();
+  await test.step('Then I should see the search icon  Joyride tooltip', async () => {
+    await expect(page.getByText('This is the search icon.')).toBeVisible();
+  });
+  await test.step('And I click the next button', async () => {
     await page.getByLabel('Next', { exact: true }).click();
   });
 
   await test.step('Then I should see the add patient icon Joyride tooltip', async () => {
-    await expect(page.locator('div').filter({ hasText: 'This is the add patient' }).nth(1)).toBeVisible();
+    await expect(page.getByText('This is the add patient')).toBeVisible();
+  });
+  await test.step('And I click the next button', async () => {
     await page.getByLabel('Next', { exact: true }).click();
   });
 
-  await test.step('And I should see the user icon Joyride tooltip', async () => {
-    await expect(page.locator('div').filter({ hasText: 'The user icon' }).nth(1)).toBeVisible();
+  await test.step('Then I should see the user icon Joyride tooltip', async () => {
+    await expect(page.getByText('The user icon')).toBeVisible();
+  });
+  await test.step('And I click the next button', async () => {
     await page.getByLabel('Next', { exact: true }).click();
   });
 
   await test.step('Then I should see the active visits Joyride tooltip', async () => {
-    await expect(page.locator('div').filter({ hasText: 'This table displays active visits' }).nth(1)).toBeVisible();
+    await expect(page.getByText('This table displays active visits')).toBeVisible();
+  });
+
+  await test.step('And I click the next button', async () => {
     await page.getByLabel('Next', { exact: true }).click();
   });
 
   await test.step('And I should see the appointments table Joyride tooltip', async () => {
-    await expect(page.locator('div').filter({ hasText: 'This table shows appointments' }).nth(1)).toBeVisible();
+    await expect(page.getByText('This table shows appointments')).toBeVisible();
+  });
+
+  await test.step('And I click the next button', async () => {
     await page.getByLabel('Last').click();
   });
 });

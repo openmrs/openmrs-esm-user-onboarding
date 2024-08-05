@@ -12,14 +12,12 @@ export const configSchema = {
     _default: [
       {
         title: 'Basic Tutorial',
-        description:
-          'Learn how to efficiently search for patients, register new patients, access user settings, and view ongoing visits and appointments.',
-        steps: [
-          {
-            target: '[aria-label="OpenMRS"]',
-            content:
-              'Welcome to OpenMRS! This is the main dashboard where you can navigate to various features of the system.',
-          },
+        description: 'Learn how to efficiently search for patients, register new patients, access user settings, and view ongoing visits and appointments.',
+        steps: [{
+          target: '[aria-label="OpenMRS"]',
+          content: 'Welcome to OpenMRS! This is the main dashboard where you can navigate to various features of the system.',
+          disableBeacon: true
+        },
           {
             target: '[name="SearchPatientIcon"]',
             content: 'This is the search icon. Use it to find patients in the system quickly.',

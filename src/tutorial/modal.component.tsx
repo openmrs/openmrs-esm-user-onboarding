@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useConfig, useAppContext, navigate } from '@openmrs/esm-framework';
 import styles from './styles.scss';
 import { type TutorialContext } from '../types';
-import { ModalHeader, ModalBody } from '@carbon/react';
+import { ModalHeader, ModalBody, Button } from '@carbon/react';
 
 const TutorialModal = ({ open, onClose }) => {
   const { t } = useTranslation();
@@ -45,15 +45,17 @@ const TutorialModal = ({ open, onClose }) => {
         </p>
       </ModalHeader>
       <ModalBody className={styles.tutorialModal}>
-        {tutorials.map((tutorial, index) => (
-          <div className={styles.tutorialItem} key={index}>
-            <h3 className={styles.tutorialTitle}>{tutorial.title}</h3>
-            <p className={styles.tutorialDescription}>{tutorial.description}</p>
-            <div className={styles.walkthrough} onClick={() => handleWalkthroughClick(index)}>
-              {t('walkthrough', 'Walkthrough')}
-            </div>
-          </div>
-        ))}
+        <ul>
+          {tutorials.map((tutorial, index) => (
+            <li className={styles.tutorialItem} key={index}>
+              <h3 className={styles.tutorialTitle}>{tutorial.title}</h3>
+              <p className={styles.tutorialDescription}>{tutorial.description}</p>
+              <Button kind="ghost" onClick={() => handleWalkthroughClick(index)}>
+                {t('walkthrough', 'Walkthrough')}
+              </Button>
+            </li>
+          ))}
+        </ul>
       </ModalBody>
     </React.Fragment>
   );

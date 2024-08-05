@@ -25,7 +25,11 @@ test('Basic Walkthrough', async ({ page }) => {
   });
 
   await test.step('And I click on the Basic Tutorial walkthrough', async () => {
-    await page.getByText('Walkthrough').nth(1).click();
+    await page
+      .locator('li')
+      .filter({ hasText: 'Basic Tutorial' })
+      .locator('button', { hasText: 'Walkthrough' })
+      .click();
   });
 
   await test.step('Then I should see the first Joyride tooltip', async () => {

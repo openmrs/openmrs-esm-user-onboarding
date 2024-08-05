@@ -1,7 +1,6 @@
 import React from 'react';
 import {render, screen, waitFor} from '@testing-library/react';
 import TutorialModal from './modal.component';
-import RootComponent from '../root.component';
 import {useAppContext, useConfig, navigate} from "@openmrs/esm-framework";
 import userEvent from '@testing-library/user-event'
 
@@ -20,10 +19,31 @@ const mockNavigate = jest.mocked(navigate);
 
 const mockTutorialData = [
   {
-    title: 'Tutorial 1',
-    description: 'Description 1',
-    steps: [{target: '.my-selector', content: 'Step content'}],
-  }
+    title: 'Basic Tutorial',
+    description: 'This Shows Basic Tutorials',
+    steps: [
+      { target: '[aria-label="OpenMRS"]', content: 'Welcome to OpenMRS' },
+      { target: '[aria-label="NavBar"]', content: 'This is the Navbar' },
+    ],
+  },
+  {
+    title: 'Patient Registration Tutorial',
+    description: 'This Shows how to register a patient in OpenMRS',
+    steps: [
+      {
+        target: '[aria-label="add-btn"]',
+        content: 'This is the Add Patient button',
+      },
+      {
+        target: '[aria-label="register-form"]',
+        content: 'This is the Registration form',
+      },
+      {
+        target: '[aria-label="register-btn"]',
+        content: 'This is the Register button',
+      },
+    ],
+  },
 ];
 
 mockUseConfig.mockReturnValue({
@@ -54,8 +74,8 @@ describe('TutorialModal', () => {
 
     render(<TutorialModal open={true} onClose={jest.fn()}/>);
 
-    const walkthroughButton = screen.getByText('Walkthrough');
-    await user.click(walkthroughButton);
+    const walkthroughButton = screen.getAllByText('Walkthrough');
+    await user.click(walkthroughButton[0]);
 
     expect(navigate).toHaveBeenCalledWith({ to: '/spa-base/home' });
     Object.defineProperty(window.location, 'pathname', {
@@ -66,7 +86,13 @@ describe('TutorialModal', () => {
     await waitFor(() => expect(setShowTutorial).toHaveBeenCalledWith(true));
   });
 
-  test.todo('renders tutorials properly');
+  test('renders tutorials properly', async () => {
+    render(<TutorialModal open={true} onClose={jest.fn()} />);
 
+    mockTutorialData.forEach((tutorial) => {
+      expect(screen.getByText(tutorial.title)).toBeInTheDocument();
+      expect(screen.getByText(tutorial.description)).toBeInTheDocument();
+    });
+  });
 });
 

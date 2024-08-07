@@ -46,7 +46,10 @@ const RootComponent: React.FC = () => {
     }, 1000);
   }
 
-
+const currentStep = steps[stepIndex];
+const overlayStyles = currentStep?.disableOverlay
+  ? { backgroundColor: 'transparent' }
+  : { height: document.body.scrollHeight };
 
   const handleJoyrideCallback = (data: CallBackProps) => {
     const {action, index, origin, status, type} = data;
@@ -87,7 +90,7 @@ const RootComponent: React.FC = () => {
         options: {
           zIndex: 10000,
         },
-        overlay: { height: document.body.scrollHeight },
+        overlay: overlayStyles,
       }}
     />
   );

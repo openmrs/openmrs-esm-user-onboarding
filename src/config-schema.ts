@@ -187,6 +187,7 @@ export const configSchema = {
             content: 'Click on the patient you want to go to their patient chart.',
             spotlightClicks: true,
             disableOverlayClose: true,
+            disableOverlay : true,
             placement: 'left',
             hideNextButton: true,
             hideBackButton: true,

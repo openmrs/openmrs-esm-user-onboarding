@@ -150,6 +150,100 @@ export const configSchema = {
           },
         ],
       },
+      {
+        title: 'Patient Chart Tutorial',
+        description:
+          'Patient chart is the main point of interaction between healthcare professionals and patient data, where you can manage everything related to a single patient.',
+        steps: [
+          {
+            target: '[data-testid="searchPatientIcon"]',
+            title: 'Search icon',
+            content:
+              'To access the patient chart, first, you need to select a patient. To start, click here to open the search box so that we can search for a patient.',
+            disableBeacon: true,
+            disableOverlayClose: true,
+            spotlightClicks: true,
+            hideNextButton: true,
+            data: {
+              autoNextOn: '[data-testid="patientSearchBar"]',
+            },
+          },
+          {
+            target: '[data-testid="patientSearchBar"]',
+            title: 'Search box',
+            content:
+              'Now, enter the name or the ID of the patient here. Some example patient names that you can search for are: John, Smith, Mary.',
+            hideNextButton: true,
+            hideBackButton: true,
+            disableOverlayClose: true,
+            spotlightClicks: true,
+            data: {
+              autoNextOn: '[data-testid="floatingSearchResultsContainer"]',
+            },
+          },
+          {
+            target: '[data-testid="floatingSearchResultsContainer"]',
+            title: 'Search results',
+            content: 'Click on the patient you want to go to their patient chart.',
+            spotlightClicks: true,
+            disableOverlayClose: true,
+            disableOverlay : true,
+            placement: 'left',
+            hideNextButton: true,
+            hideBackButton: true,
+            data: {
+              autoNextOn: '[data-extension-slot-name="action-menu-patient-chart-items-slot"]',
+            },
+          },
+          {
+            target: 'body',
+            title: 'Patient Chart',
+            content: "Welcome to the Patient Chart View! Here, you can quickly see everything about your patient's health history, visits, medications, allergies, and test results—all in one place. It's designed to help you provide the best care efficiently.",
+            spotlightClicks: true,
+            disableOverlayClose: true,
+            hideBackButton: true,
+            placement: 'center',
+          },
+          {
+            target: '[data-extension-id="patient-banner"]',
+            title: 'Patient header',
+            content:
+              'The patient header contains all the key information you need to identify the patient you are currently viewing. You can click on the "Show Details" button to see additional patient information.',
+            disableOverlayClose: true,
+            spotlightClicks: true,
+            hideBackButton: true,
+          },
+          {
+            target: '[aria-label="Left navigation"]',
+            title: 'Left panel',
+            content:
+              'The left panel shows the sections of the patient chart. Currently, we are on the patient summary page.',
+            disableOverlayClose: true,
+            spotlightClicks: true,
+            placement: 'right',
+          },
+          {
+            target: '[data-extension-slot-name="patient-chart-summary-dashboard-slot"]',
+            title: 'Patient summary widgets',
+            content:
+              'Patient Summary is a personalized view made up of widgets that show essential features and information for quick access.',
+            disableOverlayClose: true,
+          },
+          {
+            target: '[data-extension-slot-name="action-menu-patient-chart-items-slot"]',
+            title: 'Siderail',
+            content:
+              'The siderail contains a series of links that take users to different tabs in the Workspace, such as the order basket, visit notes, and clinical forms. Once open, the Workspace is persistent across pages (for example, all pages within the patient chart).',
+          },
+          {
+            target: 'body',
+            title:
+              "Great job! You've completed the tutorial. Now, take a moment to explore the Patient Chart View and discover all its features. Feel free to navigate around and get comfortable with the layout. If you need to return to the home page, just click the close button in the top right corner. Happy exploring!",
+            disableOverlayClose: true,
+            placement: 'center',
+          },
+        ],
+      },
     ],
   },
 };

@@ -198,7 +198,7 @@ export const configSchema = {
           {
             target: 'body',
             title: 'Patient Chart',
-            content: 'Welcome to the patient chart view! ',
+            content: 'Welcome to the Patient Chart View! Here, you can quickly see everything about your patient's health history, visits, medications, allergies, and test results—all in one place. It's designed to help you provide the best care efficiently.',
             spotlightClicks: true,
             disableOverlayClose: true,
             hideBackButton: true,
@@ -208,7 +208,7 @@ export const configSchema = {
             target: '[data-extension-id="patient-banner"]',
             title: 'Patient header',
             content:
-              'The patient header contains all the key identifying information you need in order to identify the patient’s chart you are currently viewing. You can click on the "Show Details" button to see additional patient information.',
+              'The patient header contains all the key information you need to identify the patient you are currently viewing. You can click on the "Show Details" button to see additional patient information.',
             disableOverlayClose: true,
             spotlightClicks: true,
             hideBackButton: true,
@@ -238,7 +238,7 @@ export const configSchema = {
           {
             target: 'body',
             title:
-              "Great job! You've completed the tutorial. To return to the home page, click the close button in the top right corner.",
+              "Great job! You've completed the tutorial. Now, take a moment to explore the Patient Chart View and discover all its features. Feel free to navigate around and get comfortable with the layout. If you need to return to the home page, just click the close button in the top right corner. Happy exploring!",
             disableOverlayClose: true,
             hideBackButton: true,
             placement: 'center',

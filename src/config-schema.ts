@@ -55,7 +55,6 @@ export const configSchema = {
               'Click on this link. This step is configured to be automatic and will take you to the next step. Once the given query selector resolves an element on the page, it will proceed automatically.',
             hideCloseButton: true,
             hideNextButton: true,
-            disableOverlayClose: true,
             spotlightClicks: true,
             data: {
               autoNextOn: '[data-extension-id="clinical-appointments-dashboard"]',
@@ -64,13 +63,11 @@ export const configSchema = {
           {
             target: '[data-extension-id="clinical-appointments-dashboard"]',
             title: 'Congrats! You have reached the clinical appointments dashboard.',
-            disableOverlayClose: true,
           },
           {
             target: '[aria-label="OpenMRS"]',
             title:
               'Now, let’s see how this behaves when elements take a bit longer to load. Set your network throttling to "Slow 3G" and hit "Next".',
-            disableOverlayClose: true,
             hideBackButton: true,
           },
           {
@@ -79,7 +76,6 @@ export const configSchema = {
               'Let\'s navigate to the laboratory page. Our next target is the "Tests Ordered" table. I’ll disappear once you reach the laboratory page and reappear when the table is loaded. See you there!',
             hideCloseButton: true,
             hideNextButton: true,
-            disableOverlayClose: true,
             spotlightClicks: true,
             data: {
               autoNextOn: '[data-extension-id="laboratory-dashboard"]',
@@ -89,7 +85,6 @@ export const configSchema = {
             target: '[data-extension-id="all-lab-requests-table"] table',
             title:
               "It's me again. By default, I'll wait for the element to appear, so you don't have to worry about slow components when writing a new tutorial.",
-            disableOverlayClose: true,
             hideBackButton: true,
           },
           {
@@ -113,7 +108,6 @@ export const configSchema = {
             title: 'Add Patient',
             content: 'Click here to add a patient to the system.',
             disableBeacon: true,
-            disableOverlayClose: true,
             spotlightClicks: true,
             hideCloseButton: true,
             hideNextButton: true,
@@ -161,7 +155,6 @@ export const configSchema = {
             content:
               'To access the patient chart, first, you need to select a patient. To start, click here to open the search box so that we can search for a patient.',
             disableBeacon: true,
-            disableOverlayClose: true,
             spotlightClicks: true,
             hideNextButton: true,
             data: {
@@ -175,7 +168,6 @@ export const configSchema = {
               'Now, enter the name or the ID of the patient here. Some example patient names that you can search for are: John, Smith, Mary.',
             hideNextButton: true,
             hideBackButton: true,
-            disableOverlayClose: true,
             spotlightClicks: true,
             data: {
               autoNextOn: '[data-testid="floatingSearchResultsContainer"]',
@@ -186,8 +178,7 @@ export const configSchema = {
             title: 'Search results',
             content: 'Click on the patient you want to go to their patient chart.',
             spotlightClicks: true,
-            disableOverlayClose: true,
-            disableOverlay : true,
+            disableOverlay: true,
             placement: 'left',
             hideNextButton: true,
             hideBackButton: true,
@@ -200,7 +191,6 @@ export const configSchema = {
             title: 'Patient Chart',
             content: "Welcome to the Patient Chart View! Here, you can quickly see everything about your patient's health history, visits, medications, allergies, and test results—all in one place. It's designed to help you provide the best care efficiently.",
             spotlightClicks: true,
-            disableOverlayClose: true,
             hideBackButton: true,
             placement: 'center',
           },
@@ -209,7 +199,6 @@ export const configSchema = {
             title: 'Patient header',
             content:
               'The patient header contains all the key information you need to identify the patient you are currently viewing. You can click on the "Show Details" button to see additional patient information.',
-            disableOverlayClose: true,
             spotlightClicks: true,
             hideBackButton: true,
           },
@@ -218,7 +207,6 @@ export const configSchema = {
             title: 'Left panel',
             content:
               'The left panel shows the sections of the patient chart. Currently, we are on the patient summary page.',
-            disableOverlayClose: true,
             spotlightClicks: true,
             placement: 'right',
           },
@@ -227,7 +215,6 @@ export const configSchema = {
             title: 'Patient summary widgets',
             content:
               'Patient Summary is a personalized view made up of widgets that show essential features and information for quick access.',
-            disableOverlayClose: true,
           },
           {
             target: '[data-extension-slot-name="action-menu-patient-chart-items-slot"]',
@@ -239,7 +226,171 @@ export const configSchema = {
             target: 'body',
             title:
               "Great job! You've completed the tutorial. Now, take a moment to explore the Patient Chart View and discover all its features. Feel free to navigate around and get comfortable with the layout. If you need to return to the home page, just click the close button in the top right corner. Happy exploring!",
-            disableOverlayClose: true,
+            placement: 'center',
+          },
+        ],
+      },
+      {
+        title: 'Patient Lists',
+        description: 'Patient list is a dynamically populated list of patients that can be used to organize patients for easier management.',
+        steps: [
+          {
+            target: '[data-extension-id="patient-lists-dashboard-link"]',
+            content:
+              'Creating a patient list is a great way to keep a group of patients organized for easier management. Click here to go to the patient lists view',
+            disableBeacon: true,
+            spotlightClicks: true,
+            hideNextButton: true,
+            data: {
+              autoNextOn: '[title="All lists"]',
+            },
+          },
+          {
+            target: '[title="All lists"]',
+            content: 'Click here to see all the patient lists we have in the system.',
+            hideNextButton: true,
+            hideBackButton: true,
+            spotlightClicks: true,
+            spotlightPadding: 20,
+            data: {
+              autoNextOn: '[data-testid="patientListsTable"]',
+            },
+          },
+          {
+            target: '[data-openmrs-role="New List"]',
+            title: 'New List',
+            content: "Now, let's try creating a new list. Click here to open the new patient list form.",
+            spotlightClicks: true,
+            placement: 'left',
+            hideNextButton: true,
+            hideBackButton: true,
+            data: {
+              autoNextOn: '[data-openmrs-role="Patient List Form"]',
+            },
+          },
+          {
+            target: '[data-openmrs-role="Patient List Form"]',
+            title: 'Patient List Form',
+            content: 'Enter the necessary details and click on "Create List" to create the list.',
+            spotlightClicks: true,
+
+            hideBackButton: true,
+            hideNextButton: true,
+            placement: 'left',
+            data: {
+              autoNextOn: '.omrs-snackbars-container div',
+            },
+          },
+          {
+            target: '[data-testid="patientListsTable"]',
+            title: 'Patient Lists table',
+            content:
+              'Great! We have successfully created a new patient list. Find and click on the patient list you created to proceed. You can use the search option at the top right if needed.',
+            disableOverlay: true,
+            spotlightClicks: true,
+            spotlightPadding: 40,
+            hideBackButton: true,
+            hideNextButton: true,
+            data: {
+              autoNextOn: '[data-openmrs-role="Patient Empty tile"]',
+            },
+          },
+          {
+            target: '[data-openmrs-role="Patient Empty tile"]',
+            content: "You can see the patient list is empty since we haven't added any patients to the list yet.",
+            hideBackButton: true,
+            disableOverlay: true,
+          },
+          {
+            target: '[data-testid="searchPatientIcon"]',
+            title: 'Search icon',
+            content:
+              'To access the patient chart, first, you need to select a patient. To start, click here to open the search box so that we can search for a patient.',
+            disableBeacon: true,
+            spotlightClicks: true,
+            hideNextButton: true,
+            hideBackButton: true,
+            data: {
+              autoNextOn: '[data-testid="patientSearchBar"]',
+            },
+          },
+          {
+            target: '[data-testid="patientSearchBar"]',
+            title: 'Search box',
+            content:
+              'Now, enter the name or the ID of the patient here. Some example patient names that you can search for are: John, Smith, Mary.',
+            hideNextButton: true,
+            hideBackButton: true,
+            spotlightClicks: true,
+            data: {
+              autoNextOn: '[data-testid="floatingSearchResultsContainer"]',
+            },
+          },
+          {
+            target: '[data-testid="floatingSearchResultsContainer"]',
+            title: 'Search results',
+            content: 'Click on the patient you want to go to their patient chart.',
+            spotlightClicks: true,
+            disableOverlay: true,
+            placement: 'left',
+            hideNextButton: true,
+            hideBackButton: true,
+            data: {
+              autoNextOn: '[data-extension-slot-name="action-menu-patient-chart-items-slot"]',
+            },
+          },
+          {
+            target: '#custom-actions-overflow-menu-trigger',
+            title: 'Action button',
+            content: 'Click on "Action" and select "Add to List" from the drop-down menu.',
+            disableOverlay: true,
+            placement: 'left',
+            spotlightClicks: true,
+            hideBackButton: true,
+            hideNextButton: true,
+            data: {
+              autoNextOn: '.cds--modal-container',
+            },
+          },
+          {
+            target: '.cds--modal-container',
+            title: 'Add to List modal',
+            content:
+              'You can see the list of patient lists here. Search for our newly created patient list using the filter, and mark the checkbox beside the patient list name. You can add the patient to multiple lists at once by selecting multiple checkboxes.',
+            disableOverlay: true,
+            spotlightClicks: true,
+            hideBackButton: true,
+            hideNextButton: true,
+            placement: 'left',
+            data: {
+              autoNextOn: '.omrs-snackbars-container div',
+            },
+          },
+          {
+            target: '[aria-label="Close"]',
+            title: 'Close button',
+            content:
+              "We have successfully added a patient to the patient list. Let's go back to the patient lists by closing the patient chart by clicking here.",
+
+            spotlightClicks: true,
+            hideBackButton: true,
+            hideNextButton: true,
+            data: {
+              autoNextOn: '[data-testid="patientsTable"]',
+            },
+          },
+          {
+            target: '[data-testid="patientsTable"]',
+            title: 'Patients List',
+            content: 'You can see the added patient on the list of patients.',
+
+            spotlightClicks: true,
+            hideBackButton: true,
+          },
+          {
+            target: 'body',
+            title:
+              'Congrats! You have now completed the tutorial on creating patient lists and adding patients to the lists.',
             placement: 'center',
           },
         ],

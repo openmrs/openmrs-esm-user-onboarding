@@ -198,7 +198,7 @@ export const configSchema = {
           {
             target: 'body',
             title: 'Patient Chart',
-            content: 'Welcome to the Patient Chart View! Here, you can quickly see everything about your patient's health history, visits, medications, allergies, and test results—all in one place. It's designed to help you provide the best care efficiently.',
+            content: "Welcome to the Patient Chart View! Here, you can quickly see everything about your patient's health history, visits, medications, allergies, and test results—all in one place. It's designed to help you provide the best care efficiently.",
             spotlightClicks: true,
             disableOverlayClose: true,
             hideBackButton: true,

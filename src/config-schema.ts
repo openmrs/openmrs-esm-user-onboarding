@@ -240,7 +240,6 @@ export const configSchema = {
             title:
               "Great job! You've completed the tutorial. Now, take a moment to explore the Patient Chart View and discover all its features. Feel free to navigate around and get comfortable with the layout. If you need to return to the home page, just click the close button in the top right corner. Happy exploring!",
             disableOverlayClose: true,
-            hideBackButton: true,
             placement: 'center',
           },
         ],

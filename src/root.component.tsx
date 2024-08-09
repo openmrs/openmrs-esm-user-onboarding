@@ -84,6 +84,7 @@ const overlayStyles = currentStep?.disableOverlay
       steps={steps}
       stepIndex={stepIndex}
       run={showTutorial}
+      disableOverlayClose={true}
       callback={handleJoyrideCallback}
       tooltipComponent={(props) => <CustomTooltip {...props} step={steps[props.index]} totalSteps={steps.length} />}
       styles={{

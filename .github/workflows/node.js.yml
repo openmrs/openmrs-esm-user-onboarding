@@ -26,12 +26,6 @@ jobs:
       - run: yarn install --immutable
       - run: yarn verify
       - run: yarn build
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: |
-            dist
 
   pre_release:
     runs-on: ubuntu-latest

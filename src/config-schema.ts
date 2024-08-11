@@ -244,6 +244,80 @@ export const configSchema = {
           },
         ],
       },
+      {
+        title: 'Patient Search',
+        description: 'Learn how to search for a patient in the system.',
+        steps: [
+          {
+            target: '[data-testid="searchPatientIcon"]',
+            title: 'Search icon',
+            content: 'Click on the search icon to open the search box so that we can search for a patient.',
+            disableBeacon: true,
+            disableOverlayClose: true,
+            spotlightClicks: true,
+            hideNextButton: true,
+            data: {
+              autoNextOn: '[data-testid="patientSearchBar"]',
+            },
+          },
+          {
+            target: '[data-testid="patientSearchBar"]',
+            title: 'Search box',
+            content:
+              'Now, enter the name of the patient here. If you know the patient ID, you can use that as well. You will see the results if the patient you entered exists in the system. Some example patient names that you can search for are: John, Smith, Mary.',
+            hideNextButton: true,
+            hideBackButton: true,
+            disableOverlayClose: true,
+            spotlightClicks: true,
+            data: {
+              autoNextOn: '[data-testid="floatingSearchResultsContainer"]',
+            },
+          },
+          {
+            target: 'button[type="submit"]',
+            title: 'Search button',
+            content:
+              'If there are a lot of patients in the system, you may need additional fields to search other than the name. Also, the patient you are looking for may not be displayed in the top results if there are multiple patients with the same name. In these scenarios, you can click here to open the advanced search.',
+            spotlightClicks: true,
+            disableOverlayClose: true,
+            placement: 'bottom',
+            hideNextButton: true,
+            hideBackButton: true,
+            data: {
+              autoNextOn: '[data-openmrs-role="Refine Search"]',
+            },
+          },
+          {
+            target: '[data-openmrs-role="Refine Search"]',
+            title: 'Filters section',
+            content:
+              'You can refine your search by applying filters such as date of birth, age, sex, and phone number here.',
+            spotlightClicks: true,
+            disableOverlayClose: true,
+            hideBackButton: true,
+          },
+          {
+            target: '[data-openmrs-role="Search Results"]',
+            title: 'Search results',
+            content:
+              'Here you can see all the patients who match the search criteria. Clicking on a patient will open the patient’s patient chart.',
+            disableOverlayClose: true,
+            placement: 'right',
+          },
+          {
+            target: '[data-testid="closeSearchIcon"]',
+            content: 'That’s the end of the tutorial. Click on the close button to go back to the home page.',
+            spotlightClicks: true,
+            disableOverlayClose: true,
+            placement: 'bottom',
+            hideNextButton: true,
+            hideBackButton: true,
+            data: {
+              autoNextOn: '[data-extension-id="page-header"]',
+            },
+          },
+        ],
+      },
     ],
   },
 };

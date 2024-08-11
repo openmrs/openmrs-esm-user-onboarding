@@ -44,12 +44,7 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({
         {continuous && !step.hideNextButton && (
           <Button {...primaryProps} size="sm" className={styles.buttonnext}>
             {isLastStep ? (
-              <>
-                {t('finish', 'Finish')}
-                <div className={styles.arrowContainer}>
-                  <ArrowRight />
-                </div>
-              </>
+              <>{t('finish', 'Finish')}</>
             ) : (
               <>
                 {t('next', 'Next')}

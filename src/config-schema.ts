@@ -16,7 +16,6 @@ export const configSchema = {
         steps: [{
           target: '[aria-label="OpenMRS"]',
           content: 'Welcome to OpenMRS! This is the main dashboard where you can navigate to various features of the system.',
-          disableBeacon: true
         },
           {
             target: '[name="SearchPatientIcon"]',
@@ -47,7 +46,6 @@ export const configSchema = {
           {
             target: '[aria-label="OpenMRS"]',
             title: 'Let us walk through the tutorial features together.',
-            disableBeacon: true,
           },
           {
             target: '[data-extension-id="clinical-appointments-dashboard-link"]',
@@ -112,7 +110,6 @@ export const configSchema = {
             target: '[name="AddPatientIcon"]',
             title: 'Add Patient',
             content: 'Click here to add a patient to the system.',
-            disableBeacon: true,
             disableOverlayClose: true,
             spotlightClicks: true,
             hideCloseButton: true,
@@ -127,26 +124,22 @@ export const configSchema = {
             title: 'Demographics',
             content:
               'This is the Demographics section. Here you can find various fields and information related to the patient.',
-            disableBeacon: true,
             hideBackButton: true,
           },
           {
             target: '#contact',
             title: 'Contact Details',
             content: "Here you can update the patient's contact information.",
-            disableBeacon: true,
           },
           {
             target: '#relationships',
             title: 'Relationships',
             content: "In this section, you can manage the patient's relationships.",
-            disableBeacon: true,
           },
           {
             target: 'button[type="submit"]',
             title: 'Register Patient',
             content: "Click this button to register the patient's information into the system.",
-            disableBeacon: true,
           },
         ],
       },
@@ -160,7 +153,6 @@ export const configSchema = {
             title: 'Search icon',
             content:
               'To access the patient chart, first, you need to select a patient. To start, click here to open the search box so that we can search for a patient.',
-            disableBeacon: true,
             disableOverlayClose: true,
             spotlightClicks: true,
             hideNextButton: true,
@@ -688,7 +680,6 @@ export type Config = {
       target: string;
       title: string;
       content: string;
-      disableBeacon: boolean;
       data?: {
         autoNextOn?: boolean;
       };

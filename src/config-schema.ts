@@ -246,7 +246,7 @@ export const configSchema = {
       },
       {
         title: 'Patient Search',
-        description: 'Learn how to search for a patient in the system.',
+        description: 'Learn how to find a patient in the system using basic and advanced search features, including the use of filters to refine results.',
         steps: [
           {
             target: '[data-testid="searchPatientIcon"]',

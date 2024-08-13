@@ -318,6 +318,168 @@ export const configSchema = {
           },
         ],
       },
+      {
+        title: 'Patient Lists',
+        description:
+          'This tutorial will guide you through creating and managing patient lists to help organize and track your patients more effectively.',
+        steps: [
+          {
+            target: '[data-extension-id="patient-lists-dashboard-link"]',
+            content:
+              'Creating a patient list is a great way to keep a group of patients organized for easier management. Click here to go to the patient lists view',
+            disableBeacon: true,
+            spotlightClicks: true,
+            hideNextButton: true,
+            data: {
+              autoNextOn: '[title="All lists"]',
+            },
+          },
+          {
+            target: '[title="All lists"]',
+            content: 'Click here to see all the patient lists we have in the system.',
+            hideNextButton: true,
+            hideBackButton: true,
+            spotlightClicks: true,
+            spotlightPadding: 20,
+            data: {
+              autoNextOn: '[data-testid="patientListsTable"]',
+            },
+          },
+          {
+            target: '[data-openmrs-role="New List"]',
+            title: 'New List',
+            content: "Now, let's try creating a new list. Click here to open the new patient list form.",
+            spotlightClicks: true,
+            placement: 'left',
+            hideNextButton: true,
+            hideBackButton: true,
+            data: {
+              autoNextOn: '[data-openmrs-role="Patient List Form"]',
+            },
+          },
+          {
+            target: '[data-openmrs-role="Patient List Form"]',
+            title: 'Patient List Form',
+            content: 'Enter the necessary details and click on "Create List" to create the list.',
+            spotlightClicks: true,
+
+            hideBackButton: true,
+            hideNextButton: true,
+            placement: 'left',
+            data: {
+              autoNextOn: '.omrs-snackbars-container div',
+            },
+          },
+          {
+            target: '[data-testid="patientListsTable"]',
+            title: 'Patient Lists table',
+            content:
+              'Great! We have successfully created a new patient list. Find and click on the patient list you created to proceed. You can use the search option at the top right if needed.',
+            disableOverlay: true,
+            spotlightClicks: true,
+            spotlightPadding: 40,
+            hideBackButton: true,
+            hideNextButton: true,
+            data: {
+              autoNextOn: '[data-openmrs-role="Patient Empty tile"]',
+            },
+          },
+          {
+            target: '[data-openmrs-role="Patient Empty tile"]',
+            content: "You can see the patient list is empty since we haven't added any patients to the list yet.",
+            hideBackButton: true,
+            disableOverlay: true,
+          },
+          {
+            target: '[data-testid="searchPatientIcon"]',
+            content:
+              'To add a patient to the list, we have to go to the respective patient’s chart view. Click here to open the search box so that we can search for a patient.',
+            disableBeacon: true,
+            spotlightClicks: true,
+            hideNextButton: true,
+            hideBackButton: true,
+            data: {
+              autoNextOn: '[data-testid="patientSearchBar"]',
+            },
+          },
+          {
+            target: '[data-testid="patientSearchBar"]',
+            content:
+              'Now, enter the name or the ID of the patient here. Some example patient names that you can search for are: John, Smith, Mary.',
+            hideNextButton: true,
+            hideBackButton: true,
+            spotlightClicks: true,
+            data: {
+              autoNextOn: '[data-testid="floatingSearchResultsContainer"]',
+            },
+          },
+          {
+            target: '[data-testid="floatingSearchResultsContainer"]',
+            content:
+              'Click on the patient to go to the patient chart, where we can add the patient to our newly created list.',
+            spotlightClicks: true,
+            disableOverlay: true,
+            placement: 'left',
+            hideNextButton: true,
+            hideBackButton: true,
+            data: {
+              autoNextOn: '[data-extension-slot-name="action-menu-patient-chart-items-slot"]',
+            },
+          },
+          {
+            target: '#custom-actions-overflow-menu-trigger',
+            content: 'Click on "Action" and select "Add to List" from the drop-down menu.',
+            disableOverlay: true,
+            placement: 'left',
+            spotlightClicks: true,
+            hideBackButton: true,
+            hideNextButton: true,
+            data: {
+              autoNextOn: '.cds--modal-container',
+            },
+          },
+          {
+            target: '.cds--modal-container',
+            content:
+              'You can see the list of patient lists here. Search for our newly created patient list using the filter, and mark the checkbox beside the patient list name. You can add the patient to multiple lists at once by selecting multiple checkboxes.',
+            disableOverlay: true,
+            spotlightClicks: true,
+            hideBackButton: true,
+            hideNextButton: true,
+            placement: 'left',
+            data: {
+              autoNextOn: '.omrs-snackbars-container div',
+            },
+          },
+          {
+            target: '[aria-label="Close"]',
+            content:
+              "We have successfully added a patient to the patient list. Let's go back to the patient lists by closing the patient chart by clicking here.",
+
+            spotlightClicks: true,
+            hideBackButton: true,
+            hideNextButton: true,
+            data: {
+              autoNextOn: '[data-testid="patientsTable"]',
+            },
+          },
+          {
+            target: '[data-testid="patientsTable"]',
+            title: 'Patients List',
+            content: 'You can see the added patient on the list of patients.',
+
+            spotlightClicks: true,
+            hideBackButton: true,
+          },
+          {
+            target: 'body',
+            title:
+              'Congrats! You have now completed the tutorial on creating patient lists and adding patients to the lists.',
+            placement: 'center',
+            hideBackButton: true,
+          },
+        ],
+      },
     ],
   },
 };

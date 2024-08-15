@@ -11,18 +11,20 @@ const RootComponent: React.FC = () => {
   const [stepIndex, setStepIndex] = React.useState(0);
 
   // To disable the beacon for all steps
-  const updateStepsWithDisableBeacon = (steps: Step[]): Step[] => {
-    return steps.map((step) => ({
-      ...step,
-      disableBeacon: true,
-    }));
+  const updateSteps = (newSteps: Step[]) => {
+    setSteps(
+      newSteps.map((step) => ({
+        ...step,
+        disableBeacon: true,
+      })),
+    );
   };
 
   useDefineAppContext<TutorialContext>('tutorial-context', {
     showTutorial,
     steps,
     setShowTutorial: (showTutorial: boolean) => setShowTutorial(showTutorial),
-    setSteps: (steps: Step[]) => setSteps(updateStepsWithDisableBeacon(steps)),
+    setSteps: updateSteps,
   });
 
   const onStepChange = (index: number) => {

@@ -1,21 +1,21 @@
-@use '@carbon/styles/scss/spacing';
+@use '@carbon/layout';
 @use '@carbon/styles/scss/type';
-@import '~@openmrs/esm-styleguide/src/vars';
+@use '@openmrs/esm-styleguide/src/vars' as *;
 
 .tooltipcontainer {
   background-color: $ui-02;
-  padding: spacing.$spacing-05;
+  padding: layout.$spacing-05;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-width: 360px;
-  border-radius: spacing.$spacing-02;
-  gap: spacing.$spacing-04;
+  border-radius: layout.$spacing-02;
+  gap: layout.$spacing-04;
   background-color: $ui-02;
 
   .tooltipheader {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: spacing.$spacing-01;
+    margin-bottom: layout.$spacing-01;
     .tooltiptitle {
       @include type.type-style('heading-02');
     }
@@ -31,7 +31,7 @@
   }
 
   .tooltipfooter {
-    margin-top: spacing.$spacing-06;
+    margin-top: layout.$spacing-06;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,12 +42,12 @@
     }
     .buttonnext {
       margin-left: auto;
-      width:spacing.$spacing-12; 
+      width:layout.$spacing-12; 
       .arrowContainer {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-left: spacing.$spacing-05;
+        margin-left: layout.$spacing-05;
       }
     }
   }

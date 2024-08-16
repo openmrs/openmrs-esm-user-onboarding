@@ -480,6 +480,111 @@ export const configSchema = {
           },
         ],
       },
+      {
+        title: 'Capture Vitals',
+        description:
+          'This application serves as an example of how a simple app can be created to repeatedly serve the same form to a user. In this scenario, a clerk at the front of the clinic is capturing vitals for patients. The clerk selects a patient with an active visit, records their vitals, and then returns to the prompt to find the next patient.',
+        steps: [
+          {
+            target: '[data-testid="searchPatientIcon"]',
+            title: 'Search icon',
+            content: 'Click on the search icon to open the search box so that we can search for a patient.',
+            disableBeacon: true,
+            disableOverlayClose: true,
+            spotlightClicks: true,
+            hideNextButton: true,
+            data: {
+              autoNextOn: '[data-testid="patientSearchBar"]',
+            },
+          },
+          {
+            target: '[data-testid="patientSearchBar"]',
+            title: 'Search box',
+            content:
+              'Now, enter the name of the patient here. If you know the patient ID, you can use that as well. You will see the results if the patient you entered exists in the system. Some example patient names that you can search for are: John, Smith, Mary.',
+            hideNextButton: true,
+            hideBackButton: true,
+            disableOverlayClose: true,
+            spotlightClicks: true,
+            data: {
+              autoNextOn: '[data-testid="floatingSearchResultsContainer"]',
+            },
+          },
+          {
+            target: 'button[type="submit"]',
+            title: 'Search button',
+            content:
+              'If there are a lot of patients in the system, you may need additional fields to search other than the name. Also, the patient you are looking for may not be displayed in the top results if there are multiple patients with the same name. In these scenarios, you can click here to open the advanced search.',
+            spotlightClicks: true,
+            disableOverlayClose: true,
+            placement: 'bottom',
+            hideNextButton: true,
+            hideBackButton: true,
+            data: {
+              autoNextOn: '[data-openmrs-role="Search Results"]',
+            },
+          },
+          {
+            target: '[data-openmrs-role="Search Results"]',
+            title: 'Search results',
+            content:
+              'Here you can see all the patients who match the search criteria. Clicking on a patient will open the patient’s patient chart.',
+            disableOverlayClose: true,
+            placement: 'right',
+            spotlightClicks: true,
+            hideBackButton: true,
+            hideNextButton: true,
+            data: {
+              autoNextOn: '[data-extension-slot-name="action-menu-patient-chart-items-slot"]',
+            },
+          },
+          {
+            target: 'body',
+            title: 'Patient Chart view',
+            content:
+              'Welcome to the patient chart view! Here, you can explore detailed patient information, clinical visit records, demographic data, graphs, and medical forms',
+            disableOverlayClose: true,
+            placement: 'center',
+            hideBackButton: true,
+          },
+          {
+            target: '[data-extension-id="patient-vitals-info"] button',
+            title: 'Record Vitals',
+            content:
+              'Click here to add new vitals for the patient. If there’s no active visit, you may prompted to start a visit.',
+            disableOverlayClose: true,
+            disableOverlay: true,
+            spotlightClicks: true,
+            hideBackButton: true,
+            hideNextButton: true,
+            data: {
+              autoNextOn: '[aria-label="Workspace header"]',
+            },
+          },
+          {
+            target: '[data-openmrs-role="Vitals and Biometrics Form"]',
+            title: 'Vitals form',
+            content:
+              'Fill out the necessary information here and click on the "Save and close" button at the bottom of the form to capture the patient\'s vitals. If you change your mind, just click "Discard."',
+            disableOverlayClose: true,
+            disableOverlay: true,
+            spotlightClicks: true,
+            placement: 'left',
+            hideBackButton: true,
+            hideNextButton: true,
+            data: {
+              autoNextOn: '.omrs-snackbars-container div',
+            },
+          },
+          {
+            target: '[data-extension-id="vitals-overview-widget"]',
+            title: 'Vitals table',
+            content: 'You can now see the vitals you just added for the patient right here. Great job!',
+            disableOverlayClose: true,
+            hideBackButton: true,
+          },
+        ],
+      },
     ],
   },
 };

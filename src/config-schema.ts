@@ -487,50 +487,33 @@ export const configSchema = {
         steps: [
           {
             target: '[data-testid="searchPatientIcon"]',
-            title: 'Search icon',
-            content: 'Click on the search icon to open the search box so that we can search for a patient.',
+            content:
+              'To capture the vitals of a patient, you need to start by going to the patient chart view of the respective patient. Click on the search icon to open the search box so that you can search for the patient.',
             disableBeacon: true,
             disableOverlayClose: true,
             spotlightClicks: true,
             hideNextButton: true,
             data: {
-              autoNextOn: '[data-testid="patientSearchBar"]',
-            },
+               autoNextOn: '[data-testid="patientSearchBar"]'
+              },
           },
           {
             target: '[data-testid="patientSearchBar"]',
-            title: 'Search box',
             content:
-              'Now, enter the name of the patient here. If you know the patient ID, you can use that as well. You will see the results if the patient you entered exists in the system. Some example patient names that you can search for are: John, Smith, Mary.',
+              'Now, enter the name or the ID of the patient here. Some example patient names you can search for are: John, Smith, Mary.',
             hideNextButton: true,
             hideBackButton: true,
             disableOverlayClose: true,
             spotlightClicks: true,
-            data: {
-              autoNextOn: '[data-testid="floatingSearchResultsContainer"]',
+            data: { 
+              autoNextOn: '[data-testid="floatingSearchResultsContainer"]'
             },
           },
           {
-            target: 'button[type="submit"]',
-            title: 'Search button',
-            content:
-              'If there are a lot of patients in the system, you may need additional fields to search other than the name. Also, the patient you are looking for may not be displayed in the top results if there are multiple patients with the same name. In these scenarios, you can click here to open the advanced search.',
-            spotlightClicks: true,
+            target: '[data-testid="floatingSearchResultsContainer"]',
+            content: 'Click on the patient to go to their patient chart.',
             disableOverlayClose: true,
-            placement: 'bottom',
-            hideNextButton: true,
-            hideBackButton: true,
-            data: {
-              autoNextOn: '[data-openmrs-role="Search Results"]',
-            },
-          },
-          {
-            target: '[data-openmrs-role="Search Results"]',
-            title: 'Search results',
-            content:
-              'Here you can see all the patients who match the search criteria. Clicking on a patient will open the patient’s patient chart.',
-            disableOverlayClose: true,
-            placement: 'right',
+            placement: 'left',
             spotlightClicks: true,
             hideBackButton: true,
             hideNextButton: true,
@@ -539,19 +522,10 @@ export const configSchema = {
             },
           },
           {
-            target: 'body',
-            title: 'Patient Chart view',
-            content:
-              'Welcome to the patient chart view! Here, you can explore detailed patient information, clinical visit records, demographic data, graphs, and medical forms',
-            disableOverlayClose: true,
-            placement: 'center',
-            hideBackButton: true,
-          },
-          {
             target: '[data-extension-id="patient-vitals-info"] button',
             title: 'Record Vitals',
             content:
-              'Click here to add new vitals for the patient. If there’s no active visit, you may prompted to start a visit.',
+              'Welcome to the patient chart view! Click on the "Record Vitals" button to open the vitals form. If the selected patient doesn\'t have an active visit, please follow the instructions to proceed to the next step.',
             disableOverlayClose: true,
             disableOverlay: true,
             spotlightClicks: true,
@@ -565,22 +539,57 @@ export const configSchema = {
             target: '[data-openmrs-role="Vitals and Biometrics Form"]',
             title: 'Vitals form',
             content:
-              'Fill out the necessary information here and click on the "Save and close" button at the bottom of the form to capture the patient\'s vitals. If you change your mind, just click "Discard."',
+              'In this form, you can enter the vitals and biometrics you have captured. If any value entered is out of the normal range, you will see ↑ (High), ↓ (Low), ↑↑ (Very High) or ↓↓ (Very Low)  indicators next to the respective field. After entering all necessary details, click on the "Save and Close" button to submit the data.',
             disableOverlayClose: true,
             disableOverlay: true,
             spotlightClicks: true,
             placement: 'left',
             hideBackButton: true,
             hideNextButton: true,
-            data: {
-              autoNextOn: '.omrs-snackbars-container div',
+            data: { 
+              autoNextOn: '.omrs-snackbars-container div' 
             },
           },
           {
-            target: '[data-extension-id="vitals-overview-widget"]',
-            title: 'Vitals table',
-            content: 'You can now see the vitals you just added for the patient right here. Great job!',
+            target: '[data-extension-id="patient-vitals-info"]',
+            title: 'Vitals Header',
+            content: 'The latest vitals and biometrics data of the patient can be viewed in this section.',
             disableOverlayClose: true,
+            hideBackButton: true,
+          },
+          {
+            target: '[data-extension-id="results-summary-dashboard"]',
+            title: 'Vitals and Biometrics Menu',
+            content:
+              'Click here to go to the Vitals and Biometrics page, where you can view the past records of vitals and biometrics.',
+            disableOverlayClose: true,
+            hideBackButton: true,
+            hideNextButton: true,
+            spotlightClicks: true,
+            data: { 
+              autoNextOn: '[data-extension-slot-name="patient-chart-vitals-biometrics-dashboard-slot"]' 
+            },
+          },
+          {
+            target: '[data-extension-slot-name="patient-chart-vitals-biometrics-dashboard-slot"]',
+            title: 'Vitals/Biometrics Tables',
+            content:
+              'These tables display the history of vitals and biometrics. Indicators may be present here to show measurements that are higher or lower than the typical range.',
+            disableOverlayClose: true,
+            hideBackButton: true,
+          },
+          {
+            target: '[aria-label="Chart view"]',
+            title: 'Charts',
+            content: 'You can click on the "Chart" button for a graphical representation of the vitals history.',
+            disableOverlayClose: true,
+          },
+          {
+            target: 'body',
+            title:
+              'You have now successfully completed the tutorial. You can continue with the rest of the patient visit by recording additional information or performing other necessary actions within the patient chart view, or you can return to the homepage.',
+            disableOverlayClose: true,
+            placement: 'center',
             hideBackButton: true,
           },
         ],

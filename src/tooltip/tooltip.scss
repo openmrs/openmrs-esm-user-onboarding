@@ -16,15 +16,30 @@
     align-items: center;
     margin-bottom: spacing.$spacing-01;
 
-    .tooltiptitle {
-      @include type.type-style('heading-02');
-    }
+  .container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
   }
 
-  .tooltipcontent {
+  .tooltiptitle {
+    @include type.type-style('heading-02');
+    margin-bottom: spacing.$spacing-02; 
+  }
+
+  .closeButton {
+    margin-left: auto;
+    align-self: flex-start; 
+  }
+}
+
+.tooltipcontent {
     color: $color-gray-70;
     @include type.type-style('body-compact-01');
-  }
+    width: 100%; 
+    margin-top: spacing.$spacing-01; 
+}
+
 
   .tooltipfooter {
     margin-top: spacing.$spacing-03;
@@ -32,31 +47,36 @@
     justify-content: space-between;
     align-items: center;
 
-    .tooltipstep {
-      color: $color-gray-70;
-      @include type.type-style('body-compact-01');
+  .tooltipstep {
+    color: $color-gray-70;
+    @include type.type-style('body-compact-01');
+  }
+
+  .buttonContainer {
+    display: flex;
+    gap: spacing.$spacing-03; 
+
+  .buttonback,
+  .buttonnext {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: spacing.$spacing-02;
+    width: spacing.$spacing-12;
+
+    .arrowLeft,
+    .arrowContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: spacing.$spacing-02;
     }
 
-    .buttonContainer {
-      display: flex;
-      gap: spacing.$spacing-03; 
-
-      .buttonback, .buttonnext {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: spacing.$spacing-12; 
-        padding: spacing.$spacing-02;
-        
-        .arrowContainer {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-left: spacing.$spacing-02;
-          margin-right: spacing.$spacing-02;
-
-        }
-      }
+    .arrowLeft svg {
+      fill: $color-blue-60-2 !important;
+      margin-right: spacing.$spacing-02;
     }
   }
+}
+}
 }

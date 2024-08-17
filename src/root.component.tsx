@@ -10,7 +10,7 @@ const RootComponent: React.FC = () => {
   const [steps, setSteps] = React.useState<Step[]>([]);
   const [stepIndex, setStepIndex] = React.useState(0);
 
-  // To disable the beacon for all steps
+  // Set steps with default step options
   const updateSteps = (newSteps: Step[]) => {
     setSteps(
       newSteps.map((step) => ({

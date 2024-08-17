@@ -31,18 +31,20 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({
   return (
     <div {...tooltipProps} className={styles.tooltipcontainer}>
       <div className={styles.tooltipheader}>
-        <h4 className={styles.tooltiptitle}>{step.title}</h4>
-        <Button {...skipProps} size="sm" kind="ghost">
+        <div className={styles.container}>
+          <h4 className={styles.tooltiptitle}>{step.title}</h4>
+          <div className={styles.tooltipcontent}>{step.content}</div>
+        </div>
+        <Button {...skipProps} size="sm" kind="ghost" className={styles.closeButton}>
           <Close />
         </Button>
       </div>
-      <div className={styles.tooltipcontent}>{step.content}</div>
       <div className={styles.tooltipfooter}>
         <span className={styles.tooltipstep}>{`${index + 1} of ${totalSteps}`}</span>
         <div className={styles.buttonContainer}>
           {!step.hideBackButton && index > 0 && (
             <Button {...backProps} size="sm" kind="ghost" className={styles.buttonback}>
-              <div className={styles.arrowContainer}>
+              <div className={styles.arrowLeft}>
                 <ArrowLeft />
               </div>
               {t('back', 'Back')}

@@ -594,6 +594,87 @@ export const configSchema = {
           },
         ],
       },
+      {
+        title: 'Start Visit',
+        description:
+          'Learn how to start a visit for a patient.',
+        steps: [
+          {
+            target: '[data-testid="searchPatientIcon"]',
+            content:
+              'To fill out any forms or encounters of a patient, you have to start a visit. To start a patient visit, first you need to go to the patient chart view of the respective patient. Click on the search icon to open the search box so that we can search for the patient. ',
+            disableBeacon: true,
+            disableOverlayClose: true,
+            spotlightClicks: true,
+            hideNextButton: true,
+            data: {
+              autoNextOn: '[data-testid="patientSearchBar"]',
+            },
+          },
+          {
+            target: '[data-testid="patientSearchBar"]',
+            content:
+              'Now, enter the name or the ID of the patient here. Some example patient names that you can search for are: John, Smith, Mary.',
+            hideNextButton: true,
+            hideBackButton: true,
+            disableOverlayClose: true,
+            spotlightClicks: true,
+            data: {
+              autoNextOn: '[data-testid="floatingSearchResultsContainer"]',
+            },
+          },
+          {
+            target: '[data-testid="floatingSearchResultsContainer"]',
+            content:
+              'Click on the patient whose chart you want to access. Make sure to select a patient without the "Active visit" label, as we will start a visit in the next steps of the tutorial.',
+            spotlightClicks: true,
+            disableOverlayClose: true,
+            disableOverlay: true,
+            placement: 'left',
+            hideNextButton: true,
+            hideBackButton: true,
+            data: {
+              autoNextOn: '[data-extension-slot-name="action-menu-patient-chart-items-slot"]',
+            },
+          },
+          {
+            target: '[aria-label="Start a visit"]',
+            title: 'Active Visit',
+            content:
+              'Welcome to the patient chart view! Here, you can find detailed patient information, records of clinical visits, demographic information, graphs, and medical forms. Click on the "Start Visit" button to open the Start Visit form.',
+            spotlightClicks: true,
+            disableOverlayClose: true,
+            hideNextButton: true,
+            hideBackButton: true,
+            data: {
+              autoNextOn: '[data-openmrs-role="Start Visit Form"]',
+            },
+          },
+          {
+            target: '[data-openmrs-role="Start Visit Form"]',
+            title: 'Start Visit Form',
+            content:
+              'Fill out the necessary information here and click on the "Start Visit" button at the bottom of this form to start the visit. You can click on "Discard" if you don\'t want to start a visit at the moment.',
+            disableOverlayClose: true,
+            disableOverlay: true,
+            spotlightClicks: true,
+            hideNextButton: true,
+            hideBackButton: true,
+            placement: 'left',
+            data: {
+              autoNextOn: '.omrs-snackbars-container div',
+            },
+          },
+          {
+            target: 'body',
+            title:
+              'That\'s the end of this tutorial! If you have already started a visit, you will see an "Active Visit" tag near the patient\'s name here. After the visit is started, you can do things like capturing vitals, biometrics, and more through this patient chart view.',
+            disableOverlayClose: true,
+            hideBackButton: true,
+            placement: 'center',
+          },
+        ],
+      },
     ],
   },
 };

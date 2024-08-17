@@ -668,7 +668,7 @@ export const configSchema = {
           {
             target: 'body',
             title:
-              'That\'s the end of this tutorial! If you have already started a visit, you will see an "Active Visit" tag near the patient\'s name here. After the visit is started, you can do things like capturing vitals, biometrics, and more through this patient chart view.',
+              'That\'s the end of this tutorial! If you have already started a visit, you will see an "Active Visit" tag near the patient\'s name. After the visit is started, you can do things like capturing vitals, biometrics, and more through this patient chart view.',
             disableOverlayClose: true,
             hideBackButton: true,
             placement: 'center',

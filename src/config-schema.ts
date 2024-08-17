@@ -483,7 +483,7 @@ export const configSchema = {
       {
         title: 'Capture Vitals',
         description:
-          'This application serves as an example of how a simple app can be created to repeatedly serve the same form to a user. In this scenario, a clerk at the front of the clinic is capturing vitals for patients. The clerk selects a patient with an active visit, records their vitals, and then returns to the prompt to find the next patient.',
+          'Learn how to record a patient\'s vitals and biometric data, and review the records through the patient chart.',
         steps: [
           {
             target: '[data-testid="searchPatientIcon"]',
@@ -525,7 +525,7 @@ export const configSchema = {
             target: '[data-extension-id="patient-vitals-info"] button',
             title: 'Record Vitals',
             content:
-              'Welcome to the patient chart view! Click on the "Record Vitals" button to open the vitals form. If the selected patient doesn\'t have an active visit, please follow the instructions to proceed to the next step.',
+              'Welcome to the patient chart view! Click on the "Record Vitals" button to open the vitals form. If the selected patient doesn\'t have an active visit, you will be prompted to start one. In that case, submit the start visit form in order to the next step.',
             disableOverlayClose: true,
             disableOverlay: true,
             spotlightClicks: true,

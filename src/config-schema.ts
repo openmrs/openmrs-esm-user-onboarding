@@ -480,6 +480,120 @@ export const configSchema = {
           },
         ],
       },
+      {
+        title: 'Capture Vitals',
+        description:
+          'Learn how to record a patient\'s vitals and biometric data, and review the records through the patient chart.',
+        steps: [
+          {
+            target: '[data-testid="searchPatientIcon"]',
+            content:
+              'To capture the vitals of a patient, you need to start by going to the patient chart view of the respective patient. Click on the search icon to open the search box so that you can search for the patient.',
+            disableBeacon: true,
+            disableOverlayClose: true,
+            spotlightClicks: true,
+            hideNextButton: true,
+            data: {
+               autoNextOn: '[data-testid="patientSearchBar"]'
+              },
+          },
+          {
+            target: '[data-testid="patientSearchBar"]',
+            content:
+              'Now, enter the name or the ID of the patient here. Some example patient names you can search for are: John, Smith, Mary.',
+            hideNextButton: true,
+            hideBackButton: true,
+            disableOverlayClose: true,
+            spotlightClicks: true,
+            data: { 
+              autoNextOn: '[data-testid="floatingSearchResultsContainer"]'
+            },
+          },
+          {
+            target: '[data-testid="floatingSearchResultsContainer"]',
+            content: 'Click on the patient to go to their patient chart.',
+            disableOverlayClose: true,
+            placement: 'left',
+            spotlightClicks: true,
+            hideBackButton: true,
+            hideNextButton: true,
+            data: {
+              autoNextOn: '[data-extension-slot-name="action-menu-patient-chart-items-slot"]',
+            },
+          },
+          {
+            target: '[data-extension-id="patient-vitals-info"] button',
+            title: 'Record Vitals',
+            content:
+              'Welcome to the patient chart view! Click on the "Record Vitals" button to open the vitals form. If the selected patient doesn\'t have an active visit, you will be prompted to start one. In that case, submit the start visit form in order to the next step.',
+            disableOverlayClose: true,
+            disableOverlay: true,
+            spotlightClicks: true,
+            hideBackButton: true,
+            hideNextButton: true,
+            data: {
+              autoNextOn: '[aria-label="Workspace header"]',
+            },
+          },
+          {
+            target: '[data-openmrs-role="Vitals and Biometrics Form"]',
+            title: 'Vitals form',
+            content:
+              'In this form, you can enter the vitals and biometrics you have captured. If any value entered is out of the normal range, you will see ↑ (High), ↓ (Low), ↑↑ (Very High) or ↓↓ (Very Low)  indicators next to the respective field. After entering all necessary details, click on the "Save and Close" button to submit the data.',
+            disableOverlayClose: true,
+            disableOverlay: true,
+            spotlightClicks: true,
+            placement: 'left',
+            hideBackButton: true,
+            hideNextButton: true,
+            data: { 
+              autoNextOn: '.omrs-snackbars-container div' 
+            },
+          },
+          {
+            target: '[data-extension-id="patient-vitals-info"]',
+            title: 'Vitals Header',
+            content: 'The latest vitals and biometrics data of the patient can be viewed in this section.',
+            disableOverlayClose: true,
+            hideBackButton: true,
+          },
+          {
+            target: '[data-extension-id="results-summary-dashboard"]',
+            title: 'Vitals and Biometrics Menu',
+            content:
+              'Click here to go to the Vitals and Biometrics page, where you can view the past records of vitals and biometrics.',
+            disableOverlayClose: true,
+            hideBackButton: true,
+            hideNextButton: true,
+            spotlightClicks: true,
+            data: { 
+              autoNextOn: '[data-extension-slot-name="patient-chart-vitals-biometrics-dashboard-slot"]' 
+            },
+          },
+          {
+            target: '[data-extension-slot-name="patient-chart-vitals-biometrics-dashboard-slot"]',
+            title: 'Vitals/Biometrics Tables',
+            content:
+              'These tables display the history of vitals and biometrics. Indicators may be present here to show measurements that are higher or lower than the typical range.',
+            disableOverlayClose: true,
+            hideBackButton: true,
+          },
+          {
+            target: '[aria-label="Chart view"]',
+            title: 'Charts',
+            content: 'You can click on the "Chart" button for a graphical representation of the vitals history.',
+            disableOverlayClose: true,
+          },
+          {
+            target: 'body',
+            title:
+              'You have now successfully completed the tutorial. You can continue with the rest of the patient visit by recording additional information or performing other necessary actions within the patient chart view, or you can return to the homepage.',
+            disableOverlayClose: true,
+            placement: 'center',
+            hideBackButton: true,
+          },
+        ],
+      },
     ],
   },
 };

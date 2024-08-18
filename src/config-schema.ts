@@ -244,7 +244,6 @@ export const configSchema = {
             target: '[data-testid="searchPatientIcon"]',
             title: 'Search icon',
             content: 'Click on the search icon to open the search box so that we can search for a patient.',
-            disableBeacon: true,
             disableOverlayClose: true,
             spotlightClicks: true,
             hideNextButton: true,
@@ -319,7 +318,6 @@ export const configSchema = {
             target: '[data-extension-id="patient-lists-dashboard-link"]',
             content:
               'Creating a patient list is a great way to keep a group of patients organized for easier management. Click here to go to the patient lists view',
-            disableBeacon: true,
             spotlightClicks: true,
             hideNextButton: true,
             data: {
@@ -386,7 +384,6 @@ export const configSchema = {
             target: '[data-testid="searchPatientIcon"]',
             content:
               'To add a patient to the list, we have to go to the respective patient’s chart view. Click here to open the search box so that we can search for a patient.',
-            disableBeacon: true,
             spotlightClicks: true,
             hideNextButton: true,
             hideBackButton: true,
@@ -481,7 +478,6 @@ export const configSchema = {
             target: '[data-testid="searchPatientIcon"]',
             content:
               'To capture the vitals of a patient, you need to start by going to the patient chart view of the respective patient. Click on the search icon to open the search box so that you can search for the patient.',
-            disableBeacon: true,
             disableOverlayClose: true,
             spotlightClicks: true,
             hideNextButton: true,

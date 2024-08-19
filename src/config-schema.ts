@@ -11,8 +11,8 @@ export const configSchema = {
     _description: 'List of tutorials to be displayed in the modal',
     _default: [
       {
-        title: 'Basic Tutorial',
-        description: 'Learn how to efficiently search for patients, register new patients, access user settings, and view ongoing visits and appointments.',
+        title: 'Basic Overview',
+        description: 'This guide provides a quick look at the essential components that shape the layout and user experience of our homepage.',
         steps: [{
           target: '[aria-label="OpenMRS"]',
           content: 'Welcome to OpenMRS! This is the main dashboard where you can navigate to various features of the system.',
@@ -40,68 +40,7 @@ export const configSchema = {
         ],
       },
       {
-        title: 'Tutorial for demo purposes',
-        description: 'This tutorial is for demo / debugging purposes only',
-        steps: [
-          {
-            target: '[aria-label="OpenMRS"]',
-            title: 'Let us walk through the tutorial features together.',
-          },
-          {
-            target: '[data-extension-id="clinical-appointments-dashboard-link"]',
-            title:
-              'Click on this link. This step is configured to be automatic and will take you to the next step. Once the given query selector resolves an element on the page, it will proceed automatically.',
-            hideCloseButton: true,
-            hideNextButton: true,
-            spotlightClicks: true,
-            data: {
-              autoNextOn: '[data-extension-id="clinical-appointments-dashboard"]',
-            },
-          },
-          {
-            target: '[data-extension-id="clinical-appointments-dashboard"]',
-            title: 'Congrats! You have reached the clinical appointments dashboard.',
-          },
-          {
-            target: '[aria-label="OpenMRS"]',
-            title:
-              'Now, let’s see how this behaves when elements take a bit longer to load. Set your network throttling to "Slow 3G" and hit "Next".',
-
-            hideBackButton: true,
-          },
-          {
-            target: '[data-extension-id="laboratory-dashboard-link"]',
-            title:
-              'Let\'s navigate to the laboratory page. Our next target is the "Tests Ordered" table. I’ll disappear once you reach the laboratory page and reappear when the table is loaded. See you there!',
-            hideCloseButton: true,
-            hideNextButton: true,
-
-            spotlightClicks: true,
-            data: {
-              autoNextOn: '[data-extension-id="laboratory-dashboard"]',
-            },
-          },
-          {
-            target: '[data-extension-id="all-lab-requests-table"] table',
-            title:
-              "It's me again. By default, I'll wait for the element to appear, so you don't have to worry about slow components when writing a new tutorial.",
-
-            hideBackButton: true,
-          },
-          {
-            target: '[aria-label="OpenMRS"]',
-            title:
-              "Now let's do a fun exercise. Can you find out how to view a patient's allergies on your own? Feel free to turn off network throttling. ;) ",
-          },
-          {
-            target: '[data-extension-slot-name="patient-chart-allergies-dashboard-slot"]',
-            title:
-              'Great job! You found the allergies section! This is the end of the tutorial. Feel free to explore the system on your own or check out the other tutorials.',
-          },
-        ],
-      },
-      {
-        title: 'Patient Registration Tutorial',
+        title: 'Registering a Patient',
         description: 'Learn how to register a new patient into the system.',
         steps: [
           {
@@ -141,7 +80,7 @@ export const configSchema = {
         ],
       },
       {
-        title: 'Patient Chart Tutorial',
+        title: 'Patient Chart',
         description:
           'Patient chart is the main point of interaction between healthcare professionals and patient data, where you can manage everything related to a single patient.',
         steps: [
@@ -226,7 +165,7 @@ export const configSchema = {
         ],
       },
       {
-        title: 'Patient Search',
+        title: 'Finding a Patient',
         description: 'Learn how to find a patient in the system using basic and advanced search features, including the use of filters to refine results.',
         steps: [
           {
@@ -450,7 +389,7 @@ export const configSchema = {
         ],
       },
       {
-        title: 'Capture Vitals',
+        title: 'Recording Vitals',
         description:
           'Learn how to record a patient\'s vitals and biometric data, and review the records through the patient chart.',
         steps: [
@@ -471,7 +410,7 @@ export const configSchema = {
             hideNextButton: true,
             hideBackButton: true,
             spotlightClicks: true,
-            data: { 
+            data: {
               autoNextOn: '[data-testid="floatingSearchResultsContainer"]'
             },
           },
@@ -509,8 +448,8 @@ export const configSchema = {
             placement: 'left',
             hideBackButton: true,
             hideNextButton: true,
-            data: { 
-              autoNextOn: '.omrs-snackbars-container div' 
+            data: {
+              autoNextOn: '.omrs-snackbars-container div'
             },
           },
           {
@@ -527,8 +466,8 @@ export const configSchema = {
             hideBackButton: true,
             hideNextButton: true,
             spotlightClicks: true,
-            data: { 
-              autoNextOn: '[data-extension-slot-name="patient-chart-vitals-biometrics-dashboard-slot"]' 
+            data: {
+              autoNextOn: '[data-extension-slot-name="patient-chart-vitals-biometrics-dashboard-slot"]'
             },
           },
           {
@@ -553,7 +492,7 @@ export const configSchema = {
         ],
       },
       {
-        title: 'Start Visit',
+        title: 'Starting a Patient Visit',
         description:
           'Learn how to start a visit for a patient.',
         steps: [
@@ -627,6 +566,67 @@ export const configSchema = {
           },
         ],
       },
+      {
+        title: 'Tutorial for demo purposes',
+        description: 'This tutorial is for demo / debugging purposes only',
+        steps: [
+          {
+            target: '[aria-label="OpenMRS"]',
+            title: 'Let us walk through the tutorial features together.',
+          },
+          {
+            target: '[data-extension-id="clinical-appointments-dashboard-link"]',
+            title:
+              'Click on this link. This step is configured to be automatic and will take you to the next step. Once the given query selector resolves an element on the page, it will proceed automatically.',
+            hideCloseButton: true,
+            hideNextButton: true,
+            spotlightClicks: true,
+            data: {
+              autoNextOn: '[data-extension-id="clinical-appointments-dashboard"]',
+            },
+          },
+          {
+            target: '[data-extension-id="clinical-appointments-dashboard"]',
+            title: 'Congrats! You have reached the clinical appointments dashboard.',
+          },
+          {
+            target: '[aria-label="OpenMRS"]',
+            title:
+              'Now, let’s see how this behaves when elements take a bit longer to load. Set your network throttling to "Slow 3G" and hit "Next".',
+
+            hideBackButton: true,
+          },
+          {
+            target: '[data-extension-id="laboratory-dashboard-link"]',
+            title:
+              'Let\'s navigate to the laboratory page. Our next target is the "Tests Ordered" table. I’ll disappear once you reach the laboratory page and reappear when the table is loaded. See you there!',
+            hideCloseButton: true,
+            hideNextButton: true,
+
+            spotlightClicks: true,
+            data: {
+              autoNextOn: '[data-extension-id="laboratory-dashboard"]',
+            },
+          },
+          {
+            target: '[data-extension-id="all-lab-requests-table"] table',
+            title:
+              "It's me again. By default, I'll wait for the element to appear, so you don't have to worry about slow components when writing a new tutorial.",
+
+            hideBackButton: true,
+          },
+          {
+            target: '[aria-label="OpenMRS"]',
+            title:
+              "Now let's do a fun exercise. Can you find out how to view a patient's allergies on your own? Feel free to turn off network throttling. ;) ",
+          },
+          {
+            target: '[data-extension-slot-name="patient-chart-allergies-dashboard-slot"]',
+            title:
+              'Great job! You found the allergies section! This is the end of the tutorial. Feel free to explore the system on your own or check out the other tutorials.',
+          },
+        ],
+      }
     ],
   },
 };

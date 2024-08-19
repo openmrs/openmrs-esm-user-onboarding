@@ -10,11 +10,21 @@ const RootComponent: React.FC = () => {
   const [steps, setSteps] = React.useState<Step[]>([]);
   const [stepIndex, setStepIndex] = React.useState(0);
 
+  // Set steps with default step options
+  const updateSteps = (newSteps: Step[]) => {
+    setSteps(
+      newSteps.map((step) => ({
+        ...step,
+        disableBeacon: true,
+      })),
+    );
+  };
+
   useDefineAppContext<TutorialContext>('tutorial-context', {
     showTutorial,
     steps,
     setShowTutorial: (showTutorial: boolean) => setShowTutorial(showTutorial),
-    setSteps: (steps: Step[]) => setSteps(steps)
+    setSteps: updateSteps,
   });
 
   const onStepChange = (index: number) => {
@@ -85,6 +95,7 @@ const overlayStyles = currentStep?.disableOverlay
       stepIndex={stepIndex}
       run={showTutorial}
       callback={handleJoyrideCallback}
+      disableOverlayClose={true}
       tooltipComponent={(props) => <CustomTooltip {...props} step={steps[props.index]} totalSteps={steps.length} />}
       styles={{
         options: {

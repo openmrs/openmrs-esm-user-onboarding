@@ -16,7 +16,6 @@ export const configSchema = {
         steps: [{
           target: '[aria-label="OpenMRS"]',
           content: 'Welcome to OpenMRS! This is the main dashboard where you can navigate to various features of the system.',
-          disableBeacon: true
         },
           {
             target: '[name="SearchPatientIcon"]',
@@ -47,7 +46,6 @@ export const configSchema = {
           {
             target: '[aria-label="OpenMRS"]',
             title: 'Let us walk through the tutorial features together.',
-            disableBeacon: true,
           },
           {
             target: '[data-extension-id="clinical-appointments-dashboard-link"]',
@@ -55,7 +53,6 @@ export const configSchema = {
               'Click on this link. This step is configured to be automatic and will take you to the next step. Once the given query selector resolves an element on the page, it will proceed automatically.',
             hideCloseButton: true,
             hideNextButton: true,
-            disableOverlayClose: true,
             spotlightClicks: true,
             data: {
               autoNextOn: '[data-extension-id="clinical-appointments-dashboard"]',
@@ -64,13 +61,12 @@ export const configSchema = {
           {
             target: '[data-extension-id="clinical-appointments-dashboard"]',
             title: 'Congrats! You have reached the clinical appointments dashboard.',
-            disableOverlayClose: true,
           },
           {
             target: '[aria-label="OpenMRS"]',
             title:
               'Now, let’s see how this behaves when elements take a bit longer to load. Set your network throttling to "Slow 3G" and hit "Next".',
-            disableOverlayClose: true,
+
             hideBackButton: true,
           },
           {
@@ -79,7 +75,7 @@ export const configSchema = {
               'Let\'s navigate to the laboratory page. Our next target is the "Tests Ordered" table. I’ll disappear once you reach the laboratory page and reappear when the table is loaded. See you there!',
             hideCloseButton: true,
             hideNextButton: true,
-            disableOverlayClose: true,
+
             spotlightClicks: true,
             data: {
               autoNextOn: '[data-extension-id="laboratory-dashboard"]',
@@ -89,7 +85,7 @@ export const configSchema = {
             target: '[data-extension-id="all-lab-requests-table"] table',
             title:
               "It's me again. By default, I'll wait for the element to appear, so you don't have to worry about slow components when writing a new tutorial.",
-            disableOverlayClose: true,
+
             hideBackButton: true,
           },
           {
@@ -112,8 +108,6 @@ export const configSchema = {
             target: '[name="AddPatientIcon"]',
             title: 'Add Patient',
             content: 'Click here to add a patient to the system.',
-            disableBeacon: true,
-            disableOverlayClose: true,
             spotlightClicks: true,
             hideCloseButton: true,
             hideNextButton: true,
@@ -127,26 +121,22 @@ export const configSchema = {
             title: 'Demographics',
             content:
               'This is the Demographics section. Here you can find various fields and information related to the patient.',
-            disableBeacon: true,
             hideBackButton: true,
           },
           {
             target: '#contact',
             title: 'Contact Details',
             content: "Here you can update the patient's contact information.",
-            disableBeacon: true,
           },
           {
             target: '#relationships',
             title: 'Relationships',
             content: "In this section, you can manage the patient's relationships.",
-            disableBeacon: true,
           },
           {
             target: 'button[type="submit"]',
             title: 'Register Patient',
             content: "Click this button to register the patient's information into the system.",
-            disableBeacon: true,
           },
         ],
       },
@@ -160,8 +150,6 @@ export const configSchema = {
             title: 'Search icon',
             content:
               'To access the patient chart, first, you need to select a patient. To start, click here to open the search box so that we can search for a patient.',
-            disableBeacon: true,
-            disableOverlayClose: true,
             spotlightClicks: true,
             hideNextButton: true,
             data: {
@@ -175,7 +163,6 @@ export const configSchema = {
               'Now, enter the name or the ID of the patient here. Some example patient names that you can search for are: John, Smith, Mary.',
             hideNextButton: true,
             hideBackButton: true,
-            disableOverlayClose: true,
             spotlightClicks: true,
             data: {
               autoNextOn: '[data-testid="floatingSearchResultsContainer"]',
@@ -186,7 +173,6 @@ export const configSchema = {
             title: 'Search results',
             content: 'Click on the patient you want to go to their patient chart.',
             spotlightClicks: true,
-            disableOverlayClose: true,
             disableOverlay : true,
             placement: 'left',
             hideNextButton: true,
@@ -200,7 +186,6 @@ export const configSchema = {
             title: 'Patient Chart',
             content: "Welcome to the Patient Chart View! Here, you can quickly see everything about your patient's health history, visits, medications, allergies, and test results—all in one place. It's designed to help you provide the best care efficiently.",
             spotlightClicks: true,
-            disableOverlayClose: true,
             hideBackButton: true,
             placement: 'center',
           },
@@ -209,7 +194,6 @@ export const configSchema = {
             title: 'Patient header',
             content:
               'The patient header contains all the key information you need to identify the patient you are currently viewing. You can click on the "Show Details" button to see additional patient information.',
-            disableOverlayClose: true,
             spotlightClicks: true,
             hideBackButton: true,
           },
@@ -218,7 +202,6 @@ export const configSchema = {
             title: 'Left panel',
             content:
               'The left panel shows the sections of the patient chart. Currently, we are on the patient summary page.',
-            disableOverlayClose: true,
             spotlightClicks: true,
             placement: 'right',
           },
@@ -227,7 +210,6 @@ export const configSchema = {
             title: 'Patient summary widgets',
             content:
               'Patient Summary is a personalized view made up of widgets that show essential features and information for quick access.',
-            disableOverlayClose: true,
           },
           {
             target: '[data-extension-slot-name="action-menu-patient-chart-items-slot"]',
@@ -239,7 +221,6 @@ export const configSchema = {
             target: 'body',
             title:
               "Great job! You've completed the tutorial. Now, take a moment to explore the Patient Chart View and discover all its features. Feel free to navigate around and get comfortable with the layout. If you need to return to the home page, just click the close button in the top right corner. Happy exploring!",
-            disableOverlayClose: true,
             placement: 'center',
           },
         ],
@@ -252,8 +233,6 @@ export const configSchema = {
             target: '[data-testid="searchPatientIcon"]',
             title: 'Search icon',
             content: 'Click on the search icon to open the search box so that we can search for a patient.',
-            disableBeacon: true,
-            disableOverlayClose: true,
             spotlightClicks: true,
             hideNextButton: true,
             data: {
@@ -267,7 +246,6 @@ export const configSchema = {
               'Now, enter the name of the patient here. If you know the patient ID, you can use that as well. You will see the results if the patient you entered exists in the system. Some example patient names that you can search for are: John, Smith, Mary.',
             hideNextButton: true,
             hideBackButton: true,
-            disableOverlayClose: true,
             spotlightClicks: true,
             data: {
               autoNextOn: '[data-testid="floatingSearchResultsContainer"]',
@@ -279,7 +257,6 @@ export const configSchema = {
             content:
               'If there are a lot of patients in the system, you may need additional fields to search other than the name. Also, the patient you are looking for may not be displayed in the top results if there are multiple patients with the same name. In these scenarios, you can click here to open the advanced search.',
             spotlightClicks: true,
-            disableOverlayClose: true,
             placement: 'bottom',
             hideNextButton: true,
             hideBackButton: true,
@@ -293,7 +270,6 @@ export const configSchema = {
             content:
               'You can refine your search by applying filters such as date of birth, age, sex, and phone number here.',
             spotlightClicks: true,
-            disableOverlayClose: true,
             hideBackButton: true,
           },
           {
@@ -301,14 +277,12 @@ export const configSchema = {
             title: 'Search results',
             content:
               'Here you can see all the patients who match the search criteria. Clicking on a patient will open the patient’s patient chart.',
-            disableOverlayClose: true,
             placement: 'right',
           },
           {
             target: '[data-testid="closeSearchIcon"]',
             content: 'That’s the end of the tutorial. Click on the close button to go back to the home page.',
             spotlightClicks: true,
-            disableOverlayClose: true,
             placement: 'bottom',
             hideNextButton: true,
             hideBackButton: true,
@@ -327,7 +301,6 @@ export const configSchema = {
             target: '[data-extension-id="patient-lists-dashboard-link"]',
             content:
               'Creating a patient list is a great way to keep a group of patients organized for easier management. Click here to go to the patient lists view',
-            disableBeacon: true,
             spotlightClicks: true,
             hideNextButton: true,
             data: {
@@ -362,7 +335,6 @@ export const configSchema = {
             title: 'Patient List Form',
             content: 'Enter the necessary details and click on "Create List" to create the list.',
             spotlightClicks: true,
-
             hideBackButton: true,
             hideNextButton: true,
             placement: 'left',
@@ -394,7 +366,6 @@ export const configSchema = {
             target: '[data-testid="searchPatientIcon"]',
             content:
               'To add a patient to the list, we have to go to the respective patient’s chart view. Click here to open the search box so that we can search for a patient.',
-            disableBeacon: true,
             spotlightClicks: true,
             hideNextButton: true,
             hideBackButton: true,
@@ -455,7 +426,6 @@ export const configSchema = {
             target: '[aria-label="Close"]',
             content:
               "We have successfully added a patient to the patient list. Let's go back to the patient lists by closing the patient chart by clicking here.",
-
             spotlightClicks: true,
             hideBackButton: true,
             hideNextButton: true,
@@ -467,7 +437,6 @@ export const configSchema = {
             target: '[data-testid="patientsTable"]',
             title: 'Patients List',
             content: 'You can see the added patient on the list of patients.',
-
             spotlightClicks: true,
             hideBackButton: true,
           },
@@ -489,8 +458,6 @@ export const configSchema = {
             target: '[data-testid="searchPatientIcon"]',
             content:
               'To capture the vitals of a patient, you need to start by going to the patient chart view of the respective patient. Click on the search icon to open the search box so that you can search for the patient.',
-            disableBeacon: true,
-            disableOverlayClose: true,
             spotlightClicks: true,
             hideNextButton: true,
             data: {
@@ -503,7 +470,6 @@ export const configSchema = {
               'Now, enter the name or the ID of the patient here. Some example patient names you can search for are: John, Smith, Mary.',
             hideNextButton: true,
             hideBackButton: true,
-            disableOverlayClose: true,
             spotlightClicks: true,
             data: { 
               autoNextOn: '[data-testid="floatingSearchResultsContainer"]'
@@ -512,7 +478,6 @@ export const configSchema = {
           {
             target: '[data-testid="floatingSearchResultsContainer"]',
             content: 'Click on the patient to go to their patient chart.',
-            disableOverlayClose: true,
             placement: 'left',
             spotlightClicks: true,
             hideBackButton: true,
@@ -526,7 +491,6 @@ export const configSchema = {
             title: 'Record Vitals',
             content:
               'Welcome to the patient chart view! Click on the "Record Vitals" button to open the vitals form. If the selected patient doesn\'t have an active visit, you will be prompted to start one. In that case, submit the start visit form in order to the next step.',
-            disableOverlayClose: true,
             disableOverlay: true,
             spotlightClicks: true,
             hideBackButton: true,
@@ -540,7 +504,6 @@ export const configSchema = {
             title: 'Vitals form',
             content:
               'In this form, you can enter the vitals and biometrics you have captured. If any value entered is out of the normal range, you will see ↑ (High), ↓ (Low), ↑↑ (Very High) or ↓↓ (Very Low)  indicators next to the respective field. After entering all necessary details, click on the "Save and Close" button to submit the data.',
-            disableOverlayClose: true,
             disableOverlay: true,
             spotlightClicks: true,
             placement: 'left',
@@ -554,7 +517,6 @@ export const configSchema = {
             target: '[data-extension-id="patient-vitals-info"]',
             title: 'Vitals Header',
             content: 'The latest vitals and biometrics data of the patient can be viewed in this section.',
-            disableOverlayClose: true,
             hideBackButton: true,
           },
           {
@@ -562,7 +524,6 @@ export const configSchema = {
             title: 'Vitals and Biometrics Menu',
             content:
               'Click here to go to the Vitals and Biometrics page, where you can view the past records of vitals and biometrics.',
-            disableOverlayClose: true,
             hideBackButton: true,
             hideNextButton: true,
             spotlightClicks: true,
@@ -575,20 +536,17 @@ export const configSchema = {
             title: 'Vitals/Biometrics Tables',
             content:
               'These tables display the history of vitals and biometrics. Indicators may be present here to show measurements that are higher or lower than the typical range.',
-            disableOverlayClose: true,
             hideBackButton: true,
           },
           {
             target: '[aria-label="Chart view"]',
             title: 'Charts',
             content: 'You can click on the "Chart" button for a graphical representation of the vitals history.',
-            disableOverlayClose: true,
           },
           {
             target: 'body',
             title:
               'You have now successfully completed the tutorial. You can continue with the rest of the patient visit by recording additional information or performing other necessary actions within the patient chart view, or you can return to the homepage.',
-            disableOverlayClose: true,
             placement: 'center',
             hideBackButton: true,
           },
@@ -604,7 +562,6 @@ export const configSchema = {
             content:
               'To fill out any forms or encounters of a patient, you have to start a visit. To start a patient visit, first you need to go to the patient chart view of the respective patient. Click on the search icon to open the search box so that we can search for the patient. ',
             disableBeacon: true,
-            disableOverlayClose: true,
             spotlightClicks: true,
             hideNextButton: true,
             data: {
@@ -617,7 +574,6 @@ export const configSchema = {
               'Now, enter the name or the ID of the patient here. Some example patient names that you can search for are: John, Smith, Mary.',
             hideNextButton: true,
             hideBackButton: true,
-            disableOverlayClose: true,
             spotlightClicks: true,
             data: {
               autoNextOn: '[data-testid="floatingSearchResultsContainer"]',
@@ -628,7 +584,6 @@ export const configSchema = {
             content:
               'Click on the patient whose chart you want to access. Make sure to select a patient without the "Active visit" label, as we will start a visit in the next steps of the tutorial.',
             spotlightClicks: true,
-            disableOverlayClose: true,
             disableOverlay: true,
             placement: 'left',
             hideNextButton: true,
@@ -643,7 +598,6 @@ export const configSchema = {
             content:
               'Welcome to the patient chart view! Here, you can find detailed patient information, records of clinical visits, demographic information, graphs, and medical forms. Click on the "Start Visit" button to open the Start Visit form.',
             spotlightClicks: true,
-            disableOverlayClose: true,
             hideNextButton: true,
             hideBackButton: true,
             data: {
@@ -655,7 +609,6 @@ export const configSchema = {
             title: 'Start Visit Form',
             content:
               'Fill out the necessary information here and click on the "Start Visit" button at the bottom of this form to start the visit. You can click on "Discard" if you don\'t want to start a visit at the moment.',
-            disableOverlayClose: true,
             disableOverlay: true,
             spotlightClicks: true,
             hideNextButton: true,
@@ -669,7 +622,6 @@ export const configSchema = {
             target: 'body',
             title:
               'That\'s the end of this tutorial! If you have already started a visit, you will see an "Active Visit" tag near the patient\'s name. After the visit is started, you can do things like capturing vitals, biometrics, and more through this patient chart view.',
-            disableOverlayClose: true,
             hideBackButton: true,
             placement: 'center',
           },
@@ -688,7 +640,6 @@ export type Config = {
       target: string;
       title: string;
       content: string;
-      disableBeacon: boolean;
       data?: {
         autoNextOn?: boolean;
       };

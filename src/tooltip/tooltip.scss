@@ -24,20 +24,21 @@
 
   .tooltiptitle {
     @include type.type-style('heading-02');
-    margin-bottom: spacing.$spacing-02; 
+    margin-bottom: spacing.$spacing-02;
   }
 
   .closeButton {
-    margin-left: auto;
-    align-self: flex-start; 
+    min-height: 16px;
+    padding: 0;
+    align-self: flex-start;
   }
 }
 
 .tooltipcontent {
     color: $color-gray-70;
     @include type.type-style('body-compact-01');
-    width: 100%; 
-    margin-top: spacing.$spacing-01; 
+    width: 100%;
+    margin-top: spacing.$spacing-01;
 }
 
 
@@ -54,7 +55,7 @@
 
   .buttonContainer {
     display: flex;
-    gap: spacing.$spacing-03; 
+    gap: spacing.$spacing-03;
 
   .buttonback,
   .buttonnext {

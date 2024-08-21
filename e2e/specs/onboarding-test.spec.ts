@@ -24,10 +24,10 @@ test('Basic Walkthrough', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('And I click on the Basic Tutorial walkthrough', async () => {
+  await test.step('And I click on the Basic Overview Tutorial', async () => {
     await page
       .locator('li')
-      .filter({ hasText: 'Basic Tutorial' })
+      .filter({ hasText: 'Basic Overview' })
       .locator('button', { hasText: 'Walkthrough' })
       .click();
   });

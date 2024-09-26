@@ -28,3 +28,10 @@
 
   }
 }
+
+.tutorialMenuItem {
+  color: black !important;
+  &:focus {
+    outline: none;
+  }
+}

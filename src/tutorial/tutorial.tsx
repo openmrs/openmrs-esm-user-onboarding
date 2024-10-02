@@ -8,6 +8,7 @@ const Tutorial = () => {
   const handleOpenModal = () => {
     const dispose = showModal('tutorial-modal', {
       onClose: () => dispose(),
+      size: 'sm',
     });
   };
 

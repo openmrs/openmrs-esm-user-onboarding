@@ -28,7 +28,7 @@ test('Basic Walkthrough', async ({ page }) => {
     await page
       .locator('li')
       .filter({ hasText: 'Basic Overview' })
-      .locator('button', { hasText: 'Walkthrough' })
+      .locator('a', { hasText: 'Walkthrough' })
       .click();
   });
 

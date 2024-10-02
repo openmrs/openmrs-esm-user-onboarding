@@ -3,7 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { useConfig, useAppContext, navigate } from '@openmrs/esm-framework';
 import styles from './styles.scss';
 import { type TutorialContext } from '../types';
-import { ModalHeader, ModalBody, Button } from '@carbon/react';
+import { ModalHeader, ModalBody, Link } from '@carbon/react';
+import { ArrowRight } from '@carbon/react/icons';
 
 const TutorialModal = ({ open, onClose }) => {
   const { t } = useTranslation();
@@ -39,7 +40,7 @@ const TutorialModal = ({ open, onClose }) => {
 
   return (
     <React.Fragment>
-      <ModalHeader closeModal={onClose} title={t('tutorial', 'Tutorial')}>
+      <ModalHeader closeModal={onClose} title={t('tutorial', 'Tutorial')} className={styles.modalHeader}>
         <p className={styles.description}>
           {t('modalDescription', 'Find walkthroughs and video tutorials on some of the core features of OpenMRS.')}
         </p>
@@ -50,9 +51,10 @@ const TutorialModal = ({ open, onClose }) => {
             <li className={styles.tutorialItem} key={index}>
               <h3 className={styles.tutorialTitle}>{tutorial.title}</h3>
               <p className={styles.tutorialDescription}>{tutorial.description}</p>
-              <Button kind="ghost" onClick={() => handleWalkthroughClick(index)}>
+              <Link onClick={() => handleWalkthroughClick(index)} className={styles.tutorialLink} renderIcon={() => 
+                <ArrowRight aria-label="Arrow Right" />}>
                 {t('walkthrough', 'Walkthrough')}
-              </Button>
+              </Link>
             </li>
           ))}
         </ul>

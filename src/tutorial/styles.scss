@@ -29,9 +29,10 @@
   }
 }
 
-.tutorialMenuItem {
-  color: black !important;
-  &:focus {
-    outline: none;
-  }
+.tutorialsText {
+  padding: 0.5rem 0.5rem;
+}
+
+.tutorialsText:hover {
+  background: #e8e8e8;
 }

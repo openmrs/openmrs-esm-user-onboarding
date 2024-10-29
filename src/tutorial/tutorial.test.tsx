@@ -1,12 +1,11 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import '@testing-library/jest-dom';
 import { showModal } from "@openmrs/esm-framework";
 import Tutorial from "./tutorial";
+import userEvent from "@testing-library/user-event";
 
-jest.mock('@openmrs/esm-framework', () => ({
-	showModal: jest.fn(),
-}))
+const mockShowModal = jest.mocked('showModal')
 
 describe('Tutorial Component', () => {
 	it('renders the menu item with the correct label', () => {
@@ -19,8 +18,8 @@ describe('Tutorial Component', () => {
 		render(<Tutorial />);
 
 		const menuItem = screen.getByText(/Tutorials/i);
-		fireEvent.click(menuItem);
+		userEvent.click(menuItem);
 
-		expect(showModal).toHaveBeenCalledWith('tutorial-modal', expect.any(Object))
+		expect(mockShowModal).toHaveBeenCalledWith('tutorial-modal', expect.any(Object))
 	})
 })

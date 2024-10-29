@@ -1,5 +1,7 @@
 @use '@carbon/styles/scss/spacing';
 @use '@carbon/styles/scss/type';
+@use '@carbon/colors';
+@use '@carbon/layout';
 @import '~@openmrs/esm-styleguide/src/vars';
 
 .description {
@@ -30,9 +32,9 @@
 }
 
 .tutorialsText {
-  padding: 0.5rem 0.5rem;
+  padding: layout.$spacing-03;
 }
 
 .tutorialsText:hover {
-  background: #e8e8e8;
+  background: colors.$white-hover;
 }

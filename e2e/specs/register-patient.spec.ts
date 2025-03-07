@@ -41,8 +41,7 @@ test('Registering a patient tutorial', async ({ page }) => {
 
   await test.step('And I click the `Add patient` button', async () => {
     await page.evaluate(() => {
-      const overlay = document.querySelector('.react-joyride__overlay');
-      if (overlay) overlay.remove();
+      document.querySelector('.react-joyride__overlay')?.setAttribute('style', 'z-index: 1 !important');
     });
     await page.getByRole('button', { name: 'Add patient' }).click();
   });

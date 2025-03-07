@@ -51,8 +51,7 @@ test('Finding a patient tutorial', async ({ page }) => {
 
   await test.step('And I click the `Search patient` button', async () => {
     await page.evaluate(() => {
-      const overlay = document.querySelector('.react-joyride__overlay');
-      if (overlay) overlay.remove();
+      document.querySelector('.react-joyride__overlay')?.setAttribute('style', 'z-index: 1 !important');
     });
     await page.getByRole('button', { name: 'Search patient' }).click();
   });
@@ -66,7 +65,7 @@ test('Finding a patient tutorial', async ({ page }) => {
   });
 
   await test.step('And I search for the patient', async () => {
-    await page.getByRole('searchbox').fill(patient.person.display);
+    await page.getByTestId('patientSearchBar').fill(patient.person.display);
   });
 
   await test.step('Then I should see the third tooltip', async () => {
@@ -78,6 +77,9 @@ test('Finding a patient tutorial', async ({ page }) => {
   });
 
   await test.step('And I click the `Search` button', async () => {
+    await page.evaluate(() => {
+      document.querySelector('.react-joyride__overlay')?.setAttribute('style', 'z-index: 1 !important');
+    });
     await page.getByRole('button', { name: 'Search', exact: true }).click();
   });
 
@@ -108,6 +110,9 @@ test('Finding a patient tutorial', async ({ page }) => {
   });
 
   await test.step('And I click the `Close Search Panel` button', async () => {
+    await page.evaluate(() => {
+      document.querySelector('.react-joyride__overlay')?.setAttribute('style', 'z-index: 1 !important');
+    });
     await page.getByRole('button', { name: 'Close Search Panel' }).click();
   });
 

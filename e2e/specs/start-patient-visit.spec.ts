@@ -93,6 +93,9 @@ test('Starting a patient visit tutorial', async ({ page }) => {
   });
 
   await test.step('And I click the `Start a visit` button', async () => {
+    await page.evaluate(() => {
+      document.querySelector('.react-joyride__overlay')?.setAttribute('style', 'z-index: 1 !important');
+    });
     await page.getByRole('button', { name: 'Start a visit' }).click();
   });
 

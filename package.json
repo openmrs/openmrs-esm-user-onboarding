@@ -54,7 +54,7 @@
     "rxjs": "6.x"
   },
   "devDependencies": {
-    "@openmrs/esm-framework": "next",
+    "@openmrs/esm-framework": "^6.2.1-pre.2752",
     "@openmrs/esm-styleguide": "next",
     "@playwright/test": "^1.52.0",
     "@swc/cli": "^0.3.12",
@@ -83,7 +83,7 @@
     "i18next-parser": "^9.3.0",
     "jsdom": "^28.0.0",
     "lint-staged": "^15.2.2",
-    "openmrs": "next",
+    "openmrs": "^6.2.1-pre.2752",
     "prettier": "^2.8.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

@@ -7,7 +7,6 @@ test('Basic overview tutorial', async ({ page }) => {
 
   await test.step('When I visit the home page', async () => {
     await homePage.goto();
-    await page.locator('button[aria-label="Dismiss"]')?.click();
   });
 
   await test.step('And I click the `Help` button', async () => {

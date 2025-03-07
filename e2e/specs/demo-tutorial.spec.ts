@@ -53,8 +53,7 @@ test('Demo tutorial', async ({ page }) => {
 
   await test.step('And I click the `Appointments` button', async () => {
     await page.evaluate(() => {
-      const overlay = document.querySelector('.react-joyride__overlay');
-      if (overlay) overlay.remove();
+      document.querySelector('.react-joyride__overlay')?.setAttribute('style', 'z-index: 1 !important');
     });
     await page.getByRole('link', { name: /appointments/i }).click();
   });

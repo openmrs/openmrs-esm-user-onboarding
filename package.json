@@ -53,9 +53,9 @@
     "rxjs": "6.x"
   },
   "devDependencies": {
-    "@openmrs/esm-framework": "^6.2.1-pre.2752",
+    "@openmrs/esm-framework": "next",
     "@openmrs/esm-styleguide": "next",
-    "@playwright/test": "1.44.0",
+    "@playwright/test": "^1.50.1",
     "@swc/cli": "^0.3.12",
     "@swc/core": "^1.3.68",
     "@swc/jest": "^0.2.36",

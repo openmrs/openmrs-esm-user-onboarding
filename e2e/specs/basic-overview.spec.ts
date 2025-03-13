@@ -10,10 +10,7 @@ test('Basic overview tutorial', async ({ page }) => {
   });
 
   await test.step('And I click the `Help` button', async () => {
-    await page
-      .locator('[id="single-spa-application\\:\\@openmrs\\/esm-help-menu-app-page-0"]')
-      .getByRole('button')
-      .click();
+    await homePage.helpButton().click();
   });
 
   await test.step('And I click the `Tutorials` button', async () => {
@@ -44,7 +41,7 @@ test('Basic overview tutorial', async ({ page }) => {
   });
 
   await test.step('And I click the `Next` button', async () => {
-    await homePage.nextButton().click({ force: true });
+    await homePage.nextButton().click();
   });
 
   await test.step('Then I should see the second tooltip', async () => {

@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import { type Visit } from '@openmrs/esm-framework';
-import { generateRandomPatient, deletePatient, type Patient, startVisit, endVisit } from '../commands';
+import { generateRandomPatient, deletePatient, startVisit, endVisit } from '../commands';
+import { type Patient } from '../types';
 import { HomePage } from '../pages';
 import { test } from '../core';
 
@@ -20,10 +21,7 @@ test('Recording vitals tutorial', async ({ page }) => {
   });
 
   await test.step('And I click the `Help` button', async () => {
-    await page
-      .locator('[id="single-spa-application\\:\\@openmrs\\/esm-help-menu-app-page-0"]')
-      .getByRole('button')
-      .click();
+    await homePage.helpButton().click();
   });
 
   await test.step('And I click the `Tutorials` button', async () => {
@@ -97,31 +95,13 @@ test('Recording vitals tutorial', async ({ page }) => {
     await expect(page.getByRole('heading', { name: /vitals form/i, level: 4 })).toBeVisible();
   });
 
-  await test.step('When I fill `37` as the temperature', async () => {
+  await test.step('And I fill in the Vitals form', async () => {
     await page.getByRole('spinbutton', { name: /temperature/i }).fill('37');
-  });
-
-  await test.step('And I fill `120` as the systolic', async () => {
     await page.getByRole('spinbutton', { name: /systolic/i }).fill('120');
-  });
-
-  await test.step('And I fill `100` as the diastolic', async () => {
     await page.getByRole('spinbutton', { name: /diastolic/i }).fill('100');
-  });
-
-  await test.step('And I fill `65` as the pulse', async () => {
     await page.getByRole('spinbutton', { name: /pulse/i }).fill('65');
-  });
-
-  await test.step('And I fill `16` as the respiration rate', async () => {
     await page.getByRole('spinbutton', { name: /respiration rate/i }).fill('16');
-  });
-
-  await test.step('And I fill `98` as the oxygen saturation', async () => {
     await page.getByRole('spinbutton', { name: /oxygen saturation/i }).fill('98');
-  });
-
-  await test.step('And I add additional notes', async () => {
     await page.getByPlaceholder(/type any additional notes here/i).fill('Test notes');
   });
 

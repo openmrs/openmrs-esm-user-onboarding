@@ -5,7 +5,6 @@ import { type TutorialContext } from './types';
 import CustomTooltip from './tooltip/tooltip.component';
 
 const RootComponent: React.FC = () => {
-
   const [showTutorial, setShowTutorial] = React.useState(false);
   const [steps, setSteps] = React.useState<Step[]>([]);
   const [stepIndex, setStepIndex] = React.useState(0);
@@ -32,7 +31,7 @@ const RootComponent: React.FC = () => {
     if (step.data && step.data.autoNextOn) {
       handleAutoNext(step.data.autoNextOn, index);
     }
-  }
+  };
 
   const waitForTarget = (index: number) => {
     setShowTutorial(false);
@@ -43,7 +42,6 @@ const RootComponent: React.FC = () => {
         clearTimeout(interval);
       }
     }, 1000);
-
   };
 
   const handleAutoNext = (query: string, index: number) => {
@@ -54,15 +52,15 @@ const RootComponent: React.FC = () => {
         clearTimeout(interval);
       }
     }, 1000);
-  }
+  };
 
-const currentStep = steps[stepIndex];
-const overlayStyles = currentStep?.disableOverlay
-  ? { backgroundColor: 'transparent' }
-  : { height: document.body.scrollHeight };
+  const currentStep = steps[stepIndex];
+  const overlayStyles = currentStep?.disableOverlay
+    ? { backgroundColor: 'transparent' }
+    : { height: document.body.scrollHeight };
 
   const handleJoyrideCallback = (data: CallBackProps) => {
-    const {action, index, origin, status, type} = data;
+    const { action, index, origin, status, type } = data;
     switch (type) {
       case EVENTS.TOUR_START:
         // The target not found event is not triggered when the tour starts
@@ -78,31 +76,31 @@ const overlayStyles = currentStep?.disableOverlay
         waitForTarget(index);
         break;
       case EVENTS.TOUR_END:
-        setStepIndex(0)
+        setStepIndex(0);
         setShowTutorial(false);
         break;
     }
-  }
+  };
 
   return (
     <ReactJoyride
+      callback={handleJoyrideCallback}
       continuous
-      debug
+      debug={false}
+      disableOverlayClose={true}
       disableScrolling
+      run={showTutorial}
       showProgress
       showSkipButton
-      steps={steps}
       stepIndex={stepIndex}
-      run={showTutorial}
-      callback={handleJoyrideCallback}
-      disableOverlayClose={true}
-      tooltipComponent={(props) => <CustomTooltip {...props} step={steps[props.index]} totalSteps={steps.length} />}
+      steps={steps}
       styles={{
         options: {
           zIndex: 10000,
         },
         overlay: overlayStyles,
       }}
+      tooltipComponent={(props) => <CustomTooltip {...props} step={steps[props.index]} totalSteps={steps.length} />}
     />
   );
 };

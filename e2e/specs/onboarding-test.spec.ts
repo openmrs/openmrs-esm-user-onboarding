@@ -68,26 +68,6 @@ test('Basic Walkthrough', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('And I click the next button', async () => {
-    await page.getByLabel('Next', { exact: true }).click();
-  });
-
-  await test.step('Then I should see the active visits Joyride tooltip', async () => {
-    await expect(
-      page.getByText('This table displays active visits. Here you can see all the ongoing patient visits.'),
-    ).toBeVisible();
-  });
-
-  await test.step('And I click the next button', async () => {
-    await page.getByLabel('Next', { exact: true }).click();
-  });
-
-  await test.step('And I should see the appointments table Joyride tooltip', async () => {
-    await expect(
-      page.getByText('This table shows appointments. View and manage patient appointments from this section.'),
-    ).toBeVisible();
-  });
-
   await test.step('And I click the finish button', async () => {
     await page.getByLabel('Last').click();
   });

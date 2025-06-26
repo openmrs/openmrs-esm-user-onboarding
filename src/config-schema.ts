@@ -12,11 +12,14 @@ export const configSchema = {
     _default: [
       {
         title: 'Basic Overview',
-        description: 'This guide provides a quick look at the essential components that shape the layout and user experience of our homepage.',
-        steps: [{
-          target: '[aria-label="OpenMRS"]',
-          content: 'Welcome to OpenMRS! This is the main dashboard where you can navigate to various features of the system.',
-        },
+        description:
+          'This guide provides a quick look at the essential components that shape the layout and user experience of our homepage.',
+        steps: [
+          {
+            target: '[aria-label="OpenMRS"]',
+            content:
+              'Welcome to OpenMRS! This is the main dashboard where you can navigate to various features of the system.',
+          },
           {
             target: '[name="SearchPatientIcon"]',
             content: 'This is the search icon. Use it to find patients in the system quickly.',
@@ -28,14 +31,6 @@ export const configSchema = {
           {
             target: '[name="User"]',
             content: 'The user icon. Click here to change your user preferences and settings.',
-          },
-          {
-            target: '[data-extension-id="active-visits-widget"]',
-            content: 'This table displays active visits. Here you can see all the ongoing patient visits.',
-          },
-          {
-            target: '[data-extension-id="home-appointments"]',
-            content: 'This table shows appointments. View and manage patient appointments from this section.',
           },
         ],
       },
@@ -107,7 +102,7 @@ export const configSchema = {
             target: '[data-testid="floatingSearchResultsContainer"]',
             content: 'Click on the patient you want to go to their patient chart.',
             spotlightClicks: true,
-            disableOverlay : true,
+            disableOverlay: true,
             placement: 'left',
             hideNextButton: true,
             hideBackButton: true,
@@ -118,7 +113,8 @@ export const configSchema = {
           {
             target: 'body',
             title: 'Patient Chart',
-            content: "Welcome to the Patient Chart View! Here, you can quickly see everything about your patient's health history, visits, medications, allergies, and test results—all in one place. It's designed to help you provide the best care efficiently.",
+            content:
+              "Welcome to the Patient Chart View! Here, you can quickly see everything about your patient's health history, visits, medications, allergies, and test results—all in one place. It's designed to help you provide the best care efficiently.",
             spotlightClicks: true,
             hideBackButton: true,
             placement: 'center',
@@ -161,7 +157,8 @@ export const configSchema = {
       },
       {
         title: 'Finding a Patient',
-        description: 'Learn how to find a patient in the system using basic and advanced search features, including the use of filters to refine results.',
+        description:
+          'Learn how to find a patient in the system using basic and advanced search features, including the use of filters to refine results.',
         steps: [
           {
             target: '[data-testid="searchPatientIcon"]',
@@ -379,7 +376,7 @@ export const configSchema = {
       {
         title: 'Recording Vitals',
         description:
-          'Learn how to record a patient\'s vitals and biometric data, and review the records through the patient chart.',
+          "Learn how to record a patient's vitals and biometric data, and review the records through the patient chart.",
         steps: [
           {
             target: '[data-testid="searchPatientIcon"]',
@@ -388,8 +385,8 @@ export const configSchema = {
             spotlightClicks: true,
             hideNextButton: true,
             data: {
-               autoNextOn: '[data-testid="patientSearchBar"]'
-              },
+              autoNextOn: '[data-testid="patientSearchBar"]',
+            },
           },
           {
             target: '[data-testid="patientSearchBar"]',
@@ -399,7 +396,7 @@ export const configSchema = {
             hideBackButton: true,
             spotlightClicks: true,
             data: {
-              autoNextOn: '[data-testid="floatingSearchResultsContainer"]'
+              autoNextOn: '[data-testid="floatingSearchResultsContainer"]',
             },
           },
           {
@@ -436,7 +433,7 @@ export const configSchema = {
             hideBackButton: true,
             hideNextButton: true,
             data: {
-              autoNextOn: '.omrs-snackbars-container div'
+              autoNextOn: '.omrs-snackbars-container div',
             },
           },
           {
@@ -452,7 +449,7 @@ export const configSchema = {
             hideNextButton: true,
             spotlightClicks: true,
             data: {
-              autoNextOn: '[data-extension-slot-name="patient-chart-vitals-biometrics-dashboard-slot"]'
+              autoNextOn: '[data-extension-slot-name="patient-chart-vitals-biometrics-dashboard-slot"]',
             },
           },
           {
@@ -476,8 +473,7 @@ export const configSchema = {
       },
       {
         title: 'Starting a Patient Visit',
-        description:
-          'Learn how to start a visit for a patient.',
+        description: 'Learn how to start a visit for a patient.',
         steps: [
           {
             target: '[data-testid="searchPatientIcon"]',
@@ -608,7 +604,7 @@ export const configSchema = {
               'Great job! You found the allergies section! This is the end of the tutorial. Feel free to explore the system on your own or check out the other tutorials.',
           },
         ],
-      }
+      },
     ],
   },
 };

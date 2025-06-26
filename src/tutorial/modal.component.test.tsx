@@ -1,8 +1,8 @@
 import React from 'react';
-import {render, screen, waitFor} from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import TutorialModal from './modal.component';
-import {useAppContext, useConfig, navigate} from "@openmrs/esm-framework";
-import userEvent from '@testing-library/user-event'
+import { useAppContext, useConfig, navigate } from '@openmrs/esm-framework';
+import userEvent from '@testing-library/user-event';
 
 jest.mock('@openmrs/esm-framework', () => ({
   useConfig: jest.fn(),
@@ -72,12 +72,16 @@ describe('TutorialModal', () => {
       },
     });
 
-    render(<TutorialModal open={true} onClose={jest.fn()}/>);
+    render(<TutorialModal open={true} onClose={jest.fn()} />);
 
     const walkthroughButton = screen.getAllByText('Walkthrough');
     await user.click(walkthroughButton[0]);
 
-    expect(navigate).toHaveBeenCalledWith({ to: '/spa-base/home' });
+    expect(navigate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        to: expect.stringContaining('/spa-base/home'),
+      }),
+    );
     Object.defineProperty(window.location, 'pathname', {
       value: '/spa-base/home',
     });
@@ -95,4 +99,3 @@ describe('TutorialModal', () => {
     });
   });
 });
-

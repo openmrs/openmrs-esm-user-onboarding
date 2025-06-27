@@ -1,10 +1,10 @@
 import { Type } from '@openmrs/esm-framework';
 
 export const configSchema = {
-  showTutorial: {
+  enableTutorials: {
     _type: Type.Boolean,
     _default: false,
-    _description: 'Enable or Disable Onboarding Walkthrough',
+    _description: 'Enable or Disable Onboarding Walkthroughs',
   },
   tutorialData: {
     _type: Type.Array,
@@ -614,7 +614,7 @@ export const configSchema = {
 };
 
 export type Config = {
-  showTutorial: boolean;
+  enableTutorials: boolean;
   tutorialData: {
     title: string;
     description: string;

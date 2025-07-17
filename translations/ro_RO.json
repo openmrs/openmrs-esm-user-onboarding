@@ -1,9 +1,9 @@
 {
-  "back": "Back",
-  "finish": "Finish",
-  "modalDescription": "Find walkthroughs and video tutorials on some of the core features of OpenMRS.",
-  "next": "Next",
-  "tutorial": "Tutorials",
-  "walkthrough": "Walkthrough",
-  "welcome": "Welcome to OpenMRS!"
+  "back": "Înapoi",
+  "finish": "Finalizare",
+  "modalDescription": "Găsește ghiduri pas cu pas și tutoriale video despre unele dintre funcționalitățile de bază ale OpenMRS.",
+  "next": "Următorul",
+  "tutorial": "Tutoriale",
+  "walkthrough": "Ghid pas cu pas",
+  "welcome": "Bine ai venit în OpenMRS!"
 }

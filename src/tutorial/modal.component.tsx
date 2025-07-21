@@ -1,10 +1,10 @@
 import React from 'react';
+import { ArrowRight } from '@carbon/react/icons';
+import { ModalHeader, ModalBody, Link } from '@carbon/react';
 import { useTranslation } from 'react-i18next';
 import { useConfig, useAppContext, navigate } from '@openmrs/esm-framework';
-import styles from './styles.scss';
 import { type TutorialContext } from '../types';
-import { ModalHeader, ModalBody, Link } from '@carbon/react';
-import { ArrowRight } from '@carbon/react/icons';
+import styles from './styles.scss';
 
 const TutorialModal = ({ open, onClose }) => {
   const { t } = useTranslation();
@@ -14,7 +14,7 @@ const TutorialModal = ({ open, onClose }) => {
 
   const handleWalkthroughClick = (index: number) => {
     const basePath = window.getOpenmrsSpaBase();
-    const homePath = `${basePath}home`;
+    const homePath = `${basePath}home/service-queues`;
     const currentPath = window.location.pathname;
     const tutorial = tutorials[index];
 
@@ -51,8 +51,11 @@ const TutorialModal = ({ open, onClose }) => {
             <li className={styles.tutorialItem} key={index}>
               <h3 className={styles.tutorialTitle}>{tutorial.title}</h3>
               <p className={styles.tutorialDescription}>{tutorial.description}</p>
-              <Link onClick={() => handleWalkthroughClick(index)} className={styles.tutorialLink} renderIcon={() => 
-                <ArrowRight aria-label="Arrow Right" />}>
+              <Link
+                onClick={() => handleWalkthroughClick(index)}
+                className={styles.tutorialLink}
+                renderIcon={() => <ArrowRight aria-label="Arrow Right" />}
+              >
                 {t('walkthrough', 'Walkthrough')}
               </Link>
             </li>

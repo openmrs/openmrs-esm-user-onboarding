@@ -1,4 +1,4 @@
-import {type Step} from "react-joyride";
+import { type Step } from 'react-joyride';
 
 export interface Tutorial {
   title: string;
@@ -11,5 +11,5 @@ export interface TutorialContext {
   steps: Step[];
   setShowTutorial: (showTutorial: boolean) => void;
   setSteps: (steps: Step[]) => void;
+  [key: string | number | symbol]: unknown;
 }
-

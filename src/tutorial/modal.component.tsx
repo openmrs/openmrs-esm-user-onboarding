@@ -1,7 +1,7 @@
 import React from 'react';
+import { ArrowRight } from '@carbon/react/icons';
 import { ModalHeader, ModalBody, Link } from '@carbon/react';
 import { useTranslation } from 'react-i18next';
-import { ArrowRight } from '@carbon/react/icons';
 import { useConfig, useAppContext, navigate } from '@openmrs/esm-framework';
 import { type TutorialContext } from '../types';
 import styles from './styles.scss';

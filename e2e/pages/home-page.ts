@@ -4,6 +4,6 @@ export class HomePage {
   constructor(readonly page: Page) {}
 
   async goto() {
-    await this.page.goto('home/service-queues');
+    await this.page.goto('/openmrs/spa/home');
   }
 }

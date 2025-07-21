@@ -1,8 +1,8 @@
 import React from 'react';
-import {render, screen, waitFor} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { render, screen, waitFor } from '@testing-library/react';
+import { useAppContext, useConfig, navigate } from '@openmrs/esm-framework';
 import TutorialModal from './modal.component';
-import {useAppContext, useConfig, navigate} from "@openmrs/esm-framework";
-import userEvent from '@testing-library/user-event'
 
 jest.mock('@openmrs/esm-framework', () => ({
   useConfig: jest.fn(),
@@ -57,7 +57,6 @@ mockUseAppContext.mockReturnValue({
 
 describe('TutorialModal', () => {
   afterEach(() => {
-    jest.clearAllMocks();
     delete window.location;
     window.location = { pathname: '/patient-registration' } as any;
   });
@@ -72,14 +71,18 @@ describe('TutorialModal', () => {
       },
     });
 
-    render(<TutorialModal open={true} onClose={jest.fn()}/>);
+    render(<TutorialModal open={true} onClose={jest.fn()} />);
 
     const walkthroughButton = screen.getAllByText('Walkthrough');
     await user.click(walkthroughButton[0]);
 
-    expect(navigate).toHaveBeenCalledWith({ to: '/spa-base/home' });
+    expect(mockNavigate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        to: expect.stringContaining('/spa-base/home/service-queues'),
+      }),
+    );
     Object.defineProperty(window.location, 'pathname', {
-      value: '/spa-base/home',
+      value: '/spa-base/home/service-queues',
     });
 
     await waitFor(() => expect(setSteps).toHaveBeenCalledWith(mockTutorialData[0].steps));
@@ -95,4 +98,3 @@ describe('TutorialModal', () => {
     });
   });
 });
-

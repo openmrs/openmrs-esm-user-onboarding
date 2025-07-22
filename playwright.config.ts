@@ -1,4 +1,4 @@
-import { devices, PlaywrightTestConfig } from '@playwright/test';
+import { devices, type PlaywrightTestConfig } from '@playwright/test';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -12,13 +12,10 @@ const config: PlaywrightTestConfig = {
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: 0,
-  outputDir: "../test-results/results",
+  outputDir: '../test-results/results',
   reporter: process.env.CI
-    ? [
-      ["junit", { outputFile: "results.xml" }],
-      ["html"],
-    ]
-    : [["html", { outputFolder: "./../test-results/report" }]],
+    ? [['junit', { outputFile: 'results.xml' }], ['html']]
+    : [['html', { outputFolder: './../test-results/report' }]],
   globalSetup: require.resolve('./e2e/core/global-setup'),
   use: {
     baseURL: `${process.env.E2E_BASE_URL}/spa/`,

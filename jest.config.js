@@ -15,7 +15,7 @@ module.exports = {
   transform: {
     '^.+\\.[jt]sx?$': ['@swc/jest'],
   },
-  transformIgnorePatterns: ['/node_modules/(?!@openmrs|.+\\.pnp\\.[^\\/]+$)'],
+  transformIgnorePatterns: ['/node_modules/(?!@openmrs|@carbon/feature-flags|.+\\.pnp\\.[^\\/]+$)'],
   moduleNameMapper: {
     '@openmrs/esm-framework': '@openmrs/esm-framework/mock',
     '@openmrs/esm-utils': '@openmrs/esm-framework/mock',

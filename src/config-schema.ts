@@ -102,7 +102,7 @@ export const configSchema = {
             target: '[data-testid="floatingSearchResultsContainer"]',
             content: 'Click on the patient you want to go to their patient chart.',
             spotlightClicks: true,
-            disableOverlay: true,
+            disableOverlay: false,
             placement: 'left',
             hideNextButton: true,
             hideBackButton: true,
@@ -502,7 +502,7 @@ export const configSchema = {
             content:
               'Click on the patient whose chart you want to access. Make sure to select a patient without the "Active visit" label, as we will start a visit in the next steps of the tutorial.',
             spotlightClicks: true,
-            disableOverlay: true,
+            disableOverlay: false,
             placement: 'left',
             hideNextButton: true,
             hideBackButton: true,

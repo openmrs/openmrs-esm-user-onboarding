@@ -231,11 +231,11 @@ export const configSchema = {
             spotlightClicks: true,
             hideNextButton: true,
             data: {
-              autoNextOn: '[title="All lists"]',
+              autoNextOn: '[data-testid="allListsTab"]',
             },
           },
           {
-            target: '[title="All lists"]',
+            target: '[data-testid="allListsTab"]',
             content: 'Click here to see all the patient lists we have in the system.',
             hideNextButton: true,
             hideBackButton: true,
@@ -268,7 +268,7 @@ export const configSchema = {
             },
           },
           {
-            target: '[data-testid="patientListsTable"]',
+            target: '[data-testid="patientListsTable"]', 
             content:
               'Great! We have successfully created a new patient list. Find and click on the patient list you created to proceed. You can use the search option at the top right if needed.',
             disableOverlay: true,
@@ -282,7 +282,7 @@ export const configSchema = {
           },
           {
             target: '[data-openmrs-role="Patient Empty tile"]',
-            content: "You can see the patient list is empty since we haven't added any patients to the list yet.",
+            content: "You can see the patient list is empty since we haven't added any patients to the list yet. Click on Next to Continue",
             hideBackButton: true,
             disableOverlay: true,
           },
@@ -318,7 +318,7 @@ export const configSchema = {
             hideNextButton: true,
             hideBackButton: true,
             data: {
-              autoNextOn: '[data-extension-slot-name="action-menu-patient-chart-items-slot"]',
+              autoNextOn: '[data-extension-slot-name="action-menu-patient-chart-items-slot"]', //could not find this one
             },
           },
           {
@@ -343,34 +343,9 @@ export const configSchema = {
             hideNextButton: true,
             placement: 'left',
             data: {
-              autoNextOn: '.omrs-snackbars-container div',
+              autoNextOn: '.omrs-snackbars-container div', 
             },
-          },
-          {
-            target: '[aria-label="Close"]',
-            content:
-              "We have successfully added a patient to the patient list. Let's go back to the patient lists by closing the patient chart by clicking here.",
-            spotlightClicks: true,
-            hideBackButton: true,
-            hideNextButton: true,
-            data: {
-              autoNextOn: '[data-testid="patientsTable"]',
-            },
-          },
-          {
-            target: '[data-testid="patientsTable"]',
-            title: 'Patients List',
-            content: 'You can see the added patient on the list of patients.',
-            spotlightClicks: true,
-            hideBackButton: true,
-          },
-          {
-            target: 'body',
-            content:
-              'Congrats! You have now completed the tutorial on creating patient lists and adding patients to the lists.',
-            placement: 'center',
-            hideBackButton: true,
-          },
+          }
         ],
       },
       {

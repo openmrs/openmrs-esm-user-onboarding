@@ -6,7 +6,12 @@ import { useConfig, useAppContext, navigate } from '@openmrs/esm-framework';
 import { type TutorialContext } from '../types';
 import styles from './styles.scss';
 
-const TutorialModal = ({ open, onClose }) => {
+interface TutorialModalProps {
+  open: boolean;
+  onClose: () => void;
+}
+
+const TutorialModal: React.FC<TutorialModalProps> = ({ open, onClose }) => {
   const { t } = useTranslation();
   const config = useConfig();
   const tutorials = config.tutorialData;
@@ -40,7 +45,7 @@ const TutorialModal = ({ open, onClose }) => {
 
   return (
     <React.Fragment>
-      <ModalHeader closeModal={onClose} title={t('tutorial', 'Tutorial')} className={styles.modalHeader}>
+      <ModalHeader closeModal={onClose} title={t('tutorial', 'Tutorial')}>
         <p className={styles.description}>
           {t('modalDescription', 'Find walkthroughs and video tutorials on some of the core features of OpenMRS.')}
         </p>

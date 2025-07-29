@@ -1,16 +1,16 @@
-import React from 'react';
-import ReactJoyride, { ACTIONS, type CallBackProps, EVENTS, type Step } from 'react-joyride';
+import React, { useState } from 'react';
+import ReactJoyride, { ACTIONS, type CallBackProps, EVENTS } from 'react-joyride';
 import { useDefineAppContext } from '@openmrs/esm-framework';
-import { type TutorialContext } from './types';
+import { type TutorialContext, type ExtendedStep } from './types';
 import CustomTooltip from './tooltip/tooltip.component';
 
 const RootComponent: React.FC = () => {
-  const [showTutorial, setShowTutorial] = React.useState(false);
-  const [steps, setSteps] = React.useState<Step[]>([]);
-  const [stepIndex, setStepIndex] = React.useState(0);
+  const [showTutorial, setShowTutorial] = useState(false);
+  const [steps, setSteps] = useState<ExtendedStep[]>([]);
+  const [stepIndex, setStepIndex] = useState(0);
 
   // Set steps with default step options
-  const updateSteps = (newSteps: Step[]) => {
+  const updateSteps = (newSteps: ExtendedStep[]) => {
     setSteps(
       newSteps.map((step) => ({
         ...step,
@@ -39,7 +39,7 @@ const RootComponent: React.FC = () => {
       const targetElement = document.querySelector(steps[index].target as string);
       if (targetElement) {
         setShowTutorial(true);
-        clearTimeout(interval);
+        clearInterval(interval);
       }
     }, 1000);
   };
@@ -49,7 +49,7 @@ const RootComponent: React.FC = () => {
       const targetElement = document.querySelector(query);
       if (targetElement) {
         setStepIndex(index + 1);
-        clearTimeout(interval);
+        clearInterval(interval);
       }
     }, 1000);
   };

@@ -1,6 +1,6 @@
 import { getAsyncLifecycle, defineConfigSchema, getSyncLifecycle } from '@openmrs/esm-framework';
 import { configSchema } from './config-schema';
-import Tutorial from './tutorial/tutorial';
+import Tutorial from './tutorial/tutorial.component';
 
 const moduleName = '@openmrs/esm-user-onboarding-app';
 

@@ -2,16 +2,12 @@ import React from 'react';
 import { Button } from '@carbon/react';
 import { ArrowLeft, ArrowRight, Close } from '@carbon/react/icons';
 import { useTranslation } from 'react-i18next';
+import { type TooltipRenderProps } from 'react-joyride';
+import { type ExtendedStep } from '../types';
 import styles from './tooltip.scss';
 
-interface CustomTooltipProps {
-  continuous: boolean;
-  index: number;
-  step: any;
-  backProps: any;
-  skipProps: any;
-  primaryProps: any;
-  tooltipProps: any;
+interface CustomTooltipProps extends Omit<TooltipRenderProps, 'step'> {
+  step: ExtendedStep;
   totalSteps: number;
 }
 

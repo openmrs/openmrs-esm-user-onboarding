@@ -594,7 +594,7 @@ export type Config = {
       title: string;
       content: string;
       data?: {
-        autoNextOn?: boolean;
+        autoNextOn?: string;
       };
     }[];
   }[];

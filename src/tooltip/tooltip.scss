@@ -1,20 +1,20 @@
-@use '@carbon/styles/scss/spacing';
-@use '@carbon/styles/scss/type';
-@use '@openmrs/esm-styleguide/src/vars' as *;
+@use '@carbon/layout';
+@use '@carbon/type';
+@use '@openmrs/esm-styleguide/src/vars';
 
 .tooltipcontainer {
   background-color: $ui-02;
-  padding: spacing.$spacing-05;
+  padding: layout.$spacing-05;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 360px;
-  border-radius: spacing.$spacing-02;
-  gap: spacing.$spacing-04;
+  max-width: 22.5rem;
+  border-radius: layout.$spacing-02;
+  gap: layout.$spacing-04;
 
   .tooltipheader {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: spacing.$spacing-01;
+    margin-bottom: layout.$spacing-01;
 
   .container {
     display: flex;
@@ -24,11 +24,11 @@
 
   .tooltiptitle {
     @include type.type-style('heading-02');
-    margin-bottom: spacing.$spacing-02;
+    margin-bottom: layout.$spacing-02;
   }
 
   .closeButton {
-    min-height: 16px;
+    min-height: layout.$spacing-05;
     padding: 0;
     align-self: flex-start;
   }
@@ -38,12 +38,12 @@
     color: $color-gray-70;
     @include type.type-style('body-compact-01');
     width: 100%;
-    margin-top: spacing.$spacing-01;
+    margin-top: layout.$spacing-01;
 }
 
 
   .tooltipfooter {
-    margin-top: spacing.$spacing-03;
+    margin-top: layout.$spacing-03;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -55,27 +55,27 @@
 
   .buttonContainer {
     display: flex;
-    gap: spacing.$spacing-03;
+    gap: layout.$spacing-03;
 
   .buttonback,
   .buttonnext {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: spacing.$spacing-02;
-    width: spacing.$spacing-12;
+    padding: layout.$spacing-02;
+    width: layout.$spacing-12;
 
     .arrowLeft,
     .arrowContainer {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-left: spacing.$spacing-02;
+      margin-left: layout.$spacing-02;
     }
 
     .arrowLeft svg {
       fill: $color-blue-60-2 !important;
-      margin-right: spacing.$spacing-02;
+      margin-right: layout.$spacing-02;
     }
   }
 }

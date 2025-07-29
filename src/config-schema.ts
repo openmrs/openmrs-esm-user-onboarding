@@ -231,7 +231,7 @@ export const configSchema = {
             spotlightClicks: true,
             hideNextButton: true,
             data: {
-              autoNextOn: '[data-testid="allListsTab"]',
+              autoNextOn: '[id="all-patient-lists-tab"]',
             },
           },
           {

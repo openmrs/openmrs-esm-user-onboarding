@@ -231,11 +231,11 @@ export const configSchema = {
             spotlightClicks: true,
             hideNextButton: true,
             data: {
-              autoNextOn: '[id="all-patient-lists-tab"]',
+              autoNextOn: '[data-tutorial-target="all-patient-lists-tab"]',
             },
           },
           {
-            target: '[data-testid="allListsTab"]',
+            target: '[data-tutorial-target="all-patient-lists-tab"]',
             content: 'Click here to see all the patient lists we have in the system.',
             hideNextButton: true,
             hideBackButton: true,

@@ -294,11 +294,11 @@ export const configSchema = {
             hideNextButton: true,
             hideBackButton: true,
             data: {
-              autoNextOn: '[data-tutorial-target="paitent-search-bar"]',
+              autoNextOn: '[data-tutorial-target="patient-search-bar"]',
             },
           },
           {
-            target: '[data-tutorial-target="paitent-search-bar"]',
+            target: '[data-tutorial-target="patient-search-bar"]',
             content:
               'Now, enter the name or the ID of the patient here. Some example patient names that you can search for are: John, Smith, Mary.',
             hideNextButton: true,

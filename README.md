@@ -1,6 +1,6 @@
 ![Node.js CI](https://github.com/openmrs/openmrs-esm-template-app/workflows/Node.js%20CI/badge.svg)
 
-New to the Project checkout out ![O3 Developer Documentation](https://openmrs.atlassian.net/wiki/spaces/docs/pages/507576352/O3+Developer+Docs?atlOrigin=eyJpIjoiOGUwMGU1YzVmNjlmNGU4OGI4NzA0ZmEwMDY1NzNhOWQiLCJwIjoiYyJ9)
+New to the Project checkout out ![O3 Developer Documentation](https://openmrs.atlassian.net/wiki/x/IABBHg)
 
 # OpenMRS ESM User Onboarding App
 

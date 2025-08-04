@@ -78,28 +78,28 @@ export const configSchema = {
           'Patient chart is the main point of interaction between healthcare professionals and patient data, where you can manage everything related to a single patient.',
         steps: [
           {
-            target: '[data-testid="searchPatientIcon"]',
+            target: '[data-tutorial-target="search-patient-icon"]',
             content:
               'To access the patient chart, first, you need to select a patient. To start, click here to open the search box so that we can search for a patient.',
             spotlightClicks: true,
             hideNextButton: true,
             data: {
-              autoNextOn: '[data-testid="patientSearchBar"]',
+              autoNextOn: '[data-tutorial-target="patient-search-bar"]',
             },
           },
           {
-            target: '[data-testid="patientSearchBar"]',
+            target: '[data-tutorial-target="patient-search-bar"]',
             content:
               'Now, enter the name or the ID of the patient here. Some example patient names that you can search for are: John, Smith, Mary.',
             hideNextButton: true,
             hideBackButton: true,
             spotlightClicks: true,
             data: {
-              autoNextOn: '[data-testid="floatingSearchResultsContainer"]',
+              autoNextOn: '[data-tutorial-target="floating-search-results-container"]',
             },
           },
           {
-            target: '[data-testid="floatingSearchResultsContainer"]',
+            target: '[data-tutorial-target="floating-search-results-container"]',
             content: 'Click on the patient you want to go to their patient chart.',
             spotlightClicks: true,
             disableOverlay: false,
@@ -161,23 +161,23 @@ export const configSchema = {
           'Learn how to find a patient in the system using basic and advanced search features, including the use of filters to refine results.',
         steps: [
           {
-            target: '[data-testid="searchPatientIcon"]',
+            target: '[data-tutorial-target="search-patient-icon"]',
             content: 'Click on the search icon to open the search box so that we can search for a patient.',
             spotlightClicks: true,
             hideNextButton: true,
             data: {
-              autoNextOn: '[data-testid="patientSearchBar"]',
+              autoNextOn: '[data-tutorial-target="patient-search-bar"]',
             },
           },
           {
-            target: '[data-testid="patientSearchBar"]',
+            target: '[data-tutorial-target="patient-search-bar"]',
             content:
               'Now, enter the name of the patient here. If you know the patient ID, you can use that as well. You will see the results if the patient you entered exists in the system. Some example patient names that you can search for are: John, Smith, Mary.',
             hideNextButton: true,
             hideBackButton: true,
             spotlightClicks: true,
             data: {
-              autoNextOn: '[data-testid="floatingSearchResultsContainer"]',
+              autoNextOn: '[data-tutorial-target="floating-search-results-container"]',
             },
           },
           {
@@ -207,7 +207,7 @@ export const configSchema = {
             placement: 'right',
           },
           {
-            target: '[data-testid="closeSearchIcon"]',
+            target: '[data-tutorial-target="close-search-icon"]',
             content: 'That’s the end of the tutorial. Click on the close button to go back to the home page.',
             spotlightClicks: true,
             placement: 'bottom',
@@ -318,7 +318,7 @@ export const configSchema = {
             hideNextButton: true,
             hideBackButton: true,
             data: {
-              autoNextOn: '[data-extension-slot-name="action-menu-patient-chart-items-slot"]', //could not find this one
+              autoNextOn: '[data-extension-slot-name="action-menu-patient-chart-items-slot"]',
             },
           },
           {
@@ -354,28 +354,28 @@ export const configSchema = {
           "Learn how to record a patient's vitals and biometric data, and review the records through the patient chart.",
         steps: [
           {
-            target: '[data-testid="searchPatientIcon"]',
+            target: '[data-tutorial-target="search-patient-icon"]',
             content:
               'To capture the vitals of a patient, you need to start by going to the patient chart view of the respective patient. Click on the search icon to open the search box so that you can search for the patient.',
             spotlightClicks: true,
             hideNextButton: true,
             data: {
-              autoNextOn: '[data-testid="patientSearchBar"]',
+              autoNextOn: '[data-tutorial-target="patient-search-bar"]',
             },
           },
           {
-            target: '[data-testid="patientSearchBar"]',
+            target: '[data-tutorial-target="patient-search-bar"]',
             content:
               'Now, enter the name or the ID of the patient here. Some example patient names you can search for are: John, Smith, Mary.',
             hideNextButton: true,
             hideBackButton: true,
             spotlightClicks: true,
             data: {
-              autoNextOn: '[data-testid="floatingSearchResultsContainer"]',
+              autoNextOn: '[data-tutorial-target="floating-search-results-container"]',
             },
           },
           {
-            target: '[data-testid="floatingSearchResultsContainer"]',
+            target: '[data-tutorial-target="floating-search-results-container"]',
             content: 'Click on the patient to go to their patient chart.',
             placement: 'left',
             spotlightClicks: true,
@@ -451,29 +451,29 @@ export const configSchema = {
         description: 'Learn how to start a visit for a patient.',
         steps: [
           {
-            target: '[data-testid="searchPatientIcon"]',
+            target: '[data-tutorial-target="search-patient-icon"]',
             content:
               'To fill out any forms or encounters of a patient, you have to start a visit. To start a patient visit, first you need to go to the patient chart view of the respective patient. Click on the search icon to open the search box so that we can search for the patient. ',
             disableBeacon: true,
             spotlightClicks: true,
             hideNextButton: true,
             data: {
-              autoNextOn: '[data-testid="patientSearchBar"]',
+              autoNextOn: '[data-tutorial-target="patient-search-bar"]',
             },
           },
           {
-            target: '[data-testid="patientSearchBar"]',
+            target: '[data-tutorial-target="patient-search-bar"]',
             content:
               'Now, enter the name or the ID of the patient here. Some example patient names that you can search for are: John, Smith, Mary.',
             hideNextButton: true,
             hideBackButton: true,
             spotlightClicks: true,
             data: {
-              autoNextOn: '[data-testid="floatingSearchResultsContainer"]',
+              autoNextOn: '[data-tutorial-target="floating-search-results-container"]',
             },
           },
           {
-            target: '[data-testid="floatingSearchResultsContainer"]',
+            target: '[data-tutorial-target="floating-search-results-container"]',
             content:
               'Click on the patient whose chart you want to access. Make sure to select a patient without the "Active visit" label, as we will start a visit in the next steps of the tutorial.',
             spotlightClicks: true,

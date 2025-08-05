@@ -166,28 +166,18 @@ export const configSchema = {
             spotlightClicks: true,
             hideNextButton: true,
             data: {
-              autoNextOn: '[data-tutorial-target="patient-search-bar"]',
-            },
-          },
-          {
-            target: '[data-tutorial-target="patient-search-bar"]',
-            content:
-              'Now, enter the name of the patient here. If you know the patient ID, you can use that as well. You will see the results if the patient you entered exists in the system. Some example patient names that you can search for are: John, Smith, Mary.',
-            hideNextButton: true,
-            hideBackButton: true,
-            spotlightClicks: true,
-            data: {
-              autoNextOn: '[data-tutorial-target="floating-search-results-container"]',
+              autoNextOn: 'button[type="submit"]',
             },
           },
           {
             target: 'button[type="submit"]',
             content:
-              'If there are a lot of patients in the system, you may need additional fields to search other than the name. Also, the patient you are looking for may not be displayed in the top results if there are multiple patients with the same name. In these scenarios, you can click here to open the advanced search.',
+              'Now enter a name in input field, and If there are a lot of patients in the system, you may need additional fields to search other than the name. Also, the patient you are looking for may not be displayed in the top results if there are multiple patients with the same name. In these scenarios, you can click here to open the advanced search.',
             spotlightClicks: true,
             placement: 'bottom',
             hideNextButton: true,
             hideBackButton: true,
+            disableOverlay:false,
             data: {
               autoNextOn: '[data-openmrs-role="Refine Search"]',
             },

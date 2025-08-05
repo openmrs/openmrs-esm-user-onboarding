@@ -177,7 +177,7 @@ export const configSchema = {
             placement: 'bottom',
             hideNextButton: true,
             hideBackButton: true,
-            disableOverlay:false,
+            disableOverlay:true,
             data: {
               autoNextOn: '[data-openmrs-role="Refine Search"]',
             },

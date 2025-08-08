@@ -18,19 +18,19 @@ export const configSchema = {
           {
             target: '[aria-label="OpenMRS"]',
             content:
-              'Welcome to OpenMRS! This is the main dashboard where you can navigate to various features of the system.',
+              'Welcome to <strong>OpenMRS</strong>! This is the main dashboard where you can navigate to various features of the system.',
           },
           {
             target: '[name="SearchPatientIcon"]',
-            content: 'This is the search icon. Use it to find patients in the system quickly.',
+            content: 'This is the <strong>search icon</strong>. Use it to find patients in the system quickly.',
           },
           {
             target: '[name="AddPatientIcon"]',
-            content: 'This is the add patient icon. Click here to register a new patient into the system.',
+            content: 'This is the <strong>add patient icon</strong>. Click here to register a new patient into the system.',
           },
           {
             target: '[name="User"]',
-            content: 'The user icon. Click here to change your user preferences and settings.',
+            content: 'The <strong>user icon</strong>. Click here to change your user preferences and settings.',
           },
         ],
       },

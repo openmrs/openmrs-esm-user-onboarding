@@ -91,12 +91,9 @@ export const configSchema = {
             target: '[data-tutorial-target="patient-search-bar"]',
             content:
               'Now, enter the name or the ID of the patient here. Some example patient names that you can search for are: John, Smith, Mary.',
-            hideNextButton: true,
+            hideNextButton: false,
             hideBackButton: true,
             spotlightClicks: true,
-            data: {
-              autoNextOn: '[data-tutorial-target="floating-search-results-container"]',
-            },
           },
           {
             target: '[data-tutorial-target="floating-search-results-container"]',
@@ -173,12 +170,9 @@ export const configSchema = {
             target: '[data-tutorial-target="patient-search-bar"]',
             content:
               'Now, enter the name of the patient here. If you know the patient ID, you can use that as well. You will see the results if the patient you entered exists in the system. Some example patient names that you can search for are: John, Smith, Mary.',
-            hideNextButton: true,
+            hideNextButton: false,
             hideBackButton: true,
             spotlightClicks: true,
-            data: {
-              autoNextOn: '[data-tutorial-target="floating-search-results-container"]',
-            },
           },
           {
             target: 'button[type="submit"]',
@@ -367,12 +361,9 @@ export const configSchema = {
             target: '[data-tutorial-target="patient-search-bar"]',
             content:
               'Now, enter the name or the ID of the patient here. Some example patient names you can search for are: John, Smith, Mary.',
-            hideNextButton: true,
+            hideNextButton: false,
             hideBackButton: true,
             spotlightClicks: true,
-            data: {
-              autoNextOn: '[data-tutorial-target="floating-search-results-container"]',
-            },
           },
           {
             target: '[data-tutorial-target="floating-search-results-container"]',
@@ -465,12 +456,10 @@ export const configSchema = {
             target: '[data-tutorial-target="patient-search-bar"]',
             content:
               'Now, enter the name or the ID of the patient here. Some example patient names that you can search for are: John, Smith, Mary.',
-            hideNextButton: true,
+            hideNextButton: false,
             hideBackButton: true,
             spotlightClicks: true,
-            data: {
-              autoNextOn: '[data-tutorial-target="floating-search-results-container"]',
-            },
+
           },
           {
             target: '[data-tutorial-target="floating-search-results-container"]',

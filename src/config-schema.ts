@@ -175,9 +175,17 @@ export const configSchema = {
             spotlightClicks: true,
           },
           {
+            target: '[data-tutorial-target="floating-search-results-container"]',
+            content: 'If there are a lot of patients in the system or you did not find a patient, you may need additional fields to search other than the name. which is the advanced search tools click on next.',
+            spotlightClicks: false,
+            disableOverlay: false,
+            hideNextButton: false,
+            hideBackButton: true,
+          },
+          {
             target: 'button[type="submit"]',
             content:
-              'If there are a lot of patients in the system, you may need additional fields to search other than the name. Also, the patient you are looking for may not be displayed in the top results if there are multiple patients with the same name. In these scenarios, you can click here to open the advanced search.',
+              'Also, the patient you are looking for may not be displayed in the top results if there are multiple patients with the same name. In these scenarios, you can click here to open the advanced search.',
             spotlightClicks: true,
             placement: 'bottom',
             hideNextButton: true,

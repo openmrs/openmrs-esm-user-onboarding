@@ -231,17 +231,6 @@ export const configSchema = {
             spotlightClicks: true,
             hideNextButton: true,
             data: {
-              autoNextOn: '[data-tutorial-target="all-patient-lists-tab"]',
-            },
-          },
-          {
-            target: '[data-tutorial-target="all-patient-lists-tab"]',
-            content: 'Click here to see all the patient lists we have in the system.',
-            hideNextButton: true,
-            hideBackButton: true,
-            spotlightClicks: true,
-            spotlightPadding: 20,
-            data: {
               autoNextOn: '[data-openmrs-role="New List"]',
             },
           },
@@ -253,11 +242,11 @@ export const configSchema = {
             hideNextButton: true,
             hideBackButton: true,
             data: {
-              autoNextOn: '[data-openmrs-role="Patient List Form"]',
+              autoNextOn: '[data-tutorial-target="patient-list-form"]',
             },
           },
           {
-            target: '[data-openmrs-role="Patient List Form"]',
+            target: '[data-tutorial-target="patient-list-form"]',
             content: 'Enter the necessary details and click on "Create List" to create the list.',
             spotlightClicks: true,
             hideBackButton: true,
@@ -265,6 +254,17 @@ export const configSchema = {
             placement: 'left',
             data: {
               autoNextOn: '.omrs-snackbars-container div',
+            },
+          },
+          {
+            target: '[data-tutorial-target="all-patient-lists-tab"]',
+            content: 'Click here to see all the patient lists we have in the system.',
+            hideNextButton: true,
+            hideBackButton: true,
+            spotlightClicks: true,
+            spotlightPadding: 20,
+            data: {
+              autoNextOn: '[data-tutorial-target="patient-lists-table"]',
             },
           },
           {
@@ -301,19 +301,15 @@ export const configSchema = {
             target: '[data-tutorial-target="patient-search-bar"]',
             content:
               'Now, enter the name or the ID of the patient here. Some example patient names that you can search for are: John, Smith, Mary.',
-            hideNextButton: true,
+            hideNextButton: false,
             hideBackButton: true,
             spotlightClicks: true,
-            data: {
-              autoNextOn: '[data-tutorial-target="floating-search-results-container"]',
-            },
           },
           {
             target: '[data-tutorial-target="floating-search-results-container"]',
             content:
               'Click on the patient to go to the patient chart, where we can add the patient to our newly created list.',
             spotlightClicks: true,
-            disableOverlay: true,
             placement: 'left',
             hideNextButton: true,
             hideBackButton: true,
@@ -323,9 +319,9 @@ export const configSchema = {
           },
           {
             target: '#custom-actions-overflow-menu-trigger',
-            content: 'Click on "Action" and select "Add to List" from the drop-down menu.',
+            content: 'Click on "Actions" and select "Add to List" from the drop-down menu.',
             disableOverlay: true,
-            placement: 'right',
+            placement: 'bottom',
             spotlightClicks: true,
             hideBackButton: true,
             hideNextButton: true,

@@ -176,7 +176,7 @@ export const configSchema = {
           },
           {
             target: '[data-tutorial-target="floating-search-results-container"]',
-            content: 'If there are a lot of patients in the system or you did not find a patient, you may need additional fields to search other than the name. which is the advanced search tools click on next.',
+            content: 'The search container shows only the top results and if they are not the patient you want, or you cannot find the patient by name or the patient ID, you can use advanced search tools to narrow down your search. Click next to learn more about the advanced search options.',
             spotlightClicks: false,
             disableOverlay: false,
             hideNextButton: false,

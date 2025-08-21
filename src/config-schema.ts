@@ -185,7 +185,7 @@ export const configSchema = {
           {
             target: 'button[type="submit"]',
             content:
-              'Also, the patient you are looking for may not be displayed in the top results if there are multiple patients with the same name. In these scenarios, you can click here to open the advanced search.',
+              'The advanced search provides additional search fields like date of birth and phone number to help find the right patient, which comes in helpful in scenarios where multiple patients have the same name. Click here to access the advanced search tool.',
             spotlightClicks: true,
             placement: 'bottom',
             hideNextButton: true,

@@ -91,12 +91,9 @@ export const configSchema = {
             target: '[data-tutorial-target="patient-search-bar"]',
             content:
               'Now, enter the name or the ID of the patient here. Some example patient names that you can search for are: John, Smith, Mary.',
-            hideNextButton: true,
+            hideNextButton: false,
             hideBackButton: true,
             spotlightClicks: true,
-            data: {
-              autoNextOn: '[data-tutorial-target="floating-search-results-container"]',
-            },
           },
           {
             target: '[data-tutorial-target="floating-search-results-container"]',
@@ -173,17 +170,22 @@ export const configSchema = {
             target: '[data-tutorial-target="patient-search-bar"]',
             content:
               'Now, enter the name of the patient here. If you know the patient ID, you can use that as well. You will see the results if the patient you entered exists in the system. Some example patient names that you can search for are: John, Smith, Mary.',
-            hideNextButton: true,
+            hideNextButton: false,
             hideBackButton: true,
             spotlightClicks: true,
-            data: {
-              autoNextOn: '[data-tutorial-target="floating-search-results-container"]',
-            },
+          },
+          {
+            target: '[data-tutorial-target="floating-search-results-container"]',
+            content: 'The search container shows only the top results and if they are not the patient you want, or you cannot find the patient by name or the patient ID, you can use advanced search tools to narrow down your search. Click next to learn more about the advanced search options.',
+            spotlightClicks: false,
+            disableOverlay: false,
+            hideNextButton: false,
+            hideBackButton: true,
           },
           {
             target: 'button[type="submit"]',
             content:
-              'If there are a lot of patients in the system, you may need additional fields to search other than the name. Also, the patient you are looking for may not be displayed in the top results if there are multiple patients with the same name. In these scenarios, you can click here to open the advanced search.',
+              'The advanced search provides additional search fields like date of birth and phone number to help find the right patient, which comes in helpful in scenarios where multiple patients have the same name. Click here to access the advanced search tool.',
             spotlightClicks: true,
             placement: 'bottom',
             hideNextButton: true,
@@ -363,12 +365,9 @@ export const configSchema = {
             target: '[data-tutorial-target="patient-search-bar"]',
             content:
               'Now, enter the name or the ID of the patient here. Some example patient names you can search for are: John, Smith, Mary.',
-            hideNextButton: true,
+            hideNextButton: false,
             hideBackButton: true,
             spotlightClicks: true,
-            data: {
-              autoNextOn: '[data-tutorial-target="floating-search-results-container"]',
-            },
           },
           {
             target: '[data-tutorial-target="floating-search-results-container"]',
@@ -461,12 +460,10 @@ export const configSchema = {
             target: '[data-tutorial-target="patient-search-bar"]',
             content:
               'Now, enter the name or the ID of the patient here. Some example patient names that you can search for are: John, Smith, Mary.',
-            hideNextButton: true,
+            hideNextButton: false,
             hideBackButton: true,
             spotlightClicks: true,
-            data: {
-              autoNextOn: '[data-tutorial-target="floating-search-results-container"]',
-            },
+
           },
           {
             target: '[data-tutorial-target="floating-search-results-container"]',

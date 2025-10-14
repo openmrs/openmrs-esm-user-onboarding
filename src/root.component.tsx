@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactJoyride, { ACTIONS, type CallBackProps, EVENTS } from 'react-joyride';
 import { useDefineAppContext } from '@openmrs/esm-framework';
 import { type TutorialContext, type ExtendedStep } from './types';
@@ -81,6 +81,40 @@ const RootComponent: React.FC = () => {
         break;
     }
   };
+
+  // Keyboard navigation: minimal and scoped to when the tutorial runs
+  useEffect(() => {
+    if (!showTutorial || steps.length === 0) {
+      return;
+    }
+
+    const isEditable = (target: EventTarget | null) => {
+      const el = target as HTMLElement | null;
+      return !!el?.closest('input, textarea, select, [contenteditable="true"]');
+    };
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.defaultPrevented || isEditable(e.target)) return;
+      const current = steps[stepIndex];
+      if (!current) return;
+
+      if (e.key === 'ArrowRight') {
+        const hasNext = stepIndex < steps.length - 1;
+        if (hasNext && !current.hideNextButton) {
+          e.preventDefault();
+          setStepIndex(stepIndex + 1);
+        }
+      } else if (e.key === 'ArrowLeft') {
+        if (stepIndex > 0 && !current.hideBackButton) {
+          e.preventDefault();
+          setStepIndex(stepIndex - 1);
+        }
+      }
+    };
+
+    document.addEventListener('keydown', onKeyDown, true);
+    return () => document.removeEventListener('keydown', onKeyDown, true);
+  }, [showTutorial, steps, stepIndex]);
 
 
 

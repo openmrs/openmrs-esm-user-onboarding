@@ -12,7 +12,7 @@ const Tutorial = () => {
     });
   };
 
-  return <div onClick={handleOpenModal}>{t('tutorials', 'Tutorials')}</div>;
+  return <div onClick={handleOpenModal}>{t('tutorial', 'Tutorials')}</div>;
 };
 
 export default Tutorial;

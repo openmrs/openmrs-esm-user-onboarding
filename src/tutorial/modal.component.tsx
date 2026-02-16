@@ -3,23 +3,22 @@ import { ArrowRight } from '@carbon/react/icons';
 import { ModalHeader, ModalBody, Link } from '@carbon/react';
 import { useTranslation } from 'react-i18next';
 import { useConfig, useAppContext, navigate } from '@openmrs/esm-framework';
+import { type Config } from '../config-schema';
 import { type TutorialContext } from '../types';
 import styles from './styles.scss';
 
 interface TutorialModalProps {
-  open: boolean;
   onClose: () => void;
 }
 
-const TutorialModal: React.FC<TutorialModalProps> = ({ open, onClose }) => {
+const TutorialModal: React.FC<TutorialModalProps> = ({ onClose }) => {
   const { t } = useTranslation();
-  const config = useConfig();
-  const tutorials = config.tutorialData;
+  const { tutorialData: tutorials } = useConfig<Config>();
   const tutorialContext = useAppContext<TutorialContext>('tutorial-context');
 
   const handleWalkthroughClick = (index: number) => {
     const basePath = window.getOpenmrsSpaBase();
-    const homePath = `${basePath}home/service-queues`;
+    const homePath = `${basePath}home`;
     const currentPath = window.location.pathname;
     const tutorial = tutorials[index];
 
@@ -28,13 +27,13 @@ const TutorialModal: React.FC<TutorialModalProps> = ({ open, onClose }) => {
       tutorialContext.setShowTutorial(true);
     };
 
-    if (currentPath === homePath) {
+    if (currentPath.startsWith(homePath)) {
       setTutorialSteps();
     } else {
       navigate({ to: homePath });
 
       const intervalId = setInterval(() => {
-        if (window.location.pathname === homePath) {
+        if (window.location.pathname.startsWith(homePath)) {
           setTutorialSteps();
           clearInterval(intervalId);
         }

@@ -1,4 +1,5 @@
-import { test, expect } from '@playwright/test';
+import { expect } from '@playwright/test';
+import { test } from '../core';
 import { HomePage } from '../pages';
 
 test('Basic Walkthrough', async ({ page }) => {
@@ -9,10 +10,7 @@ test('Basic Walkthrough', async ({ page }) => {
   });
 
   await test.step('And I click on the help menu button', async () => {
-    await page
-      .locator('[id="single-spa-application\\:\\@openmrs\\/esm-help-menu-app-page-0"]')
-      .getByRole('button')
-      .click();
+    await page.getByRole('button', { name: /help/i }).click();
   });
 
   await test.step('And I click on the tutorials button', async () => {
@@ -39,17 +37,17 @@ test('Basic Walkthrough', async ({ page }) => {
   });
 
   await test.step('And I click the next button', async () => {
-    await page.getByLabel('Next', { exact: true }).click();
+    await page.getByRole('button', { name: /next/i }).click();
   });
 
-  await test.step('Then I should see the search icon  Joyride tooltip', async () => {
+  await test.step('Then I should see the search icon Joyride tooltip', async () => {
     await expect(
       page.getByText('This is the search icon. Use it to find patients in the system quickly.'),
     ).toBeVisible();
   });
 
   await test.step('And I click the next button', async () => {
-    await page.getByLabel('Next', { exact: true }).click();
+    await page.getByRole('button', { name: /next/i }).click();
   });
 
   await test.step('Then I should see the add patient icon Joyride tooltip', async () => {
@@ -59,7 +57,7 @@ test('Basic Walkthrough', async ({ page }) => {
   });
 
   await test.step('And I click the next button', async () => {
-    await page.getByLabel('Next', { exact: true }).click();
+    await page.getByRole('button', { name: /next/i }).click();
   });
 
   await test.step('Then I should see the user icon Joyride tooltip', async () => {
@@ -69,6 +67,6 @@ test('Basic Walkthrough', async ({ page }) => {
   });
 
   await test.step('And I click the finish button', async () => {
-    await page.getByLabel('Last').click();
+    await page.getByRole('button', { name: /last/i }).click();
   });
 });

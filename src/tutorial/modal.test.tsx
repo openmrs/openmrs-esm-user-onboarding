@@ -1,21 +1,17 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from '@testing-library/react';
-import { useAppContext, useConfig, navigate } from '@openmrs/esm-framework';
+import { getDefaultsFromConfigSchema, navigate, useAppContext, useConfig } from '@openmrs/esm-framework';
+import { type TutorialContext } from '../types';
+import { type Config, configSchema } from '../config-schema';
 import TutorialModal from './modal.component';
 
-jest.mock('@openmrs/esm-framework', () => ({
-  useConfig: jest.fn(),
-  useAppContext: jest.fn(),
-  navigate: jest.fn(),
-}));
+const mockNavigate = jest.mocked(navigate);
+const mockUseAppContext = jest.mocked(useAppContext<TutorialContext>);
+const mockUseConfig = jest.mocked(useConfig<Config>);
 
 const setShowTutorial = jest.fn();
 const setSteps = jest.fn();
-
-const mockUseAppContext = jest.mocked(useAppContext);
-const mockUseConfig = jest.mocked(useConfig);
-const mockNavigate = jest.mocked(navigate);
 
 const mockTutorialData = [
   {
@@ -46,16 +42,21 @@ const mockTutorialData = [
   },
 ];
 
-mockUseConfig.mockReturnValue({
-  tutorialData: mockTutorialData,
-});
-
-mockUseAppContext.mockReturnValue({
-  setShowTutorial,
-  setSteps,
-});
-
 describe('TutorialModal', () => {
+  beforeEach(() => {
+    mockUseConfig.mockReturnValue({
+      ...getDefaultsFromConfigSchema(configSchema),
+      tutorialData: mockTutorialData,
+    });
+
+    mockUseAppContext.mockReturnValue({
+      showTutorial: false,
+      steps: [],
+      setShowTutorial,
+      setSteps,
+    });
+  });
+
   afterEach(() => {
     delete window.location;
     window.location = { pathname: '/patient-registration' } as any;
@@ -71,18 +72,18 @@ describe('TutorialModal', () => {
       },
     });
 
-    render(<TutorialModal open={true} onClose={jest.fn()} />);
+    render(<TutorialModal onClose={jest.fn()} />);
 
     const walkthroughButton = screen.getAllByText('Walkthrough');
     await user.click(walkthroughButton[0]);
 
     expect(mockNavigate).toHaveBeenCalledWith(
       expect.objectContaining({
-        to: expect.stringContaining('/spa-base/home/service-queues'),
+        to: expect.stringContaining('/spa-base/home'),
       }),
     );
     Object.defineProperty(window.location, 'pathname', {
-      value: '/spa-base/home/service-queues',
+      value: '/spa-base/home',
     });
 
     await waitFor(() => expect(setSteps).toHaveBeenCalledWith(mockTutorialData[0].steps));
@@ -90,7 +91,7 @@ describe('TutorialModal', () => {
   });
 
   test('renders tutorials properly', async () => {
-    render(<TutorialModal open={true} onClose={jest.fn()} />);
+    render(<TutorialModal onClose={jest.fn()} />);
 
     mockTutorialData.forEach((tutorial) => {
       expect(screen.getByText(tutorial.title)).toBeInTheDocument();

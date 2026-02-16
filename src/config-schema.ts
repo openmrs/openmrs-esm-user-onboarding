@@ -1,3 +1,4 @@
+import { type Placement } from 'react-joyride';
 import { Type } from '@openmrs/esm-framework';
 
 export const configSchema = {
@@ -21,7 +22,7 @@ export const configSchema = {
               'Welcome to OpenMRS! This is the main dashboard where you can navigate to various features of the system.',
           },
           {
-            target: '[name="SearchPatientIcon"]',
+            target: '[data-tutorial-target="search-patient-icon"]',
             content: 'This is the search icon. Use it to find patients in the system quickly.',
           },
           {
@@ -176,7 +177,8 @@ export const configSchema = {
           },
           {
             target: '[data-tutorial-target="floating-search-results-container"]',
-            content: 'The search container shows only the top results and if they are not the patient you want, or you cannot find the patient by name or the patient ID, you can use advanced search tools to narrow down your search. Click next to learn more about the advanced search options.',
+            content:
+              'The search container shows only the top results and if they are not the patient you want, or you cannot find the patient by name or the patient ID, you can use advanced search tools to narrow down your search. Click next to learn more about the advanced search options.',
             spotlightClicks: false,
             disableOverlay: false,
             hideNextButton: false,
@@ -270,7 +272,7 @@ export const configSchema = {
             },
           },
           {
-            target: '[data-tutorial-target="patient-lists-table"]', 
+            target: '[data-tutorial-target="patient-lists-table"]',
             content:
               'Great! We have successfully created a new patient list. Find and click on the patient list you created to proceed. You can use the search option at the top right if needed.',
             disableOverlay: true,
@@ -284,7 +286,8 @@ export const configSchema = {
           },
           {
             target: '[data-openmrs-role="Patient Empty tile"]',
-            content: "You can see the patient list is empty since we haven't added any patients to the list yet. Click on Next to Continue",
+            content:
+              "You can see the patient list is empty since we haven't added any patients to the list yet. Click on Next to Continue",
             hideBackButton: true,
             disableOverlay: true,
           },
@@ -320,7 +323,7 @@ export const configSchema = {
             },
           },
           {
-            target: '#custom-actions-overflow-menu-trigger',
+            target: '[id^="patient-actions-menu-trigger-"]',
             content: 'Click on "Actions" and select "Add to List" from the drop-down menu.',
             disableOverlay: true,
             placement: 'bottom',
@@ -341,9 +344,9 @@ export const configSchema = {
             hideNextButton: true,
             placement: 'left',
             data: {
-              autoNextOn: '.omrs-snackbars-container div', 
+              autoNextOn: '.omrs-snackbars-container div',
             },
-          }
+          },
         ],
       },
       {
@@ -383,7 +386,7 @@ export const configSchema = {
           {
             target: '[data-extension-id="patient-vitals-info"] button',
             content:
-              'Click on the "Record Vitals" button to open the vitals form. If the selected patient doesn\'t have an active visit, you will be prompted to start one. In that case, submit the start visit form in order to the next step.',
+              'Click on the "Record Vitals" button to open the vitals form. If the selected patient doesn\'t have an active visit, you will be prompted to start one. In that case, submit the start visit form in order to proceed to the next step.',
             disableOverlay: true,
             spotlightClicks: true,
             hideBackButton: true,
@@ -396,7 +399,7 @@ export const configSchema = {
             target: '[data-openmrs-role="Vitals and Biometrics Form"]',
             title: 'Vitals form',
             content:
-              'In this form, you can enter the vitals and biometrics you have captured. If any value entered is out of the normal range, you will see ↑ (High), ↓ (Low), ↑↑ (Very High) or ↓↓ (Very Low)  indicators next to the respective field. After entering all necessary details, click on the "Save and Close" button to submit the data.',
+              'In this form, you can enter the vitals and biometrics you have captured. If any value entered is out of the normal range, you will see ↑ (High), ↓ (Low), ↑↑ (Very High) or ↓↓ (Very Low) indicators next to the respective field. After entering all necessary details, click on the "Save and Close" button to submit the data.',
             disableOverlay: true,
             spotlightClicks: true,
             placement: 'left',
@@ -463,7 +466,6 @@ export const configSchema = {
             hideNextButton: false,
             hideBackButton: true,
             spotlightClicks: true,
-
           },
           {
             target: '[data-tutorial-target="floating-search-results-container"]',
@@ -584,8 +586,17 @@ export type Config = {
     description: string;
     steps: {
       target: string;
-      title: string;
+      title?: string;
       content: string;
+      placement?: Placement | 'center' | 'auto';
+      spotlightClicks?: boolean;
+      spotlightPadding?: number;
+      disableOverlay?: boolean;
+      disableBeacon?: boolean;
+      hideBackButton?: boolean;
+      hideNextButton?: boolean;
+      hideFooter?: boolean;
+      hideCloseButton?: boolean;
       data?: {
         autoNextOn?: string;
       };

@@ -12,7 +12,11 @@ const Tutorial = () => {
     });
   };
 
-  return <div onClick={handleOpenModal}>{t('tutorials', 'Tutorials')}</div>;
+  return (
+    <button type="button" onClick={handleOpenModal} style={{ all: 'unset', cursor: 'pointer' }}>
+      {t('tutorials', 'Tutorials')}
+    </button>
+  );
 };
 
 export default Tutorial;

@@ -16,31 +16,30 @@
     align-items: center;
     margin-bottom: layout.$spacing-01;
 
-  .container {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+    .container {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .tooltiptitle {
+      @include type.type-style('heading-02');
+      margin-bottom: layout.$spacing-02;
+    }
+
+    .closeButton {
+      min-height: layout.$spacing-05;
+      padding: 0;
+      align-self: flex-start;
+    }
   }
 
-  .tooltiptitle {
-    @include type.type-style('heading-02');
-    margin-bottom: layout.$spacing-02;
-  }
-
-  .closeButton {
-    min-height: layout.$spacing-05;
-    padding: 0;
-    align-self: flex-start;
-  }
-}
-
-.tooltipcontent {
+  .tooltipcontent {
     color: $color-gray-70;
     @include type.type-style('body-compact-01');
     width: 100%;
     margin-top: layout.$spacing-01;
-}
-
+  }
 
   .tooltipfooter {
     margin-top: layout.$spacing-03;
@@ -48,36 +47,36 @@
     justify-content: space-between;
     align-items: center;
 
-  .tooltipstep {
-    color: $color-gray-70;
-    @include type.type-style('body-compact-01');
-  }
+    .tooltipstep {
+      color: $color-gray-70;
+      @include type.type-style('body-compact-01');
+    }
 
-  .buttonContainer {
-    display: flex;
-    gap: layout.$spacing-03;
-
-  .buttonback,
-  .buttonnext {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: layout.$spacing-02;
-    width: layout.$spacing-12;
-
-    .arrowLeft,
-    .arrowContainer {
+    .buttonContainer {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-left: layout.$spacing-02;
-    }
+      gap: layout.$spacing-03;
 
-    .arrowLeft svg {
-      fill: $color-blue-60-2 !important;
-      margin-right: layout.$spacing-02;
+      .buttonback,
+      .buttonnext {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: layout.$spacing-02;
+        width: layout.$spacing-12;
+
+        .arrowLeft,
+        .arrowContainer {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: layout.$spacing-02;
+        }
+
+        .arrowLeft svg {
+          fill: $color-blue-60-2 !important;
+          margin-right: layout.$spacing-02;
+        }
+      }
     }
   }
-}
-}
 }

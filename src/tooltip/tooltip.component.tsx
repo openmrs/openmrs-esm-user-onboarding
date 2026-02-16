@@ -29,7 +29,10 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({
       <div className={styles.tooltipheader}>
         <div className={styles.container}>
           <h4 className={styles.tooltiptitle}>{step.title}</h4>
-          <div className={styles.tooltipcontent}>{step.content}</div>
+          <div
+            className={styles.tooltipcontent}
+            dangerouslySetInnerHTML={{ __html: step.content as string }}
+          ></div>
         </div>
         <Button
           onClick={skipProps.onClick}

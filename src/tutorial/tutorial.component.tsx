@@ -14,7 +14,7 @@ const Tutorial = () => {
 
   return (
     <button type="button" onClick={handleOpenModal} style={{ all: 'unset', cursor: 'pointer' }}>
-      {t('tutorials', 'Tutorials')}
+      {t('tutorial', 'Tutorials')}
     </button>
   );
 };

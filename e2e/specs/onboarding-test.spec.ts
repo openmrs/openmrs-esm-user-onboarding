@@ -2,7 +2,7 @@ import { expect } from '@playwright/test';
 import { test } from '../core';
 import { HomePage } from '../pages';
 
-test('Basic Walkthrough', async ({ page }) => {
+test('Basic walkthrough tutorial', async ({ page }) => {
   const homePage = new HomePage(page);
 
   await test.step('When I visit the home page', async () => {
@@ -10,7 +10,7 @@ test('Basic Walkthrough', async ({ page }) => {
   });
 
   await test.step('And I click on the help menu button', async () => {
-    await page.getByRole('button', { name: /help/i }).click();
+    await page.locator('[id*="esm-help-menu-app"]').getByRole('button').click();
   });
 
   await test.step('And I click on the tutorials button', async () => {
@@ -25,7 +25,7 @@ test('Basic Walkthrough', async ({ page }) => {
   });
 
   await test.step('And I click on the Basic Overview Tutorial', async () => {
-    await page.locator('li').filter({ hasText: 'Basic Overview' }).locator('a', { hasText: 'Walkthrough' }).click();
+    await page.locator('li').filter({ hasText: 'Basic Overview' }).getByText('Walkthrough').click();
   });
 
   await test.step('Then I should see the first Joyride tooltip', async () => {

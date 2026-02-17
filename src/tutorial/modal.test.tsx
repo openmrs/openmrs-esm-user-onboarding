@@ -55,6 +55,8 @@ describe('TutorialModal', () => {
       setShowTutorial,
       setSteps,
     });
+
+    (window as any).getOpenmrsSpaBase = jest.fn(() => '/spa-base/');
   });
 
   afterEach(() => {
@@ -62,40 +64,76 @@ describe('TutorialModal', () => {
     window.location = { pathname: '/patient-registration' } as any;
   });
 
-  test('sends correct data to the root component when walkthrough button is clicked', async () => {
-    const user = userEvent.setup();
-
-    (window as any).getOpenmrsSpaBase = jest.fn(() => '/spa-base/');
-    Object.defineProperty(window, 'location', {
-      value: {
-        pathname: '/patient-registration',
-      },
-    });
-
-    render(<TutorialModal onClose={jest.fn()} />);
-
-    const walkthroughButton = screen.getAllByText('Walkthrough');
-    await user.click(walkthroughButton[0]);
-
-    expect(mockNavigate).toHaveBeenCalledWith(
-      expect.objectContaining({
-        to: expect.stringContaining('/spa-base/home'),
-      }),
-    );
-    Object.defineProperty(window.location, 'pathname', {
-      value: '/spa-base/home',
-    });
-
-    await waitFor(() => expect(setSteps).toHaveBeenCalledWith(mockTutorialData[0].steps));
-    await waitFor(() => expect(setShowTutorial).toHaveBeenCalledWith(true));
-  });
-
-  test('renders tutorials properly', async () => {
+  it('renders tutorial titles, descriptions, and walkthrough links', () => {
     render(<TutorialModal onClose={jest.fn()} />);
 
     mockTutorialData.forEach((tutorial) => {
       expect(screen.getByText(tutorial.title)).toBeInTheDocument();
       expect(screen.getByText(tutorial.description)).toBeInTheDocument();
     });
+
+    expect(screen.getAllByText('Walkthrough')).toHaveLength(mockTutorialData.length);
+  });
+
+  it('navigates to home and starts the tutorial when not already on the home page', async () => {
+    const user = userEvent.setup();
+    const onClose = jest.fn();
+
+    Object.defineProperty(window, 'location', {
+      value: { pathname: '/patient-registration' },
+    });
+
+    render(<TutorialModal onClose={onClose} />);
+
+    const walkthroughButtons = screen.getAllByText('Walkthrough');
+    await user.click(walkthroughButtons[0]);
+
+    expect(mockNavigate).toHaveBeenCalledWith(
+      expect.objectContaining({
+        to: expect.stringContaining('/spa-base/home'),
+      }),
+    );
+    expect(onClose).toHaveBeenCalledTimes(1);
+
+    Object.defineProperty(window.location, 'pathname', {
+      value: '/spa-base/home/service-queues',
+    });
+
+    await waitFor(() => expect(setSteps).toHaveBeenCalledWith(mockTutorialData[0].steps));
+    await waitFor(() => expect(setShowTutorial).toHaveBeenCalledWith(true));
+  });
+
+  it('starts the tutorial directly without navigating when already on the home page', async () => {
+    const user = userEvent.setup();
+    const onClose = jest.fn();
+
+    Object.defineProperty(window, 'location', {
+      value: { pathname: '/spa-base/home/service-queues' },
+    });
+
+    render(<TutorialModal onClose={onClose} />);
+
+    const walkthroughButtons = screen.getAllByText('Walkthrough');
+    await user.click(walkthroughButtons[0]);
+
+    expect(mockNavigate).not.toHaveBeenCalled();
+    expect(setSteps).toHaveBeenCalledWith(mockTutorialData[0].steps);
+    expect(setShowTutorial).toHaveBeenCalledWith(true);
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  it('passes the correct steps when clicking a non-first tutorial', async () => {
+    const user = userEvent.setup();
+
+    Object.defineProperty(window, 'location', {
+      value: { pathname: '/spa-base/home/service-queues' },
+    });
+
+    render(<TutorialModal onClose={jest.fn()} />);
+
+    const walkthroughButtons = screen.getAllByText('Walkthrough');
+    await user.click(walkthroughButtons[1]);
+
+    expect(setSteps).toHaveBeenCalledWith(mockTutorialData[1].steps);
   });
 });

@@ -26,11 +26,11 @@ export const configSchema = {
             content: 'This is the search icon. Use it to find patients in the system quickly.',
           },
           {
-            target: '[name="AddPatientIcon"]',
+            target: '[data-tutorial-target="add-patient"]',
             content: 'This is the add patient icon. Click here to register a new patient into the system.',
           },
           {
-            target: '[name="User"]',
+            target: '[data-tutorial-target="user-settings"]',
             content: 'The user icon. Click here to change your user preferences and settings.',
           },
         ],
@@ -40,7 +40,7 @@ export const configSchema = {
         description: 'Learn how to register a new patient into the system.',
         steps: [
           {
-            target: '[name="AddPatientIcon"]',
+            target: '[data-tutorial-target="add-patient"]',
             content: 'Click here to add a patient to the system.',
             spotlightClicks: true,
             hideCloseButton: true,

@@ -168,4 +168,55 @@ describe('CustomTooltip', () => {
 
     expect(onClick).toHaveBeenCalledTimes(1);
   });
+
+  it('calls primaryProps.onClick when the right arrow key is pressed', async () => {
+  const user = userEvent.setup();
+  const onClick = jest.fn();
+  renderTooltip({}, { primaryProps: { ...baseProps.primaryProps, onClick } });
+
+  await user.keyboard('{ArrowRight}');
+
+  expect(onClick).toHaveBeenCalledTimes(1);
+});
+
+it('calls backProps.onClick when the left arrow key is pressed', async () => {
+  const user = userEvent.setup();
+  const onClick = jest.fn();
+  renderTooltip({}, { backProps: { ...baseProps.backProps, onClick } });
+
+  await user.keyboard('{ArrowLeft}');
+
+  expect(onClick).toHaveBeenCalledTimes(1);
+});
+
+it('does not call primaryProps.onClick on right arrow when hideNextButton is true', async () => {
+  const user = userEvent.setup();
+  const onClick = jest.fn();
+  renderTooltip({ hideNextButton: true }, { primaryProps: { ...baseProps.primaryProps, onClick } });
+
+  await user.keyboard('{ArrowRight}');
+
+  expect(onClick).not.toHaveBeenCalled();
+});
+
+it('does not call backProps.onClick on left arrow when hideBackButton is true', async () => {
+  const user = userEvent.setup();
+  const onClick = jest.fn();
+  renderTooltip({ hideBackButton: true }, { backProps: { ...baseProps.backProps, onClick } });
+
+  await user.keyboard('{ArrowLeft}');
+
+  expect(onClick).not.toHaveBeenCalled();
+});
+
+it('does not call backProps.onClick on left arrow on the first step', async () => {
+  const user = userEvent.setup();
+  const onClick = jest.fn();
+  renderTooltip({}, { index: 0, backProps: { ...baseProps.backProps, onClick } });
+
+  await user.keyboard('{ArrowLeft}');
+
+  expect(onClick).not.toHaveBeenCalled();
+});
+  
 });

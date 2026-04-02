@@ -11,12 +11,13 @@ jobs:
     name: pull-translations-from-transifex
 
     runs-on: ubuntu-latest
+    if: github.repository_owner == 'openmrs'
     permissions:
       contents: write
       pull-requests: write
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: 🌐 Push source file using transifex client
         uses: transifex/cli-action@v2
         with:

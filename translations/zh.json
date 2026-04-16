@@ -1,8 +1,8 @@
 {
-  "back": "Back",
-  "finish": "Finish",
-  "modalDescription": "Find walkthroughs and video tutorials on some of the core features of OpenMRS.",
-  "next": "Next",
-  "tutorial": "Tutorials",
-  "walkthrough": "Walkthrough"
+  "back": "回退",
+  "finish": "完成",
+  "modalDescription": "在此查找 OpenMRS 核心功能的操作指南和视频教程。",
+  "next": "下一步",
+  "tutorial": "教程",
+  "walkthrough": "穿过"
 }

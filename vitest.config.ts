@@ -1,11 +1,6 @@
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
-  resolve: {
-    alias: {
-      'workbox-window': new URL('./tools/empty-module.ts', import.meta.url).pathname,
-    },
-  },
   test: {
     environment: 'jsdom',
     globals: true,
@@ -14,7 +9,7 @@ export default defineConfig({
     exclude: ['**/node_modules/**', '**/e2e/**', '**/dist/**'],
     server: {
       deps: {
-        inline: [/@openmrs/, 'workbox-window'],
+        inline: [/@openmrs/],
       },
     },
     fakeTimers: {

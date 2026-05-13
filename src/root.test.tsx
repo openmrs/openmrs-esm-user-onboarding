@@ -1,19 +1,20 @@
 import React from 'react';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { render, act } from '@testing-library/react';
 import { ACTIONS, EVENTS, STATUS } from 'react-joyride';
 import { useDefineAppContext } from '@openmrs/esm-framework';
 import RootComponent from './root.component';
 
-const mockUseDefineAppContext = jest.mocked(useDefineAppContext);
+const mockUseDefineAppContext = vi.mocked(useDefineAppContext);
 
 let joyrideCallback: (data: any) => void;
 
-jest.mock('react-joyride', () => {
-  const actual = jest.requireActual('react-joyride');
+vi.mock('react-joyride', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('react-joyride')>();
   return {
     ...actual,
     __esModule: true,
-    default: jest.fn((props: any) => {
+    default: vi.fn((props: any) => {
       joyrideCallback = props.callback;
       return <div data-testid="joyride" data-run={props.run} data-step-index={props.stepIndex} />;
     }),
@@ -39,11 +40,11 @@ const mockSteps = [
 
 describe('RootComponent', () => {
   beforeEach(() => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
   });
 
   afterEach(() => {
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   it('renders ReactJoyride', () => {
@@ -192,7 +193,7 @@ describe('RootComponent', () => {
 
     // Advance the polling interval
     act(() => {
-      jest.advanceTimersByTime(1000);
+      vi.advanceTimersByTime(1000);
     });
 
     // Tour should be visible again
@@ -228,7 +229,7 @@ describe('RootComponent', () => {
     document.body.appendChild(el);
 
     act(() => {
-      jest.advanceTimersByTime(1000);
+      vi.advanceTimersByTime(1000);
     });
 
     const finalContext = getTutorialContext();
@@ -238,7 +239,7 @@ describe('RootComponent', () => {
   });
 
   it('clears polling intervals on TOUR_END', () => {
-    const clearIntervalSpy = jest.spyOn(global, 'clearInterval');
+    const clearIntervalSpy = vi.spyOn(global, 'clearInterval');
 
     render(<RootComponent />);
     const context = getTutorialContext();
@@ -273,7 +274,7 @@ describe('RootComponent', () => {
   });
 
   it('clears all intervals on unmount', () => {
-    const clearIntervalSpy = jest.spyOn(global, 'clearInterval');
+    const clearIntervalSpy = vi.spyOn(global, 'clearInterval');
 
     const { unmount } = render(<RootComponent />);
     const context = getTutorialContext();

@@ -93,11 +93,8 @@
     "react-i18next": "^11.18.6",
     "react-router-dom": "^6.14.1",
     "rxjs": "^6.6.7",
-    "swc-loader": "^0.2.3",
     "turbo": "^2.5.2",
-    "typescript": "^5.0.0",
-    "webpack": "^5.99.9",
-    "webpack-cli": "^6.0.1"
+    "typescript": "^5.0.0"
   },
   "lint-staged": {
     "packages/**/src/**/*.{ts,tsx}": "eslint --cache --fix --max-warnings 0",

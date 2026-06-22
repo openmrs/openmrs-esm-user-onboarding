@@ -1,6 +1,6 @@
 {
   "name": "@openmrs/esm-user-onboarding-app",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "license": "MPL-2.0",
   "description": "An OpenMRS microfrontend for user onboarding walkthroughs",
   "browser": "dist/openmrs-esm-user-onboarding-app.js",

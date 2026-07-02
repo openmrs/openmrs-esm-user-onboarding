@@ -105,7 +105,7 @@ export const configSchema = {
             hideNextButton: true,
             hideBackButton: true,
             data: {
-              autoNextOn: '[data-extension-slot-name="action-menu-patient-chart-items-slot"]',
+              autoNextOn: '[data-extension-id="patient-banner"]',
             },
           },
           {
@@ -138,12 +138,6 @@ export const configSchema = {
             title: 'Patient summary widgets',
             content:
               'Patient Summary is a personalized view made up of widgets that show essential features and information for quick access.',
-          },
-          {
-            target: '[data-extension-slot-name="action-menu-patient-chart-items-slot"]',
-            title: 'Siderail',
-            content:
-              'The siderail contains a series of links that take users to different tabs in the Workspace, such as the order basket, visit notes, and clinical forms. Once open, the Workspace is persistent across pages (for example, all pages within the patient chart).',
           },
           {
             target: 'body',
@@ -319,7 +313,7 @@ export const configSchema = {
             hideNextButton: true,
             hideBackButton: true,
             data: {
-              autoNextOn: '[data-extension-slot-name="action-menu-patient-chart-items-slot"]',
+              autoNextOn: '[data-extension-id="patient-banner"]',
             },
           },
           {
@@ -380,7 +374,7 @@ export const configSchema = {
             hideBackButton: true,
             hideNextButton: true,
             data: {
-              autoNextOn: '[data-extension-slot-name="action-menu-patient-chart-items-slot"]',
+              autoNextOn: '[data-extension-id="patient-banner"]',
             },
           },
           {
@@ -477,14 +471,16 @@ export const configSchema = {
             hideNextButton: true,
             hideBackButton: true,
             data: {
-              autoNextOn: '[data-extension-slot-name="action-menu-patient-chart-items-slot"]',
+              autoNextOn: '[data-extension-id="patient-banner"]',
             },
           },
           {
-            target: '[aria-label="Start a visit"]',
+            target: '[id^="patient-actions-menu-trigger-"]',
             content:
-              'Welcome to the patient chart view! Here, you can find detailed patient information, records of clinical visits, demographic information, graphs, and medical forms. Click on the "Start Visit" button to open the Start Visit form.',
+              'Welcome to the patient chart view! Here, you can find detailed patient information, records of clinical visits, demographic information, graphs, and medical forms. Click on "Actions" and select "Add visit" from the drop-down menu to open the Start Visit form.',
+            disableOverlay: true,
             spotlightClicks: true,
+            placement: 'left',
             hideNextButton: true,
             hideBackButton: true,
             data: {

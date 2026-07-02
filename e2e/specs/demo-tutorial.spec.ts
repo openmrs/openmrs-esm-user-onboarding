@@ -1,6 +1,7 @@
-import { test } from '@playwright/test';
-import { HomePage } from '../pages';
 import { expect } from '@playwright/test';
+import { test } from '../core';
+import { HomePage } from '../pages';
+import { clickSpotlightedElement } from '../commands';
 
 test('Demo tutorial', async ({ page }) => {
   const homePage = new HomePage(page);
@@ -49,10 +50,7 @@ test('Demo tutorial', async ({ page }) => {
   });
 
   await test.step('And I click the `Appointments` button', async () => {
-    await page.evaluate(() => {
-      document.querySelector('.react-joyride__overlay')?.setAttribute('style', 'z-index: 1 !important');
-    });
-    await page.getByRole('link', { name: /appointments/i }).click();
+    await clickSpotlightedElement(page.getByRole('link', { name: /appointments/i }));
   });
 
   await test.step('Then I should see the third tooltip', async () => {
@@ -84,7 +82,7 @@ test('Demo tutorial', async ({ page }) => {
   });
 
   await test.step('And I click the `Laboratory` button', async () => {
-    await page.getByRole('link', { name: /laboratory/i }).click();
+    await clickSpotlightedElement(page.getByRole('link', { name: /laboratory/i }));
   });
 
   await test.step('Then I should see the sixth tooltip', async () => {

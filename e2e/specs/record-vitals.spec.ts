@@ -1,6 +1,13 @@
 import { expect } from '@playwright/test';
 import { type Visit } from '@openmrs/esm-framework';
-import { generateRandomPatient, deletePatient, startVisit, endVisit } from '../commands';
+import {
+  clickSpotlightedElement,
+  generateRandomPatient,
+  deletePatient,
+  getPatientIdentifier,
+  startVisit,
+  endVisit,
+} from '../commands';
 import { type Patient } from '../types';
 import { HomePage } from '../pages';
 import { test } from '../core';
@@ -52,10 +59,7 @@ test('Recording vitals tutorial', async ({ page }) => {
   });
 
   await test.step('And I click the `Search patient` button', async () => {
-    await page.evaluate(() => {
-      document.querySelector('.react-joyride__overlay')?.setAttribute('style', 'z-index: 1 !important');
-    });
-    await page.getByRole('button', { name: 'Search patient' }).click();
+    await clickSpotlightedElement(page.getByRole('button', { name: 'Search patient' }));
   });
 
   await test.step('Then I should see the second tooltip', async () => {
@@ -67,22 +71,31 @@ test('Recording vitals tutorial', async ({ page }) => {
   });
 
   await test.step('And I search for the patient whose vitals need to be recorded', async () => {
-    await page.getByTestId('patientSearchBar').fill(patient.person.display);
+    await page.getByTestId('patientSearchBar').fill(getPatientIdentifier(patient));
+  });
+
+  await test.step('And I click the `Next` button', async () => {
+    await homePage.nextButton().click();
   });
 
   await test.step('Then I should see the third tooltip', async () => {
     await expect(page.getByText(/click on the patient to go to their patient chart./i)).toBeVisible();
   });
 
-  await test.step('And I click the first patient in the search results', async () => {
-    await page.getByTestId('floatingSearchResultsContainer').locator('a').first().click();
+  await test.step('And I click the patient in the search results', async () => {
+    await clickSpotlightedElement(
+      page
+        .getByTestId('floatingSearchResultsContainer')
+        .locator('a')
+        .filter({ hasText: getPatientIdentifier(patient) }),
+    );
   });
 
-  await test.step('Then I should be redirected to Patient Summary and see the fourth tooltip', async () => {
-    await expect(page).toHaveURL(`${process.env.E2E_BASE_URL}/spa/patient/${patient.uuid}/chart/Patient%20Summary`);
+  await test.step('Then I should be redirected to the patient chart and see the fourth tooltip', async () => {
+    await expect(page).toHaveURL(new RegExp(`/patient/${patient.uuid}/chart`));
     await expect(
       page.getByText(
-        /click on the "record vitals" button to open the vitals form. if the selected patient doesn't have an active visit, you will be prompted to start one. in that case, submit the start visit form in order to the next step./i,
+        /click on the "record vitals" button to open the vitals form. if the selected patient doesn't have an active visit, you will be prompted to start one. in that case, submit the start visit form in order to proceed to the next step./i,
       ),
     ).toBeVisible();
   });
@@ -121,7 +134,6 @@ test('Recording vitals tutorial', async ({ page }) => {
   });
 
   await test.step('Then I should see the seventh tooltip', async () => {
-    await page.getByRole('button', { name: 'Open menu' }).click();
     await expect(
       page.getByText(
         /click here to go to the vitals and biometrics page, where you can view the past records of vitals and biometrics./i,
@@ -130,10 +142,7 @@ test('Recording vitals tutorial', async ({ page }) => {
   });
 
   await test.step('And I click the `Vitals & Biometrics` button', async () => {
-    await page.evaluate(() => {
-      document.querySelector('.react-joyride__overlay')?.setAttribute('style', 'z-index: 1 !important');
-    });
-    await page.getByRole('link', { name: /vitals & biometrics/i }).click();
+    await clickSpotlightedElement(page.getByRole('link', { name: /vitals & biometrics/i }));
   });
 
   await test.step('Then I should see the eighth tooltip', async () => {

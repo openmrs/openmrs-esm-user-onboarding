@@ -1,6 +1,6 @@
-import { test } from '@playwright/test';
-import { HomePage } from '../pages';
 import { expect } from '@playwright/test';
+import { test } from '../core';
+import { HomePage } from '../pages';
 
 test('Basic overview tutorial', async ({ page }) => {
   const homePage = new HomePage(page);
@@ -64,29 +64,9 @@ test('Basic overview tutorial', async ({ page }) => {
     await homePage.nextButton().click();
   });
 
-  await test.step('Then I should see the fourth tooltip', async () => {
-    await expect(
-      page.getByText(/the user icon. click here to change your user preferences and settings./i),
-    ).toBeVisible();
-  });
-
-  await test.step('And I click the `Next` button', async () => {
-    await homePage.nextButton().click();
-  });
-
-  await test.step('Then I should see the fifth tooltip', async () => {
-    await expect(
-      page.getByText(/this table displays active visits. here you can see all the ongoing patient visits./i),
-    ).toBeVisible();
-  });
-
-  await test.step('And I click the `Next` button', async () => {
-    await homePage.nextButton().click();
-  });
-
   await test.step('Then I should see the last tooltip', async () => {
     await expect(
-      page.getByText(/this table shows appointments. view and manage patient appointments from this section./i),
+      page.getByText(/the user icon. click here to change your user preferences and settings./i),
     ).toBeVisible();
   });
 

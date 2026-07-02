@@ -1,6 +1,7 @@
-import { test } from '@playwright/test';
-import { HomePage } from '../pages';
 import { expect } from '@playwright/test';
+import { test } from '../core';
+import { HomePage } from '../pages';
+import { clickSpotlightedElement } from '../commands';
 
 test('Registering a patient tutorial', async ({ page }) => {
   const homePage = new HomePage(page);
@@ -37,10 +38,7 @@ test('Registering a patient tutorial', async ({ page }) => {
   });
 
   await test.step('And I click the `Add patient` button', async () => {
-    await page.evaluate(() => {
-      document.querySelector('.react-joyride__overlay')?.setAttribute('style', 'z-index: 1 !important');
-    });
-    await page.getByRole('button', { name: 'Add patient' }).click();
+    await clickSpotlightedElement(page.getByRole('button', { name: 'Add patient' }));
   });
 
   await test.step('Then I should be redirected to Patient Registration and see the Demographics tooltip', async () => {

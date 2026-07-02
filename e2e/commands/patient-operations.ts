@@ -59,3 +59,12 @@ export const getPatient = async (api: APIRequestContext, uuid: string): Promise<
 export const deletePatient = async (api: APIRequestContext, uuid: string) => {
   await api.delete(`patient/${uuid}`, { data: {} });
 };
+
+/**
+ * Returns the patient's OpenMRS identifier (e.g. `100XYZ`). Searching by this
+ * identifier yields exactly one result, which keeps specs deterministic when
+ * tests run in parallel and create similarly named patients.
+ */
+export function getPatientIdentifier(patient: Patient) {
+  return patient.identifiers[0].display.split('=')[1].trim();
+}

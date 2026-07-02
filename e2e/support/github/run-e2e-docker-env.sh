@@ -27,7 +27,11 @@ jq -n \
     "@openmrs/esm-patient-search-app": "next",
     "@openmrs/esm-patient-registration-app": "next",
     "@openmrs/esm-active-visits-app": "next",
-    "@openmrs/esm-appointments-app": "next"
+    "@openmrs/esm-appointments-app": "next",
+    "@openmrs/esm-laboratory-app": "next",
+    "@openmrs/esm-patient-banner-app": "next",
+    "@openmrs/esm-patient-chart-app": "next",
+    "@openmrs/esm-patient-vitals-app": "next"
   } + {
     ($app_name): $app_file
   }' | jq '{"frontendModules": .}' > "$working_dir/spa-assemble-config.json"

@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '../core';
 import { HomePage } from '../pages';
-import { generateRandomPatient, deletePatient } from '../commands';
+import { clickSpotlightedElement, generateRandomPatient, deletePatient, getPatientIdentifier } from '../commands';
 import { type Patient } from '../types';
 
 let patient: Patient;
@@ -49,10 +49,7 @@ test('Starting a patient visit tutorial', async ({ page }) => {
   });
 
   await test.step('And I click the `Search patient` button', async () => {
-    await page.evaluate(() => {
-      document.querySelector('.react-joyride__overlay')?.setAttribute('style', 'z-index: 1 !important');
-    });
-    await page.getByRole('button', { name: 'Search patient' }).click();
+    await clickSpotlightedElement(page.getByRole('button', { name: 'Search patient' }));
   });
 
   await test.step('Then I should see the second tooltip', async () => {
@@ -64,7 +61,11 @@ test('Starting a patient visit tutorial', async ({ page }) => {
   });
 
   await test.step('And I search for the patient I need to start a visit', async () => {
-    await page.getByTestId('patientSearchBar').fill(patient.person.display);
+    await page.getByTestId('patientSearchBar').fill(getPatientIdentifier(patient));
+  });
+
+  await test.step('And I click the `Next` button', async () => {
+    await homePage.nextButton().click();
   });
 
   await test.step('Then I should see the third tooltip', async () => {
@@ -75,25 +76,27 @@ test('Starting a patient visit tutorial', async ({ page }) => {
     ).toBeVisible();
   });
 
-  await test.step('And I click the first patient in the search results', async () => {
-    await page.getByTestId('floatingSearchResultsContainer').locator('a').first().click();
+  await test.step('And I click the patient in the search results', async () => {
+    await clickSpotlightedElement(
+      page
+        .getByTestId('floatingSearchResultsContainer')
+        .locator('a')
+        .filter({ hasText: getPatientIdentifier(patient) }),
+    );
   });
 
-  await test.step('Then I should be redirected to Patient Summary and see the fourth tooltip and ', async () => {
-    await expect(page).toHaveURL(`${process.env.E2E_BASE_URL}/spa/patient/${patient.uuid}/chart/Patient%20Summary`);
+  await test.step('Then I should be redirected to the patient chart and see the fourth tooltip', async () => {
+    await expect(page).toHaveURL(new RegExp(`/patient/${patient.uuid}/chart`));
     await expect(
       page.getByText(
-        /welcome to the patient chart view! here, you can find detailed patient information, records of clinical visits, demographic information, graphs, and medical forms. click on the "start visit" button to open the start visit form./i,
+        /welcome to the patient chart view! here, you can find detailed patient information, records of clinical visits, demographic information, graphs, and medical forms. click on "actions" and select "add visit" from the drop-down menu to open the start visit form./i,
       ),
     ).toBeVisible();
-    await expect(page).toHaveURL(`${process.env.E2E_BASE_URL}/spa/patient/${patient.uuid}/chart/Patient%20Summary`);
   });
 
-  await test.step('And I click the `Start a visit` button', async () => {
-    await page.evaluate(() => {
-      document.querySelector('.react-joyride__overlay')?.setAttribute('style', 'z-index: 1 !important');
-    });
-    await page.getByRole('button', { name: 'Start a visit' }).click();
+  await test.step('And I click `Add visit` in the `Actions` menu', async () => {
+    await page.getByRole('button', { name: /actions/i }).click();
+    await page.getByRole('menuitem', { name: /add visit/i }).click();
   });
 
   await test.step('Then I should see the Start Visit Form tooltip', async () => {
@@ -105,8 +108,21 @@ test('Starting a patient visit tutorial', async ({ page }) => {
   });
 
   await test.step('And I select `Home Visit` as the visit type and click the `Start visit` button', async () => {
-    await page.getByText(/home visit/i).click();
-    await page.getByRole('button', { name: 'Start visit' }).click();
+    const startVisitForm = page.locator('[data-openmrs-role="Start Visit Form"]');
+    await expect
+      .poll(
+        async () => (await startVisitForm.getByRole('combobox', { name: /select a location/i }).inputValue()).trim(),
+        {
+          message: 'Waiting for the visit location to resolve',
+        },
+      )
+      .not.toBe('');
+    await startVisitForm
+      .locator('label')
+      .filter({ hasText: /^home visit$/i })
+      .click();
+    await expect(startVisitForm.getByRole('radio', { name: /^home visit$/i })).toBeChecked();
+    await startVisitForm.getByRole('button', { name: /start visit/i }).click();
   });
 
   await test.step('Then I should see a success notification and the last tooltip', async () => {

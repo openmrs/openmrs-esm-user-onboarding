@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '../core';
 import { HomePage } from '../pages';
-import { generateRandomPatient, deletePatient } from '../commands';
+import { clickSpotlightedElement, generateRandomPatient, deletePatient } from '../commands';
 import { type Patient } from '../types';
 
 let patient: Patient;
@@ -47,10 +47,7 @@ test('Finding a patient tutorial', async ({ page }) => {
   });
 
   await test.step('And I click the `Search patient` button', async () => {
-    await page.evaluate(() => {
-      document.querySelector('.react-joyride__overlay')?.setAttribute('style', 'z-index: 1 !important');
-    });
-    await page.getByRole('button', { name: 'Search patient' }).click();
+    await clickSpotlightedElement(page.getByRole('button', { name: 'Search patient' }));
   });
 
   await test.step('Then I should see the second tooltip', async () => {
@@ -65,19 +62,32 @@ test('Finding a patient tutorial', async ({ page }) => {
     await page.getByTestId('patientSearchBar').fill(patient.person.display);
   });
 
+  await test.step('And I click the `Next` button', async () => {
+    await homePage.nextButton().click();
+  });
+
   await test.step('Then I should see the third tooltip', async () => {
     await expect(
       page.getByText(
-        /if there are a lot of patients in the system, you may need additional fields to search other than the name. also, the patient you are looking for may not be displayed in the top results if there are multiple patients with the same name. in these scenarios, you can click here to open the advanced search./i,
+        /the search container shows only the top results and if they are not the patient you want, or you cannot find the patient by name or the patient id, you can use advanced search tools to narrow down your search. click next to learn more about the advanced search options./i,
+      ),
+    ).toBeVisible();
+  });
+
+  await test.step('And I click the `Next` button', async () => {
+    await homePage.nextButton().click();
+  });
+
+  await test.step('Then I should see the fourth tooltip', async () => {
+    await expect(
+      page.getByText(
+        /the advanced search provides additional search fields like date of birth and phone number to help find the right patient, which comes in helpful in scenarios where multiple patients have the same name. click here to access the advanced search tool./i,
       ),
     ).toBeVisible();
   });
 
   await test.step('And I click the `Search` button', async () => {
-    await page.evaluate(() => {
-      document.querySelector('.react-joyride__overlay')?.setAttribute('style', 'z-index: 1 !important');
-    });
-    await page.getByRole('button', { name: 'Search', exact: true }).click();
+    await clickSpotlightedElement(page.getByRole('button', { name: 'Search', exact: true }));
   });
 
   await test.step('Then I should see the Filters section tooltip', async () => {
@@ -88,7 +98,7 @@ test('Finding a patient tutorial', async ({ page }) => {
     await homePage.nextButton().click();
   });
 
-  await test.step('Then I should see the fifth tooltip', async () => {
+  await test.step('Then I should see the sixth tooltip', async () => {
     await expect(
       page.getByText(
         /here you can see all the patients who match the search criteria. clicking on a patient will open the patient’s patient chart./i,
@@ -107,14 +117,11 @@ test('Finding a patient tutorial', async ({ page }) => {
   });
 
   await test.step('And I click the `Close Search Panel` button', async () => {
-    await page.evaluate(() => {
-      document.querySelector('.react-joyride__overlay')?.setAttribute('style', 'z-index: 1 !important');
-    });
-    await page.getByRole('button', { name: 'Close Search Panel' }).click();
+    await clickSpotlightedElement(page.getByRole('button', { name: 'Close Search Panel' }));
   });
 
-  await test.step('Then I should be redirected to home page', async () => {
-    await expect(page).toHaveURL(`${process.env.E2E_BASE_URL}/spa/home`);
+  await test.step('Then I should be redirected to the home page', async () => {
+    await expect(page).toHaveURL(/\/home/);
   });
 });
 

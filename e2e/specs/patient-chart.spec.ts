@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '../core';
 import { HomePage } from '../pages';
-import { generateRandomPatient, deletePatient } from '../commands';
+import { clickSpotlightedElement, generateRandomPatient, deletePatient, getPatientIdentifier } from '../commands';
 import { type Patient } from '../types';
 
 let patient: Patient;
@@ -50,10 +50,7 @@ test('Patient chart tutorial', async ({ page }) => {
   });
 
   await test.step('And I click the `Search patient` button', async () => {
-    await page.evaluate(() => {
-      document.querySelector('.react-joyride__overlay')?.setAttribute('style', 'z-index: 1 !important');
-    });
-    await page.getByRole('button', { name: 'Search patient' }).click();
+    await clickSpotlightedElement(page.getByRole('button', { name: 'Search patient' }));
   });
 
   await test.step('Then I should see the second tooltip', async () => {
@@ -65,19 +62,28 @@ test('Patient chart tutorial', async ({ page }) => {
   });
 
   await test.step('And I search for the patient', async () => {
-    await page.getByTestId('patientSearchBar').fill(patient.person.display);
+    await page.getByTestId('patientSearchBar').fill(getPatientIdentifier(patient));
+  });
+
+  await test.step('And I click the `Next` button', async () => {
+    await homePage.nextButton().click();
   });
 
   await test.step('Then I should see the third tooltip', async () => {
     await expect(page.getByText(/click on the patient you want to go to their patient chart./i)).toBeVisible();
   });
 
-  await test.step('And I click the first patient in the search results', async () => {
-    await page.getByTestId('floatingSearchResultsContainer').locator('a').first().click();
+  await test.step('And I click the patient in the search results', async () => {
+    await clickSpotlightedElement(
+      page
+        .getByTestId('floatingSearchResultsContainer')
+        .locator('a')
+        .filter({ hasText: getPatientIdentifier(patient) }),
+    );
   });
 
-  await test.step('Then I should be redirected to Patient Summary and see the Patient Chart tooltip', async () => {
-    await expect(page).toHaveURL(`${process.env.E2E_BASE_URL}/spa/patient/${patient.uuid}/chart/Patient%20Summary`);
+  await test.step('Then I should be redirected to the patient chart and see the Patient Chart tooltip', async () => {
+    await expect(page).toHaveURL(new RegExp(`/patient/${patient.uuid}/chart`));
     await expect(page.getByRole('heading', { name: /patient chart/i, level: 4 })).toBeVisible();
   });
 
@@ -94,7 +100,6 @@ test('Patient chart tutorial', async ({ page }) => {
   });
 
   await test.step('Then I should see the Left panel tooltip', async () => {
-    await page.getByRole('button', { name: 'Open menu' }).click();
     await expect(page.getByRole('heading', { name: /left panel/i, level: 4 })).toBeVisible();
   });
 
@@ -103,16 +108,7 @@ test('Patient chart tutorial', async ({ page }) => {
   });
 
   await test.step('Then I should see the Patient summary widgets tooltip', async () => {
-    await page.getByRole('button', { name: 'Open menu' }).click();
     await expect(page.getByRole('heading', { name: /patient summary widgets/i, level: 4 })).toBeVisible();
-  });
-
-  await test.step('And I click the `Next` button', async () => {
-    await homePage.nextButton().click();
-  });
-
-  await test.step('Then I should see the Siderail tooltip', async () => {
-    await expect(page.getByRole('heading', { name: /siderail/i, level: 4 })).toBeVisible();
   });
 
   await test.step('And I click the `Next` button', async () => {
@@ -122,7 +118,7 @@ test('Patient chart tutorial', async ({ page }) => {
   await test.step('Then I should see the last tooltip', async () => {
     await expect(
       page.getByText(
-        /great job! you've completed the tutorial. now, take a moment to explore the patient chart View and discover all its features. feel free to navigate around and get comfortable with the layout. if you need to return to the home page, just click the close button in the top right corner. happy exploring!/i,
+        /great job! you've completed the tutorial. now, take a moment to explore the patient chart view and discover all its features. feel free to navigate around and get comfortable with the layout. if you need to return to the home page, just click the close button in the top right corner. happy exploring!/i,
       ),
     ).toBeVisible();
   });

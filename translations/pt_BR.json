@@ -1,8 +1,8 @@
 {
-  "back": "Back",
-  "finish": "Finish",
-  "modalDescription": "Find walkthroughs and video tutorials on some of the core features of OpenMRS.",
-  "next": "Next",
-  "tutorial": "Tutorials",
-  "walkthrough": "Walkthrough"
+  "back": "Voltar",
+  "finish": "Concluir",
+  "modalDescription": "Encontre guias passo a passo e tutoriais em vídeo sobre alguns dos recursos principais do OpenMRS.",
+  "next": "Avançar",
+  "tutorial": "Tutoriais",
+  "walkthrough": "Guia passo a passo"
 }

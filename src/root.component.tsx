@@ -71,7 +71,25 @@ const RootComponent: React.FC = () => {
     }, 1000);
     trackInterval(interval);
   };
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!showTutorial) return;
+      if (e.key === 'ArrowRight') {
+        if (stepIndex < steps.length - 1) {
+          setStepIndex((prev) => prev + 1);
+        }
+      } else if (e.key === 'ArrowLeft') {
+        if (stepIndex > 0) {
+          setStepIndex((prev) => prev - 1);
+        }
+      }
+    };
 
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [showTutorial, stepIndex, steps.length]);
   const currentStep = steps[stepIndex];
   const overlayStyles = currentStep?.disableOverlay
     ? { backgroundColor: 'transparent' }
@@ -102,7 +120,11 @@ const RootComponent: React.FC = () => {
   };
 
   return (
-    <div onMouseDown={(e)=>{e.stopPropagation()}}>
+    <div
+      onMouseDown={(e) => {
+        e.stopPropagation();
+      }}
+    >
       <ReactJoyride
         callback={handleJoyrideCallback}
         continuous

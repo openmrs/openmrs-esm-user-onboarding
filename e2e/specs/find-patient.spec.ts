@@ -10,6 +10,10 @@ test.beforeEach(async ({ api }) => {
   patient = await generateRandomPatient(api);
 });
 
+test.afterEach(async ({ api }) => {
+  await deletePatient(api, patient.uuid);
+});
+
 test('Finding a patient tutorial', async ({ page }) => {
   const homePage = new HomePage(page);
 
@@ -123,8 +127,4 @@ test('Finding a patient tutorial', async ({ page }) => {
   await test.step('Then I should be redirected to the home page', async () => {
     await expect(page).toHaveURL(/\/home/);
   });
-});
-
-test.afterEach(async ({ api }) => {
-  await deletePatient(api, patient.uuid);
 });

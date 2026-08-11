@@ -10,6 +10,10 @@ test.beforeEach(async ({ api }) => {
   patient = await generateRandomPatient(api);
 });
 
+test.afterEach(async ({ api }) => {
+  await deletePatient(api, patient.uuid);
+});
+
 test('Starting a patient visit tutorial', async ({ page }) => {
   const homePage = new HomePage(page);
 
@@ -137,8 +141,4 @@ test('Starting a patient visit tutorial', async ({ page }) => {
   await test.step('And I click the `Finish` button', async () => {
     await homePage.finishButton().click();
   });
-});
-
-test.afterEach(async ({ api }) => {
-  await deletePatient(api, patient.uuid);
 });

@@ -2,7 +2,6 @@ import React from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { render, screen, act } from '@testing-library/react';
 import { ACTIONS, EVENTS, STATUS } from 'react-joyride';
-import type * as ReactJoyride from 'react-joyride';
 import { useDefineAppContext } from '@openmrs/esm-framework';
 import RootComponent from './root.component';
 
@@ -11,7 +10,7 @@ const mockUseDefineAppContext = vi.mocked(useDefineAppContext);
 let joyrideCallback: (data: any) => void;
 
 vi.mock('react-joyride', async (importOriginal) => {
-  const actual = await importOriginal<typeof ReactJoyride>();
+  const actual = await importOriginal<typeof import('react-joyride')>();
   return {
     ...actual,
     __esModule: true,

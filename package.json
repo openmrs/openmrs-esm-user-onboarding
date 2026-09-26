@@ -46,6 +46,7 @@
     "react-joyride": "^2.8.2"
   },
   "peerDependencies": {
+    "@carbon/react": "1.x",
     "@openmrs/esm-framework": "10.x",
     "dayjs": "1.x",
     "react": "18.x",

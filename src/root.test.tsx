@@ -1,6 +1,6 @@
 import React from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { render, act } from '@testing-library/react';
+import { render, screen, act } from '@testing-library/react';
 import { ACTIONS, EVENTS, STATUS } from 'react-joyride';
 import { useDefineAppContext } from '@openmrs/esm-framework';
 import RootComponent from './root.component';
@@ -48,8 +48,8 @@ describe('RootComponent', () => {
   });
 
   it('renders ReactJoyride', () => {
-    const { getByTestId } = render(<RootComponent />);
-    expect(getByTestId('joyride')).toBeInTheDocument();
+    render(<RootComponent />);
+    expect(screen.getByTestId('joyride')).toBeInTheDocument();
   });
 
   it('defines the tutorial app context', () => {
@@ -81,7 +81,7 @@ describe('RootComponent', () => {
   });
 
   it('advances the step index on STEP_AFTER with NEXT action', () => {
-    const { getByTestId } = render(<RootComponent />);
+    render(<RootComponent />);
     const context = getTutorialContext();
 
     act(() => {
@@ -98,11 +98,11 @@ describe('RootComponent', () => {
       });
     });
 
-    expect(getByTestId('joyride').getAttribute('data-step-index')).toBe('1');
+    expect(screen.getByTestId('joyride')).toHaveAttribute('data-step-index', '1');
   });
 
   it('decrements the step index on STEP_AFTER with PREV action', () => {
-    const { getByTestId } = render(<RootComponent />);
+    render(<RootComponent />);
     const context = getTutorialContext();
 
     act(() => {
@@ -130,11 +130,11 @@ describe('RootComponent', () => {
       });
     });
 
-    expect(getByTestId('joyride').getAttribute('data-step-index')).toBe('0');
+    expect(screen.getByTestId('joyride')).toHaveAttribute('data-step-index', '0');
   });
 
   it('resets the step index and hides the tutorial on TOUR_END', () => {
-    const { getByTestId } = render(<RootComponent />);
+    render(<RootComponent />);
     const context = getTutorialContext();
 
     act(() => {
@@ -160,8 +160,8 @@ describe('RootComponent', () => {
       });
     });
 
-    expect(getByTestId('joyride').getAttribute('data-step-index')).toBe('0');
-    expect(getByTestId('joyride').getAttribute('data-run')).toBe('false');
+    expect(screen.getByTestId('joyride')).toHaveAttribute('data-step-index', '0');
+    expect(screen.getByTestId('joyride')).toHaveAttribute('data-run', 'false');
   });
 
   it('polls for the target element on TOUR_START', () => {

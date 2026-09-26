@@ -20,6 +20,11 @@ test.beforeEach(async ({ api }) => {
   visit = await startVisit(api, patient.uuid);
 });
 
+test.afterEach(async ({ api }) => {
+  await endVisit(api, visit);
+  await deletePatient(api, patient.uuid);
+});
+
 test('Recording vitals tutorial', async ({ page }) => {
   const homePage = new HomePage(page);
 
@@ -178,9 +183,4 @@ test('Recording vitals tutorial', async ({ page }) => {
   await test.step('And I click the `Finish` button', async () => {
     await homePage.finishButton().click();
   });
-});
-
-test.afterEach(async ({ api }) => {
-  await endVisit(api, visit);
-  await deletePatient(api, patient.uuid);
 });

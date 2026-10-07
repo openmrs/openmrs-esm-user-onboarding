@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Button } from '@carbon/react';
 import { ArrowLeft, ArrowRight, Close } from '@carbon/react/icons';
 import { useTranslation } from 'react-i18next';
@@ -24,6 +24,24 @@ const CustomTooltip: React.FC<CustomTooltipProps> = ({
   const { t } = useTranslation();
   const isLastStep = index === totalSteps - 1;
 
+   // Added the useEffect
+  useEffect(() => {
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'ArrowRight') {
+      if (continuous && !step.hideNextButton) {
+        primaryProps.onClick(e as unknown as React.MouseEvent<HTMLElement>);
+      }
+    } else if (e.key === 'ArrowLeft') {
+      if (!step.hideBackButton && index > 0) {
+        backProps.onClick(e as unknown as React.MouseEvent<HTMLElement>);
+      }
+    }
+  };
+
+  window.addEventListener('keydown', handleKeyDown);
+  return () => window.removeEventListener('keydown', handleKeyDown);
+}, [index, continuous, step.hideNextButton, step.hideBackButton, primaryProps, backProps]);
+  
   return (
     <div {...tooltipProps} className={styles.tooltipcontainer}>
       <div className={styles.tooltipheader}>
